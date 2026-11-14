@@ -1,0 +1,7 @@
+Kurgusal bir mahalle kafesi olan "Mavi Fincanlık" için 30 Instagram gönderisi hazırla. Bu klasöre iki dosya yaz:
+
+1) sablon.html: 1080x1350 piksellik tek bir gönderi şablonu. 30 gönderinin verisi aynı dosyada bir JavaScript dizisinde dursun; adresin sonundaki #1 ... #30 hangi gönderinin gösterileceğini seçsin. Gönderiler birbirinden farklı görünsün: menüden ürün ve fiyatı (TL), günün kampanyası, çalışma saatleri, kısa müşteri yorumu (yalnız baş harfle imzalı), haftanın etkinliği, kahve bilgisi gibi. Renkler ve yerleşim türe göre değişsin ama hepsi aynı markaya ait dursun. Dış kaynak kullanma: CDN, internetten font ya da görsel yok; süs gerekiyorsa CSS veya SVG ile çiz. Bütün bilgiler uydurma olsun; gerçek bir işletme adı, telefon numarası, e-posta ya da adres yazma.
+
+2) bas.py: yalnız Python standart kütüphanesiyle çalışan bir betik. Bilgisayarda Microsoft Edge ya da Google Chrome hangisi varsa onu headless çalıştırıp sablon.html#1 ... #30 sayfalarını 1080x1350 PNG olarak gorseller/ klasörüne gonderi_01.png ... gonderi_30.png adıyla bassın. Geçici bir tarayıcı profil klasörü kullansın ve bitince onu silsin. Her dosya için kısa bir satır ve en sonda toplam süreyi yazsın.
+
+Betiği çalıştırma, yalnız dosyaları yaz. Bitince ne yaptığını tek cümleyle söyle.

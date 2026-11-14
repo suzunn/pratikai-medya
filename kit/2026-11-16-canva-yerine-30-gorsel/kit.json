@@ -1,0 +1,54 @@
+{
+ "baslik": "Canva Pro yerine: tek HTML şablondan 30 Instagram görseli",
+ "tarih": "2026-11-16",
+ "slug": "canva-yerine-30-gorsel",
+ "oz": "\"Canva Pro'ya ayda 240 TL vermeden Claude'a 30 Instagram görseli bastırdım\" videosundaki (16 Kasım 2026) dosyaların aynısı. Claude Code kurgusal bir kafe içi…",
+ "yayin_zamani": "2026-11-14T07:53:12+03:00",
+ "dosyalar": [
+  {
+   "ad": "README.md",
+   "boyut": 3046
+  },
+  {
+   "ad": "bas.bat",
+   "boyut": 205
+  },
+  {
+   "ad": "bas.py",
+   "boyut": 6315
+  },
+  {
+   "ad": "prompt.txt",
+   "boyut": 1366
+  },
+  {
+   "ad": "prompt_duzeltme.txt",
+   "boyut": 449
+  },
+  {
+   "ad": "prompt_kendi_isletmen.txt",
+   "boyut": 1029
+  },
+  {
+   "ad": "sablon.html",
+   "boyut": 41304
+  },
+  {
+   "ad": "ornek/gonderi_01.png",
+   "boyut": 141452
+  },
+  {
+   "ad": "ornek/gonderi_06.png",
+   "boyut": 142646
+  },
+  {
+   "ad": "ornek/gonderi_14.png",
+   "boyut": 146675
+  },
+  {
+   "ad": "ornek/gonderi_22.png",
+   "boyut": 112805
+  }
+ ],
+ "surum": 1
+}

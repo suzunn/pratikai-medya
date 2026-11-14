@@ -1,0 +1,10 @@
+Bu klasördeki sablon.html bir kafe için 30 Instagram gönderisi gösteriyor (adresin sonundaki #1 ... #30 hangi gönderinin açılacağını seçiyor). Bunu benim işletmeme uyarla:
+
+- İşletmenin adı: [işletmenin adı]
+- Ne iş yapıyor: [ör. kuaför, pastane, diş kliniği, butik]
+- Ana renkleri: [ör. lacivert ve turuncu, ya da "sen seç"]
+- Ürünler/hizmetler ve fiyatları (TL): [ör. Saç kesimi 400 TL, Fön 250 TL ...]
+- Çalışma saatleri: [ör. Pazartesi-Cumartesi 09:00-20:00]
+- Bu ay öne çıkarmak istediğim kampanya ya da etkinlik: [varsa yaz]
+
+30 gönderinin verisini yukarıdaki bilgilere göre yeniden yaz; türler karışık kalsın (ürün/hizmet + fiyat, kampanya, saatler, kısa müşteri yorumu, etkinlik, bilgi kartı). Yerleşimi ve 1080x1350 ölçüyü koru, dış kaynak (CDN, internetten font ya da görsel) ekleme. Gerçek müşteri adı, telefon numarası ya da e-posta uydurma; yorumları yalnız baş harfle imzala. bas.py'ye dokunma. Bitince ne değiştirdiğini tek cümleyle söyle.

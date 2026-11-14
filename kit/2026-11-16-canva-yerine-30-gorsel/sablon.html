@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>Mavi Fincanlık · Gönderi</title>
+<!--
+  Mavi Fincanlık (kurgusal mahalle kafesi) için 1080x1350 Instagram gönderi şablonu.
+  Gösterilecek gönderi adresin sonundaki #1 ... #30 ile seçilir (ör. sablon.html#7).
+  Tarayıcıda gezinmek için sağ/sol ok tuşları da çalışır.
+  Hiçbir dış kaynak kullanılmaz: yazı tipleri sistem fontları, süslemeler CSS/SVG.
+  Tüm içerik uydurmadır.
+-->
+<style>
+:root{
+  --serif: Georgia, "Palatino Linotype", "Book Antiqua", "Times New Roman", serif;
+  --sans: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;overflow:hidden;background:#1b2f4b}
+
+.post{
+  --k:1;
+  position:relative;width:1080px;height:1350px;overflow:hidden;
+  background:var(--bg);color:var(--ink);font-family:var(--sans);
+  display:flex;flex-direction:column;padding:70px 78px 60px;
+}
+.cerceve{position:absolute;inset:30px;border:3px solid var(--line);border-radius:38px;pointer-events:none;z-index:3}
+.susler{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.ust,.icerik,.alt{position:relative;z-index:2}
+
+/* Üst bant: marka + tür etiketi */
+.ust{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.marka{display:flex;align-items:center;gap:18px}
+.logo{width:86px;height:86px;flex:none}
+.marka-ad{font-family:var(--serif);font-size:42px;font-weight:700;line-height:1}
+.marka-alt{font-size:17px;letter-spacing:5px;text-transform:uppercase;opacity:.75;margin-top:8px}
+.etiket{font-size:21px;font-weight:700;letter-spacing:3px;padding:14px 26px;border-radius:999px;background:var(--accent);color:var(--onaccent);white-space:nowrap}
+
+/* İçerik alanı */
+.icerik{flex:1;min-height:0;margin:44px 0 30px;overflow:hidden;display:flex;flex-direction:column}
+.govde{flex:1 0 auto;display:flex;flex-direction:column}
+.govde>*{flex-shrink:0}
+
+/* Alt bant */
+.alt{display:flex;justify-content:space-between;align-items:center;font-size:21px;letter-spacing:1px;border-top:2px solid var(--line);padding-top:22px}
+.alt .no{font-family:var(--serif);font-weight:700;font-size:24px;letter-spacing:2px}
+
+/* Ortak yazı ölçüleri (--k taşma olursa küçültülür) */
+.kucuk{font-size:calc(26px*var(--k));letter-spacing:5px;text-transform:uppercase;font-weight:700;color:var(--accent)}
+h1{font-family:var(--serif);font-weight:700;line-height:1.06;font-size:calc(92px*var(--k));letter-spacing:-1px}
+p{font-size:calc(34px*var(--k));line-height:1.45}
+
+/* ---------- MENÜDEN ---------- */
+.urun{align-items:center;text-align:center;justify-content:space-between}
+.urun .sahne{position:relative;width:100%;height:calc(570px*var(--k));display:flex;align-items:center;justify-content:center}
+.urun .daire{position:absolute;width:calc(540px*var(--k));height:calc(540px*var(--k));border-radius:50%;background:var(--soft)}
+.urun .daire::after{content:"";position:absolute;inset:-22px;border-radius:50%;border:3px dashed var(--line)}
+.urun .cizim{position:relative;width:calc(500px*var(--k));height:auto}
+.fiyat{
+  position:absolute;right:30px;bottom:20px;
+  width:calc(230px*var(--k));height:calc(230px*var(--k));border-radius:50%;
+  background:var(--accent);color:var(--onaccent);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transform:rotate(-8deg);box-shadow:0 0 0 8px var(--bg),0 0 0 11px var(--accent);
+}
+.fiyat b{font-family:var(--serif);font-size:calc(92px*var(--k));line-height:.9}
+.fiyat span{font-size:calc(28px*var(--k));font-weight:700;letter-spacing:4px;margin-top:6px}
+.urun .metin{display:flex;flex-direction:column;align-items:center;gap:calc(16px*var(--k))}
+.urun p{max-width:840px;opacity:.85}
+.minietiket{display:inline-block;font-size:calc(21px*var(--k));font-weight:700;letter-spacing:2px;padding:8px 20px;border:2px solid var(--ink);border-radius:999px;text-transform:uppercase}
+.urun.b{flex-direction:column-reverse;align-items:flex-start;text-align:left}
+.urun.b .metin{align-items:flex-start}
+/* Kesik çizgili halka (daire + 2×22px) sahneden taşarsa column-reverse'de içeriğin altından taşar
+   ve sigdir() --k'yı 0.6'ya kadar küçültür; sahneyi halkayı kapsayacak kadar uzatıyoruz. */
+.urun.b .sahne{justify-content:flex-end;height:calc(540px*var(--k) + 46px)}
+.urun.b .daire{margin-right:20px}
+.urun.b .cizim{margin-right:40px}
+.urun.b .fiyat{left:20px;right:auto;bottom:auto;top:60px;transform:rotate(8deg)}
+
+/* ---------- KAMPANYA ---------- */
+.kampanya{gap:calc(14px*var(--k))}
+.kampanya .dev{font-family:var(--serif);font-weight:700;font-size:calc(250px*var(--k));line-height:.95;color:var(--accent);white-space:nowrap;overflow:hidden;letter-spacing:-6px;margin:calc(6px*var(--k)) 0 calc(10px*var(--k))}
+.kampanya h1{font-size:calc(84px*var(--k))}
+.kampanya p{max-width:880px}
+.kupon{margin-top:auto;border:3px dashed currentColor;border-radius:24px;padding:calc(26px*var(--k)) 36px;font-size:calc(26px*var(--k));line-height:1.4;display:flex;gap:24px;align-items:center}
+.kupon svg{width:calc(46px*var(--k));flex:none}
+.damgalar{display:grid;grid-template-columns:repeat(5,1fr);gap:calc(22px*var(--k));margin:calc(28px*var(--k)) 0 calc(20px*var(--k));max-width:780px}
+.damga{aspect-ratio:1;border-radius:50%;border:4px dashed var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink)}
+.damga svg{width:60%;opacity:.85}
+.damga.son{background:var(--accent);color:var(--onaccent);border:none;font-weight:800;font-size:calc(22px*var(--k));letter-spacing:2px;text-align:center;line-height:1.1;transform:rotate(-6deg)}
+.isinlar{position:absolute;width:1900px;height:1900px;left:28%;top:36%;transform:translate(-50%,-50%);border-radius:50%;
+  background:repeating-conic-gradient(var(--soft) 0deg 6deg,transparent 6deg 15deg);
+  -webkit-mask:radial-gradient(circle,#000 25%,transparent 68%);mask:radial-gradient(circle,#000 25%,transparent 68%)}
+.damla{position:absolute;width:5px;border-radius:3px;background:var(--ink);opacity:.2;transform:rotate(14deg)}
+
+/* ---------- ÇALIŞMA SAATLERİ ---------- */
+.saatler{gap:calc(16px*var(--k))}
+.saatler .bas{display:flex;align-items:center;justify-content:space-between;gap:30px}
+.saatler .bas>div{display:flex;flex-direction:column;gap:calc(16px*var(--k))}
+.saat-svg{width:calc(220px*var(--k));flex:none;color:var(--ink)}
+.tablo{margin-top:calc(46px*var(--k));display:flex;flex-direction:column;gap:calc(32px*var(--k))}
+.satir{display:flex;align-items:baseline;font-size:calc(46px*var(--k))}
+.satir span{font-weight:600;white-space:nowrap}
+.satir i{flex:1;border-bottom:4px dotted var(--line);margin:0 22px;transform:translateY(-10px)}
+.satir b{font-family:var(--serif);font-variant-numeric:tabular-nums;color:var(--accent);white-space:nowrap}
+.saatler .not{margin-top:auto;font-size:calc(28px*var(--k));line-height:1.45;padding:calc(26px*var(--k)) 34px;background:var(--soft);border-left:8px solid var(--accent);border-radius:0 18px 18px 0}
+.noktalar{position:absolute;inset:0;background-image:radial-gradient(rgba(143,184,232,.17) 3px,transparent 3.5px);background-size:44px 44px;
+  -webkit-mask:linear-gradient(160deg,#000 0%,transparent 60%);mask:linear-gradient(160deg,#000 0%,transparent 60%)}
+
+/* ---------- MÜŞTERİ YORUMU ---------- */
+.yorum{justify-content:center;align-items:center}
+.kart{position:relative;width:100%;background:var(--soft);border-radius:28px;padding:calc(80px*var(--k)) calc(70px*var(--k)) calc(60px*var(--k));
+  box-shadow:0 30px 60px rgba(27,47,75,.16);transform:rotate(var(--egim))}
+.bant{position:absolute;top:-26px;left:50%;width:220px;height:56px;background:var(--accent);opacity:.8;transform:translateX(-50%) rotate(-3deg)}
+.tirnak{font-family:var(--serif);font-size:calc(240px*var(--k));line-height:.62;height:calc(100px*var(--k));color:var(--accent)}
+.yildizlar{display:flex;gap:10px;margin:calc(10px*var(--k)) 0 calc(28px*var(--k))}
+.yildizlar svg{width:calc(44px*var(--k))}
+blockquote{font-family:var(--serif);font-style:italic;font-size:calc(58px*var(--k));line-height:1.3}
+.imza{margin-top:calc(46px*var(--k));display:flex;align-items:center;gap:20px;font-family:var(--serif);font-weight:700;font-size:calc(42px*var(--k))}
+.imza .cizgi{width:70px;height:4px;background:var(--accent)}
+.imza small{margin-left:auto;font-family:var(--sans);font-weight:600;font-size:calc(21px*var(--k));letter-spacing:3px;text-transform:uppercase;opacity:.6}
+.yorum .davet{margin-top:calc(54px*var(--k));font-size:calc(28px*var(--k));opacity:.75;text-align:center}
+.cizgiler{position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(255,255,255,.4) 0 2px,transparent 2px 30px)}
+
+/* ---------- HAFTANIN ETKİNLİĞİ ---------- */
+.etkinlik{gap:calc(22px*var(--k))}
+.etk-ust{display:flex;align-items:center;gap:calc(50px*var(--k));margin:calc(16px*var(--k)) 0 calc(22px*var(--k))}
+.takvim{width:calc(290px*var(--k));flex:none;background:#f6efe4;color:#1b2f4b;border-radius:28px;overflow:hidden;text-align:center;
+  box-shadow:0 22px 0 -8px rgba(0,0,0,.2);transform:rotate(-3deg)}
+.takvim .ay{background:var(--accent);color:var(--onaccent);font-weight:800;letter-spacing:5px;font-size:calc(30px*var(--k));padding:calc(16px*var(--k)) 0;text-transform:uppercase}
+.takvim .gun{font-family:var(--serif);font-weight:700;font-size:calc(170px*var(--k));line-height:1.05}
+.takvim .hg{font-size:calc(30px*var(--k));font-weight:600;padding-bottom:calc(22px*var(--k));opacity:.75}
+.etk-bilgi{flex:1;display:flex;flex-direction:column;gap:calc(26px*var(--k))}
+.etk-satir{display:flex;align-items:center;gap:18px;font-size:calc(38px*var(--k));font-weight:600;line-height:1.2}
+.etk-satir svg{width:calc(48px*var(--k));flex:none;color:var(--accent)}
+.ikon{width:calc(150px*var(--k));color:var(--accent);align-self:flex-end;margin-top:calc(-10px*var(--k))}
+.etkinlik p{opacity:.9;max-width:900px}
+.rozetler{margin-top:auto;display:flex;gap:18px;flex-wrap:wrap}
+.rozet{font-size:calc(28px*var(--k));font-weight:700;padding:14px 30px;border-radius:999px;border:3px solid var(--ink)}
+.rozet.dolu{background:var(--accent);color:var(--onaccent);border-color:var(--accent)}
+.konfeti{position:absolute}
+
+/* ---------- KAHVE BİLGİSİ ---------- */
+.bilgi{gap:calc(18px*var(--k))}
+.bilgi .soru{font-family:var(--serif);font-style:italic;font-size:calc(46px*var(--k))}
+.rakam{font-family:var(--serif);font-weight:700;font-size:calc(230px*var(--k));line-height:1;color:var(--accent);white-space:nowrap;overflow:hidden;letter-spacing:-4px;margin:calc(4px*var(--k)) 0 calc(6px*var(--k))}
+.rakam small{font-size:.3em;letter-spacing:1px;margin-left:18px}
+.ayrac{display:flex;align-items:center;gap:18px;margin-bottom:calc(10px*var(--k))}
+.ayrac i{height:3px;width:120px;background:var(--accent);opacity:.6}
+.ayrac svg{width:30px}
+.bilgi p{opacity:.9}
+.bilgi .son-not{margin-top:auto;font-size:calc(27px*var(--k));opacity:.75;font-style:italic;font-family:var(--serif)}
+.cekirdek{position:absolute;opacity:.15}
+
+/* Menü süsleri */
+.balon{position:absolute;border-radius:50%;background:var(--soft)}
+.dalga{position:absolute;left:0;width:1080px}
+</style>
+</head>
+<body>
+<div id="post" class="post"></div>
+
+<script>
+"use strict";
+
+/* ===================== 30 GÖNDERİNİN VERİSİ (tamamen uydurma) ===================== */
+const GONDERILER = [
+  /* 1 */ {tur:"urun", ad:"Mavi Fincan Latte", ust:"Evin imza içeceği", rozet:"İmza",
+           aciklama:"Çift shot espresso, ipeksi süt köpüğü ve bir tutam lavanta şurubu. Fincanı mavi, tadı yumuşacık.",
+           fiyat:165, cizim:"kupa", sivi:"#c89b6d", vurgu:"#2e6db4", kalp:true, yer:"a"},
+  /* 2 */ {tur:"saatler", baslik:"Çalışma Saatleri", ust:"Haftanın her günü açığız",
+           satirlar:[["Pazartesi – Cuma","07:30 – 22:00"],["Cumartesi","08:30 – 23:00"],["Pazar","09:00 – 21:00"]],
+           not:"Mutfağımız kapanıştan 30 dakika önce son siparişleri alır. Kapımız mavi, gözünüzden kaçmaz."},
+  /* 3 */ {tur:"yorum", metin:"İşe giderken buraya uğramadan güne başlayamıyorum. Filtre kahve her sabah aynı lezzette, aynı gülümsemeyle geliyor.", imza:"E. Y."},
+  /* 4 */ {tur:"kampanya", ton:"mavi", ust:"Hafta içi 07:30 – 10:00", buyuk:"120 TL", baslik:"Sabah İkilisi",
+           aciklama:"Bir filtre kahve ve fırından yeni çıkmış susamlı simit. Güne acele etmeden başlayın.",
+           kosul:"Yalnızca hafta içi sabahları, kafede servis için geçerlidir."},
+  /* 5 */ {tur:"bilgi", rakam:"2013", baslik:"Türk kahvesi bir kültürel miras",
+           metin:"Türk kahvesi kültürü ve geleneği, 2013 yılında UNESCO İnsanlığın Somut Olmayan Kültürel Mirası Temsili Listesi’ne alındı.",
+           son:"Fincanınızın yanında suyu ve lokumu hiç unutmuyoruz."},
+  /* 6 */ {tur:"urun", ad:"Tarçınlı Salep", ust:"Kış menüsü", rozet:"Mevsimlik",
+           aciklama:"Sıcacık süt, gerçek salep ve üstünde bol tarçın. Soğuk akşamların en tatlı molası.",
+           fiyat:130, cizim:"kupa", sivi:"#f3e6cc", vurgu:"#e0793f", serpme:true, yer:"b"},
+  /* 7 */ {tur:"etkinlik", gun:22, ay:"Kasım", hg:"Pazar", saat:"10:30", yer:"Üst kat, pencere kenarı",
+           baslik:"Pazar Sabahı Kitap Kulübü",
+           aciklama:"Ayın kitabını kahve eşliğinde konuşuyoruz. Kitabı bitirmemiş olmak serbest, merak etmek şart.",
+           ucret:"Ücretsiz", kontenjan:"12 kişilik", ikon:"kitap"},
+  /* 8 */ {tur:"yorum", metin:"Tarçınlı salep, kış akşamlarının en güzel hali. Bir de cam kenarındaki masa boşsa, değmeyin keyfime.", imza:"M. D."},
+  /* 9 */ {tur:"kampanya", ton:"sari", damga:true, ust:"Sadakat kartı", baslik:"Onuncu kahve bizden",
+           aciklama:"Her kahvede kartınıza bir damga. Dokuz damgayı dolduran, onuncu kahvesini bizden içer.",
+           kosul:"Kartlar kasada ve ücretsizdir. Tüm sıcak ve soğuk kahvelerde geçerlidir."},
+  /* 10 */ {tur:"urun", ad:"Türk Kahvesi", ust:"Bakır cezvede, ağır ateşte", rozet:"Klasik",
+           aciklama:"Taze çekilmiş çekirdek, bol köpük. Yanında bir bardak su ve gül lokumu.",
+           fiyat:90, cizim:"fincan", vurgu:"#2e6db4", yer:"a"},
+  /* 11 */ {tur:"bilgi", rakam:"9", birim:"bar", baslik:"Espressonun sırrı basınç",
+           metin:"Espresso, yaklaşık 90 °C’deki suyun 9 bar civarında basınçla ince öğütülmüş kahveden geçirilmesiyle hazırlanır. İyi bir shot 25–30 saniyede akar.",
+           son:"Baristamıza sorun, makineyi seve seve anlatır."},
+  /* 12 */ {tur:"yorum", metin:"Bilgisayarımla saatlerce oturdum, kimse göz devirmedi. Üstüne bir de sormadan su getirdiler.", imza:"S. A."},
+  /* 13 */ {tur:"urun", ad:"San Sebastian Cheesecake", ust:"Ev yapımı tatlı", rozet:"Ev yapımı",
+           aciklama:"Üstü karamelize, içi akışkan. Her sabah taze pişiyor, çoğu gün akşam olmadan bitiyor.",
+           fiyat:195, cizim:"dilim", vurgu:"#e0793f", yer:"b"},
+  /* 14 */ {tur:"kampanya", ton:"turuncu", ust:"Her gün, her saat", buyuk:"%10", baslik:"Kupanı getir, indirimi kap",
+           aciklama:"Kendi kupanızla gelin, tüm içeceklerde yüzde on indirim. Hem cebiniz hem doğa rahat etsin.",
+           kosul:"Kupanın temiz ve en az 250 ml olması yeterli."},
+  /* 15 */ {tur:"etkinlik", gun:26, ay:"Kasım", hg:"Perşembe", saat:"19:00", yer:"Bar tezgâhı",
+           baslik:"Latte Art Atölyesi",
+           aciklama:"Baristamızla süt köpürtmeyi ve ilk kalbinizi çizmeyi öğrenin. Yaptığınız her latte sizin.",
+           ucret:"Katılım 250 TL", kontenjan:"8 kişilik", ikon:"latte"},
+  /* 16 */ {tur:"saatler", baslik:"Kahvaltı Saatleri", ust:"Güne yavaş başlayanlara",
+           satirlar:[["Hafta içi","07:30 – 11:30"],["Cumartesi","08:30 – 13:00"],["Pazar","09:00 – 14:00"]],
+           not:"Hafta sonu kahvaltısı için masanızı bir gün önceden kasadan ayırtabilirsiniz."},
+  /* 17 */ {tur:"urun", ad:"Günün Filtre Kahvesi", ust:"Her gün başka çekirdek",
+           aciklama:"Bugün demlikte orta kavrum, fındık ve kakao notalı bir harman var. Tazelemesi yarı fiyatına.",
+           fiyat:110, cizim:"kupa", sivi:"#5a3a22", vurgu:"#1e5a6e", yer:"a"},
+  /* 18 */ {tur:"yorum", metin:"Cheesecake için gelmiştim, kahve için kaldım. Artık ikisi için birden geliyorum.", imza:"B. T."},
+  /* 19 */ {tur:"bilgi", rakam:"1 → 2", baslik:"Çekirdek aslında bir tohum",
+           metin:"Kahve çekirdeği, kahve kirazı denen kırmızı bir meyvenin tohumudur. Her kirazın içinde genellikle yan yana iki çekirdek bulunur.",
+           son:"Yani her fincan, biraz da bir meyve bahçesi."},
+  /* 20 */ {tur:"kampanya", ton:"mavi", yagmur:true, ust:"Hava kapalıysa", buyuk:"%15", baslik:"Yağmurlu Gün İndirimi",
+           aciklama:"Dışarıda yağmur yağıyorsa tüm sıcak içecekler yüzde on beş indirimli. Şemsiyenizi kapıda bırakın.",
+           kosul:"Yağmurun yağdığı saatlerde geçerlidir. Kararı pencere verir."},
+  /* 21 */ {tur:"urun", ad:"Tereyağlı Kruvasan", ust:"Fırından yeni çıktı",
+           aciklama:"Kat kat, çıtır çıtır. Sade, kaşarlı ya da reçelli; kahvenin en iyi arkadaşı.",
+           fiyat:120, cizim:"kruvasan", vurgu:"#c97a22", yer:"b"},
+  /* 22 */ {tur:"etkinlik", gun:4, ay:"Aralık", hg:"Cuma", saat:"20:30", yer:"Arka bahçe, ısıtıcılar açık",
+           baslik:"Akustik Akşam",
+           aciklama:"Mahallenin müzisyenleri gitarları ve sesleriyle sahnede. Elinizde sıcak bir içecek, kulağınızda yumuşak şarkılar.",
+           ucret:"Ücretsiz", kontenjan:"Rezervasyonsuz", ikon:"nota"},
+  /* 23 */ {tur:"yorum", metin:"Kızımla geldik; ona sıcak çikolata, bana Türk kahvesi. İkimiz de gülümseyerek çıktık.", imza:"Z. K."},
+  /* 24 */ {tur:"urun", ad:"Sıcak Çikolata", ust:"Koyu, yoğun, kadife gibi", rozet:"Çocuklar da sever",
+           aciklama:"Yüzde yetmiş bitter çikolata, tam yağlı süt ve isteğe bağlı bir kaşık krema.",
+           fiyat:140, cizim:"kupa", sivi:"#4b2a1a", vurgu:"#3d5a80", yer:"a"},
+  /* 25 */ {tur:"bilgi", rakam:"12–24", birim:"saat", baslik:"Soğuk demleme sabır ister",
+           metin:"Soğuk demleme kahve, iri öğütülmüş kahvenin soğuk ya da oda sıcaklığındaki suda 12–24 saat bekletilmesiyle hazırlanır. Tadı yumuşak, acılığı düşüktür.",
+           son:"Bizimki 18 saat bekliyor; acelemiz yok."},
+  /* 26 */ {tur:"kampanya", ton:"turuncu", ust:"Öğrenci kimliğiyle", buyuk:"175 TL", baslik:"Ders Arası Menüsü",
+           aciklama:"Bir latte ve ev yapımı tahinli kurabiye. Uzun çalışma seanslarına en iyi yakıt.",
+           kosul:"Geçerli öğrenci kimliğiyle, hafta içi 14:00 – 18:00 arasında."},
+  /* 27 */ {tur:"etkinlik", gun:12, ay:"Aralık", hg:"Cumartesi", saat:"15:00", yer:"Büyük ortak masa",
+           baslik:"Masa Oyunları Günü",
+           aciklama:"Raflarımızdaki oyunlar sizi bekliyor. Kurallarını bilmediğiniz oyunu anlatacak biri mutlaka çıkar.",
+           ucret:"Ücretsiz", kontenjan:"Her yaşa açık", ikon:"zar"},
+  /* 28 */ {tur:"urun", ad:"Soğuk Demleme", ust:"18 saat sabırla demlendi",
+           aciklama:"Buz gibi, yumuşak ve hafif çikolatamsı. Kış ortasında bile yazı hatırlatır.",
+           fiyat:140, cizim:"bardak", sivi:"#6b4226", vurgu:"#2e6db4", yer:"b"},
+  /* 29 */ {tur:"yorum", metin:"Barista adımı ikinci gelişimde hatırladı. Mahalle kafesi dediğin tam olarak böyle olur.", imza:"O. Ç."},
+  /* 30 */ {tur:"saatler", baslik:"Yılbaşı Haftası", ust:"28 Aralık – 3 Ocak", ust_etiket:"ÖZEL SAATLER",
+           satirlar:[["28 – 30 Aralık","07:30 – 22:00"],["31 Aralık Perşembe","08:00 – 02:00"],["1 Ocak Cuma","12:00 – 22:00"],["2 – 3 Ocak","09:00 – 23:00"]],
+           not:"31 Aralık gecesi tüm misafirlerimize tarçınlı elma çayı ikramımız var. Yeni yılda da aynı mavi kapıdayız."}
+];
+
+/* ===================== MARKA VE TEMALAR ===================== */
+const LACIVERT = "#1b2f4b", KREM = "#f6efe4";
+
+const TEMALAR = {
+  urun:             {bg:KREM,      ink:LACIVERT, accent:"#2e6db4", onaccent:"#fff",    line:"rgba(27,47,75,.18)",   soft:"#dfe9f5"},
+  kampanya_mavi:    {bg:"#2e6db4", ink:"#fdf8ef",accent:"#f2c14e", onaccent:LACIVERT, line:"rgba(255,255,255,.35)", soft:"rgba(255,255,255,.10)"},
+  kampanya_turuncu: {bg:"#e0793f", ink:"#fff8ef",accent:LACIVERT,  onaccent:"#fff",    line:"rgba(255,255,255,.45)", soft:"rgba(255,255,255,.12)"},
+  kampanya_sari:    {bg:"#f2c14e", ink:LACIVERT, accent:"#2e6db4", onaccent:"#fff",    line:"rgba(27,47,75,.28)",   soft:"rgba(255,255,255,.22)"},
+  saatler:          {bg:"#14263f", ink:KREM,     accent:"#8fb8e8", onaccent:"#14263f", line:"rgba(246,239,228,.25)", soft:"rgba(143,184,232,.12)"},
+  yorum:            {bg:"#dbe7f4", ink:LACIVERT, accent:"#e0793f", onaccent:"#fff",    line:"rgba(27,47,75,.18)",   soft:"#fffdf8"},
+  etkinlik:         {bg:"#1e5a6e", ink:KREM,     accent:"#f2c14e", onaccent:LACIVERT, line:"rgba(246,239,228,.30)", soft:"rgba(255,255,255,.10)"},
+  bilgi:            {bg:"#4a3122", ink:KREM,     accent:"#e9b872", onaccent:"#4a3122", line:"rgba(246,239,228,.25)", soft:"rgba(233,184,114,.14)"}
+};
+
+const ETIKETLER = {
+  urun:"MENÜDEN", kampanya:"GÜNÜN KAMPANYASI", saatler:"ÇALIŞMA SAATLERİ",
+  yorum:"MİSAFİR DEFTERİ", etkinlik:"HAFTANIN ETKİNLİĞİ", bilgi:"KAHVE BİLGİSİ"
+};
+
+const LOGO = `<svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
+  <circle cx="32" cy="32" r="30" fill="#2e6db4" stroke="${KREM}" stroke-width="2.5"/>
+  <path d="M25 13c-3 3 3 5 0 9M32 11c-3 3 3 6 0 10M39 13c-3 3 3 5 0 9" fill="none" stroke="${KREM}" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M17 27h28v6a14 14 0 0 1-28 0z" fill="${KREM}"/>
+  <path d="M45 30h2.5a5 5 0 0 1 0 10H43" fill="none" stroke="${KREM}" stroke-width="3"/>
+  <rect x="13" y="48" width="38" height="4" rx="2" fill="${KREM}"/>
+</svg>`;
+
+/* Tekrarlanabilir rastgelelik: aynı gönderi her basışta aynı görünsün */
+function rng(seed){
+  return function(){
+    seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+    let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+const iki = n => String(n).padStart(2, "0");
+
+/* ===================== ÇİZİMLER (SVG) ===================== */
+const N = LACIVERT;
+const BUHAR = (y) => `<g fill="none" stroke="${N}" stroke-opacity=".3" stroke-width="8" stroke-linecap="round">
+  <path d="M160 ${y}c-14-16 14-26 0-44M200 ${y-10}c-14-16 14-28 0-48M240 ${y}c-14-16 14-26 0-44"/></g>`;
+
+function cizKupa(g){
+  const kalp = g.kalp ? `<path transform="translate(200 151) scale(1 .34)" d="M0 30C-34 8-34-22-13-22C-4-22 0-13 0-9C0-13 4-22 13-22C34-22 34 8 0 30Z" fill="#fffaf2"/>` : "";
+  let serpme = "";
+  if (g.serpme){
+    const r = rng(7);
+    for (let i = 0; i < 26; i++){
+      const a = r() * Math.PI * 2, d = Math.sqrt(r());
+      serpme += `<circle cx="${(200 + Math.cos(a) * d * 70).toFixed(1)}" cy="${(150 + Math.sin(a) * d * 11).toFixed(1)}" r="${(2 + r() * 2.5).toFixed(1)}" fill="#9a5b2e"/>`;
+    }
+  }
+  return `<svg class="cizim" viewBox="0 0 400 400" aria-hidden="true">
+    ${BUHAR(112)}
+    <ellipse cx="200" cy="346" rx="150" ry="20" fill="${N}" opacity=".1"/>
+    <ellipse cx="200" cy="330" rx="140" ry="20" fill="#fff" stroke="${N}" stroke-width="6"/>
+    <path d="M286 186h18a42 42 0 0 1 0 84h-22" fill="none" stroke="${N}" stroke-width="34" stroke-linecap="round"/>
+    <path d="M286 186h18a42 42 0 0 1 0 84h-22" fill="none" stroke="${g.vurgu}" stroke-width="22" stroke-linecap="round"/>
+    <path d="M112 150h176v120a56 56 0 0 1-56 56h-64a56 56 0 0 1-56-56z" fill="${g.vurgu}" stroke="${N}" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M124 226q19-14 38 0t38 0t38 0t38 0" fill="none" stroke="${KREM}" stroke-width="8" stroke-linecap="round"/>
+    <ellipse cx="200" cy="150" rx="88" ry="16" fill="${g.sivi}" stroke="${N}" stroke-width="6"/>
+    ${kalp}${serpme}
+  </svg>`;
+}
+
+function cizFincan(g){
+  return `<svg class="cizim" viewBox="0 0 400 400" aria-hidden="true">
+    ${BUHAR(178)}
+    <ellipse cx="200" cy="332" rx="150" ry="20" fill="${N}" opacity=".1"/>
+    <ellipse cx="200" cy="318" rx="136" ry="22" fill="#fff" stroke="${N}" stroke-width="6"/>
+    <path d="M258 222c38-8 44 44 4 50" fill="none" stroke="${N}" stroke-width="22" stroke-linecap="round"/>
+    <path d="M258 222c38-8 44 44 4 50" fill="none" stroke="${g.vurgu}" stroke-width="11" stroke-linecap="round"/>
+    <path d="M128 200h144l-14 92a22 22 0 0 1-22 18h-72a22 22 0 0 1-22-18z" fill="${g.vurgu}" stroke="${N}" stroke-width="6" stroke-linejoin="round"/>
+    <g fill="${KREM}"><circle cx="160" cy="244" r="6"/><circle cx="186" cy="244" r="6"/><circle cx="212" cy="244" r="6"/><circle cx="238" cy="244" r="6"/>
+      <circle cx="173" cy="266" r="5"/><circle cx="199" cy="266" r="5"/><circle cx="225" cy="266" r="5"/></g>
+    <ellipse cx="200" cy="200" rx="72" ry="13" fill="#7a4e2c" stroke="${N}" stroke-width="6"/>
+    <ellipse cx="200" cy="200" rx="48" ry="7" fill="#b9845a"/>
+    <g stroke="${N}" stroke-width="4" stroke-linejoin="round">
+      <rect x="292" y="288" width="40" height="34" rx="7" fill="#f2b8c6"/>
+      <rect x="318" y="270" width="36" height="32" rx="7" fill="#f7cbd5"/>
+    </g>
+    <g fill="#fff"><circle cx="302" cy="298" r="2.5"/><circle cx="318" cy="306" r="2"/><circle cx="330" cy="282" r="2.5"/><circle cx="342" cy="292" r="2"/></g>
+  </svg>`;
+}
+
+function cizBardak(g){
+  return `<svg class="cizim" viewBox="0 0 400 400" aria-hidden="true">
+    <ellipse cx="200" cy="350" rx="120" ry="16" fill="${N}" opacity=".1"/>
+    <path d="M238 40L214 300" stroke="${N}" stroke-width="22" stroke-linecap="round"/>
+    <path d="M238 40L214 300" stroke="${g.vurgu}" stroke-width="12" stroke-linecap="round"/>
+    <path d="M136 150h128l-14 176a12 12 0 0 1-12 10h-76a12 12 0 0 1-12-10z" fill="${g.sivi}"/>
+    <path d="M136 150h128l-3 34h-122z" fill="#fff" opacity=".18"/>
+    <g fill="#fff" fill-opacity=".55" stroke="#fff" stroke-width="3">
+      <rect x="150" y="160" width="50" height="46" rx="9" transform="rotate(-12 175 183)"/>
+      <rect x="204" y="196" width="46" height="44" rx="9" transform="rotate(14 227 218)"/>
+      <rect x="162" y="236" width="44" height="42" rx="9" transform="rotate(6 184 257)"/>
+    </g>
+    <path d="M126 100h148l-18 226a16 16 0 0 1-16 14h-80a16 16 0 0 1-16-14z" fill="#fff" fill-opacity=".28" stroke="${N}" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M148 120l14 190" stroke="#fff" stroke-opacity=".7" stroke-width="8" stroke-linecap="round"/>
+    <g fill="${g.vurgu}" opacity=".7"><circle cx="300" cy="120" r="6"/><circle cx="320" cy="160" r="4"/><circle cx="90" cy="180" r="5"/></g>
+  </svg>`;
+}
+
+function cizDilim(g){
+  return `<svg class="cizim" viewBox="0 0 400 400" aria-hidden="true">
+    <ellipse cx="200" cy="318" rx="176" ry="34" fill="${N}" opacity=".1"/>
+    <ellipse cx="200" cy="304" rx="170" ry="32" fill="#fff" stroke="${N}" stroke-width="6"/>
+    <ellipse cx="200" cy="304" rx="132" ry="22" fill="none" stroke="${g.vurgu}" stroke-width="3" stroke-dasharray="8 10"/>
+    <polygon points="70,212 330,182 330,276 70,300" fill="#f3d9a4" stroke="${N}" stroke-width="6" stroke-linejoin="round"/>
+    <polygon points="72,214 328,184 328,202 72,232" fill="#c98a4b"/>
+    <polygon points="72,284 328,260 328,274 72,298" fill="#d9a560"/>
+    <g fill="#fbe9c4"><ellipse cx="140" cy="258" rx="9" ry="5"/><ellipse cx="210" cy="244" rx="7" ry="4"/><ellipse cx="270" cy="250" rx="10" ry="5"/><ellipse cx="180" cy="270" rx="6" ry="3"/></g>
+    <polygon points="70,212 268,146 330,182" fill="#6e3d1d" stroke="${N}" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M140 196q40-18 90-26M190 182q30-10 70-14" fill="none" stroke="#a8673a" stroke-width="5" stroke-linecap="round"/>
+    <g fill="${g.vurgu}"><circle cx="330" cy="120" r="7"/><circle cx="350" cy="148" r="4"/></g>
+  </svg>`;
+}
+
+function cizKruvasan(g){
+  const kat = 'fill="#e0a04a" stroke="#8a4f1a" stroke-width="6"';
+  return `<svg class="cizim" viewBox="0 0 400 400" aria-hidden="true">
+    <ellipse cx="200" cy="318" rx="176" ry="34" fill="${N}" opacity=".1"/>
+    <ellipse cx="200" cy="304" rx="170" ry="32" fill="#fff" stroke="${N}" stroke-width="6"/>
+    <ellipse cx="76" cy="264" rx="36" ry="24" transform="rotate(-38 76 264)" ${kat}/>
+    <ellipse cx="324" cy="264" rx="36" ry="24" transform="rotate(38 324 264)" ${kat}/>
+    <ellipse cx="124" cy="234" rx="52" ry="40" transform="rotate(-22 124 234)" ${kat}/>
+    <ellipse cx="276" cy="234" rx="52" ry="40" transform="rotate(22 276 234)" ${kat}/>
+    <ellipse cx="200" cy="218" rx="68" ry="56" ${kat}/>
+    <g fill="none" stroke="#f6cd84" stroke-width="7" stroke-linecap="round">
+      <path d="M168 196q32-18 64 0"/><path d="M100 220q20-14 40-6"/><path d="M260 214q20-8 40 6"/><path d="M62 254q10-10 24-8"/><path d="M314 246q14-2 24 8"/>
+    </g>
+    <g fill="${g.vurgu}"><circle cx="70" cy="140" r="7"/><circle cx="96" cy="112" r="4"/><circle cx="330" cy="150" r="5"/></g>
+  </svg>`;
+}
+
+const CIZIMLER = {kupa:cizKupa, fincan:cizFincan, bardak:cizBardak, dilim:cizDilim, kruvasan:cizKruvasan};
+
+const IKONLAR = {
+  kitap: `<svg class="ikon" viewBox="0 0 200 200" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M100 58C80 43 46 40 20 46V152C46 146 80 149 100 164C120 149 154 146 180 152V46C154 40 120 43 100 58Z"/><path d="M100 58V164"/>
+    <path d="M40 76c16-3 32-2 44 4M40 100c16-3 32-2 44 4M40 124c16-3 32-2 44 4M116 80c12-6 28-7 44-4M116 104c12-6 28-7 44-4"/></g></svg>`,
+  latte: `<svg class="ikon" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="8"/>
+    <circle cx="100" cy="100" r="62" fill="currentColor" opacity=".9"/>
+    <path d="M100 136C62 112 60 78 82 76C92 76 100 84 100 90C100 84 108 76 118 76C140 78 138 112 100 136Z" fill="#1e5a6e"/></svg>`,
+  nota: `<svg class="ikon" viewBox="0 0 200 200" aria-hidden="true"><path d="M74 150V52L162 34V132" fill="none" stroke="currentColor" stroke-width="10" stroke-linejoin="round"/>
+    <path d="M74 52L162 34V60L74 78Z" fill="currentColor"/>
+    <ellipse cx="54" cy="152" rx="24" ry="17" transform="rotate(-20 54 152)" fill="currentColor"/><ellipse cx="142" cy="134" rx="24" ry="17" transform="rotate(-20 142 134)" fill="currentColor"/></svg>`,
+  zar: `<svg class="ikon" viewBox="0 0 200 200" aria-hidden="true"><g transform="rotate(-12 100 100)"><rect x="34" y="34" width="132" height="132" rx="26" fill="none" stroke="currentColor" stroke-width="9"/>
+    <g fill="currentColor"><circle cx="70" cy="70" r="11"/><circle cx="130" cy="70" r="11"/><circle cx="100" cy="100" r="11"/><circle cx="70" cy="130" r="11"/><circle cx="130" cy="130" r="11"/></g></g></svg>`
+};
+
+const MINI_SAAT = `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>`;
+const KONUM = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-7.2 7-13a7 7 0 0 0-14 0c0 5.8 7 13 7 13z" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="9" r="2.6" fill="currentColor"/></svg>`;
+const MAKAS = `<svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="12" cy="37" r="7"/><circle cx="36" cy="37" r="7"/><path d="M16 32L38 6M32 32L10 6"/></g></svg>`;
+const KUCUK_FINCAN = `<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M22 10c-3 3 3 5 0 9M30 8c-3 3 3 6 0 10M38 10c-3 3 3 5 0 9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+  <path d="M14 24h30v8a15 15 0 0 1-30 0z" fill="currentColor"/><path d="M44 27h3a6 6 0 0 1 0 12h-4" fill="none" stroke="currentColor" stroke-width="4"/><rect x="10" y="50" width="38" height="4" rx="2" fill="currentColor"/></svg>`;
+const YILDIZ = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" style="fill:var(--accent)"/></svg>`;
+const CEKIRDEK = `<svg viewBox="0 0 40 56" aria-hidden="true"><ellipse cx="20" cy="28" rx="17" ry="25" style="fill:var(--accent)"/><path d="M20 6c-9 10 9 22 0 44" fill="none" style="stroke:var(--bg)" stroke-width="3.5" stroke-linecap="round"/></svg>`;
+
+function saatKadrani(hhmm){
+  const [h, m] = hhmm.split(":").map(Number);
+  const ha = ((h % 12) + m / 60) * 30, ma = m * 6;
+  let cizgiler = "";
+  for (let i = 0; i < 12; i++){
+    const uzun = i % 3 === 0;
+    cizgiler += `<line x1="100" y1="${uzun ? 18 : 22}" x2="100" y2="${uzun ? 36 : 30}" stroke="currentColor" stroke-width="${uzun ? 6 : 4}" stroke-linecap="round" transform="rotate(${i * 30} 100 100)"/>`;
+  }
+  return `<svg class="saat-svg" viewBox="0 0 200 200" aria-hidden="true">
+    <circle cx="100" cy="100" r="94" style="fill:var(--soft)" stroke="currentColor" stroke-width="6"/>${cizgiler}
+    <line x1="100" y1="100" x2="100" y2="56" stroke="currentColor" stroke-width="11" stroke-linecap="round" transform="rotate(${ha} 100 100)"/>
+    <line x1="100" y1="100" x2="100" y2="34" style="stroke:var(--accent)" stroke-width="6" stroke-linecap="round" transform="rotate(${ma} 100 100)"/>
+    <circle cx="100" cy="100" r="9" style="fill:var(--accent)"/>
+  </svg>`;
+}
+
+/* ===================== GÖVDE ŞABLONLARI ===================== */
+const GOVDE = {
+  urun(g){
+    const fiyat = `<div class="fiyat"><b>${g.fiyat}</b><span>TL</span></div>`;
+    return `<div class="govde urun ${g.yer === "b" ? "b" : ""}">
+      <div class="sahne"><div class="daire"></div>${CIZIMLER[g.cizim](g)}${fiyat}</div>
+      <div class="metin">
+        ${g.rozet ? `<span class="minietiket">${g.rozet}</span>` : ""}
+        <div class="kucuk">${g.ust}</div>
+        <h1>${g.ad}</h1>
+        <p>${g.aciklama}</p>
+      </div>
+    </div>`;
+  },
+
+  kampanya(g, n){
+    let orta = "";
+    if (g.damga){
+      const r = rng(n * 31);
+      let kutular = "";
+      for (let i = 1; i <= 9; i++)
+        kutular += `<div class="damga"><span style="display:contents">${KUCUK_FINCAN.replace("<svg", `<svg style="transform:rotate(${Math.round(r() * 40 - 20)}deg)"`)}</span></div>`;
+      kutular += `<div class="damga son">10.<br>BİZDEN</div>`;
+      orta = `<div class="damgalar">${kutular}</div>`;
+    } else {
+      orta = `<div class="dev">${g.buyuk}</div>`;
+    }
+    return `<div class="govde kampanya">
+      <div class="kucuk">${g.ust}</div>
+      ${orta}
+      <h1>${g.baslik}</h1>
+      <p>${g.aciklama}</p>
+      <div class="kupon">${MAKAS}<span>${g.kosul}</span></div>
+    </div>`;
+  },
+
+  saatler(g){
+    const satirlar = g.satirlar.map(([gun, saat]) => `<div class="satir"><span>${gun}</span><i></i><b>${saat}</b></div>`).join("");
+    return `<div class="govde saatler">
+      <div class="bas"><div><div class="kucuk">${g.ust}</div><h1>${g.baslik}</h1></div>${saatKadrani(g.satirlar[0][1].split(" ")[0])}</div>
+      <div class="tablo">${satirlar}</div>
+      <div class="not">${g.not}</div>
+    </div>`;
+  },
+
+  yorum(g, n){
+    const egim = (n % 2 ? -1.6 : 1.4) + "deg";
+    return `<div class="govde yorum">
+      <div class="kart" style="--egim:${egim}">
+        <div class="bant"></div>
+        <div class="tirnak">“</div>
+        <div class="yildizlar">${YILDIZ.repeat(5)}</div>
+        <blockquote>${g.metin}</blockquote>
+        <div class="imza"><span class="cizgi"></span>${g.imza}<small>Misafir defterimizden</small></div>
+      </div>
+      <div class="davet">Sizin cümleniz de bir sonraki sayfada olabilir.</div>
+    </div>`;
+  },
+
+  etkinlik(g){
+    return `<div class="govde etkinlik">
+      <div class="kucuk">Takviminize not edin</div>
+      <div class="etk-ust">
+        <div class="takvim"><div class="ay">${g.ay}</div><div class="gun">${g.gun}</div><div class="hg">${g.hg}</div></div>
+        <div class="etk-bilgi">
+          <div class="etk-satir">${MINI_SAAT}<span>Saat ${g.saat}</span></div>
+          <div class="etk-satir">${KONUM}<span>${g.yer}</span></div>
+          ${IKONLAR[g.ikon] || ""}
+        </div>
+      </div>
+      <h1>${g.baslik}</h1>
+      <p>${g.aciklama}</p>
+      <div class="rozetler"><span class="rozet dolu">${g.ucret}</span><span class="rozet">${g.kontenjan}</span></div>
+    </div>`;
+  },
+
+  bilgi(g, n){
+    const sira = GONDERILER.slice(0, n).filter(x => x.tur === "bilgi").length;
+    return `<div class="govde bilgi">
+      <div class="kucuk">Kahve bilgisi · ${iki(sira)}</div>
+      <div class="soru">Biliyor muydunuz?</div>
+      <div class="rakam">${g.rakam}${g.birim ? `<small>${g.birim}</small>` : ""}</div>
+      <div class="ayrac"><i></i>${CEKIRDEK}<i></i></div>
+      <h1>${g.baslik}</h1>
+      <p>${g.metin}</p>
+      <div class="son-not">${g.son || "Kahveyi tanıdıkça daha çok seviyoruz."}</div>
+    </div>`;
+  }
+};
+
+/* ===================== ARKA PLAN SÜSLERİ ===================== */
+function susler(g, n){
+  const r = rng(n * 977 + 13);
+  switch (g.tur){
+    case "urun": {
+      const balon = g.yer === "b"
+        ? `<div class="balon" style="width:760px;height:760px;left:-300px;top:-260px"></div>`
+        : `<div class="balon" style="width:720px;height:720px;right:-320px;bottom:-200px"></div>`;
+      const dalga = `<svg class="dalga" style="top:${g.yer === "b" ? 1180 : 120}px" viewBox="0 0 1080 60" aria-hidden="true">
+        <path d="M0 30q45-26 90 0t90 0t90 0t90 0t90 0t90 0t90 0t90 0t90 0t90 0t90 0t90 0" fill="none" style="stroke:var(--line)" stroke-width="4"/></svg>`;
+      return balon + dalga;
+    }
+    case "kampanya": {
+      let s = `<div class="isinlar"></div>`;
+      if (g.yagmur){
+        for (let i = 0; i < 46; i++)
+          s += `<span class="damla" style="left:${(r() * 1080).toFixed(0)}px;top:${(r() * 1350).toFixed(0)}px;height:${(24 + r() * 40).toFixed(0)}px"></span>`;
+      }
+      return s;
+    }
+    case "saatler":
+      return `<div class="noktalar"></div>`;
+    case "yorum":
+      return `<div class="cizgiler"></div>`;
+    case "etkinlik": {
+      let s = "";
+      for (let i = 0; i < 38; i++){
+        const boy = 8 + r() * 18, yuvarlak = r() < .5;
+        const renk = r() < .6 ? "var(--accent)" : "var(--ink)";
+        s += `<span class="konfeti" style="left:${(r() * 1080).toFixed(0)}px;top:${(r() * 1350).toFixed(0)}px;width:${boy.toFixed(0)}px;height:${(yuvarlak ? boy : boy * .45).toFixed(0)}px;background:${renk};border-radius:${yuvarlak ? "50%" : "2px"};opacity:${(.15 + r() * .2).toFixed(2)};transform:rotate(${(r() * 180).toFixed(0)}deg)"></span>`;
+      }
+      return s;
+    }
+    case "bilgi": {
+      let s = "";
+      for (let i = 0; i < 16; i++){
+        const w = 40 + r() * 54;
+        s += CEKIRDEK.replace("<svg", `<svg class="cekirdek" style="left:${(r() * 1080).toFixed(0)}px;top:${(r() * 1350).toFixed(0)}px;width:${w.toFixed(0)}px;transform:translate(-50%,-50%) rotate(${(r() * 360).toFixed(0)}deg)"`);
+      }
+      return s;
+    }
+  }
+  return "";
+}
+
+/* ===================== ÇİZİM VE SIĞDIRMA ===================== */
+function secili(){
+  const n = parseInt((location.hash || "#1").replace("#", ""), 10);
+  return Math.min(GONDERILER.length, Math.max(1, isNaN(n) ? 1 : n));
+}
+
+function sigdir(post){
+  const ic = post.querySelector(".icerik");
+  let k = 1;
+  while (ic.scrollHeight > ic.clientHeight + 1 && k > 0.6){
+    k = +(k - 0.03).toFixed(2);
+    post.style.setProperty("--k", k);
+  }
+  post.querySelectorAll(".dev, .rakam").forEach(el => {
+    let fs = parseFloat(getComputedStyle(el).fontSize);
+    while (el.scrollWidth > el.clientWidth + 1 && fs > 60){
+      fs -= 6;
+      el.style.fontSize = fs + "px";
+    }
+  });
+}
+
+function ciz(){
+  const n = secili();
+  const g = GONDERILER[n - 1];
+  const tema = g.tur === "kampanya" ? TEMALAR["kampanya_" + (g.ton || "mavi")] : TEMALAR[g.tur];
+  const post = document.getElementById("post");
+
+  post.className = "post tur-" + g.tur;
+  post.removeAttribute("style");
+  for (const [ad, deger] of Object.entries(tema)) post.style.setProperty("--" + ad, deger);
+  if (g.tur === "urun" && g.vurgu) post.style.setProperty("--accent", g.vurgu);
+  post.style.setProperty("--k", 1);
+
+  post.innerHTML = `
+    <div class="susler">${susler(g, n)}</div>
+    <div class="cerceve"></div>
+    <header class="ust">
+      <div class="marka">${LOGO}<div><div class="marka-ad">Mavi Fincanlık</div><div class="marka-alt">Mahalle Kahvecisi</div></div></div>
+      <div class="etiket">${g.ust_etiket || ETIKETLER[g.tur]}</div>
+    </header>
+    <main class="icerik">${GOVDE[g.tur](g, n)}</main>
+    <footer class="alt">
+      <span>Mavi Fincanlık · mahallenin mavi kapılı kahvecisi</span>
+      <span class="no">${iki(n)} / ${iki(GONDERILER.length)}</span>
+    </footer>`;
+
+  sigdir(post);
+  document.title = `Mavi Fincanlık · Gönderi ${iki(n)}`;
+}
+
+window.addEventListener("hashchange", ciz);
+window.addEventListener("keydown", e => {
+  const n = secili();
+  if (e.key === "ArrowRight") location.hash = "#" + (n % GONDERILER.length + 1);
+  if (e.key === "ArrowLeft")  location.hash = "#" + ((n + GONDERILER.length - 2) % GONDERILER.length + 1);
+});
+ciz();
+</script>
+</body>
+</html>
