@@ -1,0 +1,26 @@
+{
+ "baslik": "Fable 5.2 mi Opus 5.5 mi? Aynı berber sitesi",
+ "tarih": "2026-11-14",
+ "slug": "fable-5-2-mi-opus-5-5-mi-ayni-berber-sitesi",
+ "oz": "Videodaki denemenin dosyaları: iki Claude modeline aynı anda verdiğim prompt ve iki modelin yazdığı siteler. Siteler kurgusal: dükkân adı, adres ve fiyatlar …",
+ "yayin_zamani": "2026-11-14T03:04:39+03:00",
+ "dosyalar": [
+  {
+   "ad": "README.md",
+   "boyut": 1878
+  },
+  {
+   "ad": "fable_site.html",
+   "boyut": 37187
+  },
+  {
+   "ad": "opus_site.html",
+   "boyut": 23938
+  },
+  {
+   "ad": "prompt.txt",
+   "boyut": 697
+  }
+ ],
+ "surum": 1
+}

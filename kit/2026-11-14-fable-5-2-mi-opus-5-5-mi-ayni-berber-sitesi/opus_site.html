@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ayvalı Makas Berberhanesi</title>
+<meta name="description" content="Ayvalı Makas Berberhanesi — kurgusal bir mahalle berberi. Saç, sakal ve bakım hizmetleri.">
+<style>
+  :root {
+    --bg: #f6efe4;
+    --paper: #fffaf2;
+    --ink: #2a211b;
+    --muted: #6d5f53;
+    --red: #b3302b;
+    --red-dark: #8e231f;
+    --navy: #1f3a5f;
+    --gold: #c89b4a;
+    --line: #e4d6c3;
+    --radius: 14px;
+    --shadow: 0 10px 30px rgba(42, 33, 27, .12);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+    padding-bottom: 84px; /* mobil sabit buton için yer */
+  }
+  .sans { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+  .wrap { width: min(100% - 2rem, 920px); margin-inline: auto; }
+
+  /* ---------- Üst kısım ---------- */
+  header.hero {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 85% 15%, rgba(200,155,74,.25), transparent 45%),
+      linear-gradient(160deg, #23324a 0%, #1a2638 100%);
+    color: #fdf6ea;
+    padding: 2.2rem 0 3.2rem;
+  }
+  .hero::after { /* alt kenarda dalgalı kesim */
+    content: "";
+    position: absolute; left: 0; right: 0; bottom: -1px; height: 28px;
+    background:
+      radial-gradient(circle at 14px 0, transparent 14px, var(--bg) 15px) repeat-x;
+    background-size: 28px 28px;
+  }
+  .brand-row { display: flex; align-items: center; gap: .9rem; }
+  .pole {
+    flex: none;
+    width: 34px; height: 92px;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .pole .cap {
+    width: 34px; height: 12px; border-radius: 8px 8px 3px 3px;
+    background: linear-gradient(90deg, #a77d33, #f1d18f, #a77d33);
+  }
+  .pole .tube {
+    width: 24px; flex: 1;
+    border-radius: 4px;
+    background: repeating-linear-gradient(-45deg,
+      var(--red) 0 8px, #fff 8px 16px, var(--navy) 16px 24px, #fff 24px 32px);
+    background-size: 100% 45px;
+    animation: spin 1.6s linear infinite;
+    box-shadow: inset -5px 0 6px rgba(0,0,0,.25), inset 5px 0 6px rgba(255,255,255,.35);
+  }
+  @keyframes spin { to { background-position: 0 45px; } }
+  @media (prefers-reduced-motion: reduce) { .pole .tube { animation: none; } }
+
+  .eyebrow {
+    margin: 0; font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold);
+  }
+  h1 {
+    margin: .1rem 0 0;
+    font-size: clamp(2rem, 8vw, 3.4rem);
+    line-height: 1.05;
+    font-weight: 700;
+  }
+  .tagline { font-style: italic; color: #e7dccb; margin: 1.2rem 0 1.6rem; font-size: 1.1rem; max-width: 34rem; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    border: 0; cursor: pointer;
+    font: 700 1.05rem/1 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    letter-spacing: .02em;
+    padding: 1rem 1.6rem; border-radius: 999px;
+    background: var(--red); color: #fff;
+    box-shadow: 0 6px 0 var(--red-dark), 0 12px 24px rgba(0,0,0,.25);
+    transition: transform .12s ease, box-shadow .12s ease, background .2s;
+    text-decoration: none;
+  }
+  .btn:hover { background: #c33a34; }
+  .btn:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--red-dark), 0 6px 12px rgba(0,0,0,.2); }
+  .btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  .btn svg { width: 20px; height: 20px; }
+  .btn.ghost {
+    background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--line);
+  }
+  .btn.ghost:hover { background: #f1e6d6; }
+  .btn.ghost:active { transform: none; }
+
+  .hero-badges { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.6rem; }
+  .badge {
+    font-size: .85rem; padding: .35rem .8rem; border-radius: 999px;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); color: #f1e7d7;
+  }
+
+  /* ---------- Bölümler ---------- */
+  main { padding: 1.5rem 0 1rem; }
+  section { margin: 2.2rem 0; }
+  h2 {
+    font-size: 1.6rem; margin: 0 0 1rem;
+    display: flex; align-items: center; gap: .6rem;
+  }
+  h2 svg { width: 26px; height: 26px; color: var(--red); flex: none; }
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.3rem 1.2rem;
+  }
+  .about p { margin: 0 0 .8rem; }
+  .about p:last-child { margin-bottom: 0; }
+
+  /* Fiyat listesi */
+  .prices { list-style: none; margin: 0; padding: 0; }
+  .prices li {
+    display: flex; align-items: baseline; gap: .5rem;
+    padding: .85rem 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .prices li:last-child { border-bottom: 0; }
+  .prices .name { font-weight: 700; }
+  .prices .desc { display: block; font-size: .88rem; color: var(--muted); font-weight: 400; }
+  .prices .dots { flex: 1; border-bottom: 2px dotted #cdbba3; transform: translateY(-4px); min-width: 1rem; }
+  .prices .price { font-weight: 700; color: var(--red); white-space: nowrap; font-size: 1.1rem; }
+  .note { font-size: .85rem; color: var(--muted); margin: .8rem 0 0; }
+
+  /* Saatler + adres */
+  .grid { display: grid; gap: 1.2rem; }
+  @media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .hours { width: 100%; border-collapse: collapse; }
+  .hours td { padding: .55rem 0; border-bottom: 1px solid var(--line); }
+  .hours tr:last-child td { border-bottom: 0; }
+  .hours td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+  .hours tr.today td { color: var(--red); font-weight: 700; }
+  .hours .closed { color: var(--muted); font-style: italic; }
+  .status {
+    display: inline-block; margin-top: .9rem; font-size: .9rem;
+    padding: .3rem .75rem; border-radius: 999px; background: #eee3d2;
+  }
+  .status.open { background: #dcefdc; color: #1f5e2a; }
+  .status.shut { background: #f5dcda; color: var(--red-dark); }
+
+  address { font-style: normal; font-size: 1.05rem; }
+  .map { margin-top: 1rem; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+  .map svg { display: block; width: 100%; height: auto; }
+
+  .cta-band { text-align: center; }
+  .cta-band p { color: var(--muted); margin: 0 0 1rem; }
+
+  footer {
+    text-align: center; color: var(--muted); font-size: .85rem; padding: 1.5rem 0 1rem;
+  }
+  .divider { display: block; margin: 0 auto .6rem; width: 120px; color: var(--gold); }
+
+  /* Mobilde altta sabit randevu butonu */
+  .sticky-cta {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+    padding: .7rem 1rem calc(.7rem + env(safe-area-inset-bottom));
+    background: rgba(246,239,228,.94);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: center;
+  }
+  .sticky-cta .btn { width: 100%; max-width: 420px; }
+  @media (min-width: 720px) {
+    body { padding-bottom: 0; }
+    .sticky-cta { display: none; }
+  }
+
+  /* ---------- Randevu penceresi ---------- */
+  dialog {
+    border: 0; padding: 0; border-radius: 18px;
+    width: min(100% - 1.5rem, 460px);
+    max-height: calc(100dvh - 1.5rem);
+    background: var(--paper); color: var(--ink);
+    box-shadow: 0 25px 60px rgba(0,0,0,.35);
+  }
+  dialog::backdrop { background: rgba(20, 16, 12, .6); backdrop-filter: blur(2px); }
+  dialog[open] { animation: pop .2s ease-out; }
+  @keyframes pop { from { transform: translateY(16px); opacity: 0; } }
+  .dlg-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.2rem; border-bottom: 1px solid var(--line);
+    background: repeating-linear-gradient(-45deg, rgba(179,48,43,.06) 0 10px, transparent 10px 20px);
+  }
+  .dlg-head h3 { margin: 0; font-size: 1.3rem; }
+  .x {
+    width: 40px; height: 40px; border-radius: 50%; border: 0; cursor: pointer;
+    background: #efe4d4; color: var(--ink); font-size: 1.4rem; line-height: 1;
+  }
+  .x:focus-visible { outline: 3px solid var(--gold); }
+  form { padding: 1.1rem 1.2rem 1.3rem; }
+  .field { margin-bottom: .9rem; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+  label { display: block; font-weight: 700; font-size: .9rem; margin-bottom: .3rem; }
+  input, select, textarea {
+    width: 100%;
+    font: 1rem system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; /* 16px: iOS yakınlaştırmasını engeller */
+    padding: .75rem .8rem;
+    border: 1.5px solid #d6c5ae; border-radius: 10px;
+    background: #fff; color: var(--ink);
+  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(31,58,95,.15); }
+  textarea { resize: vertical; min-height: 70px; }
+  .form-actions { display: flex; gap: .6rem; margin-top: 1.1rem; }
+  .form-actions .btn { flex: 1; padding: .9rem 1rem; }
+  .hint { font-size: .8rem; color: var(--muted); margin: .6rem 0 0; text-align: center; }
+  .success { padding: 1.6rem 1.3rem 1.4rem; text-align: center; }
+  .success svg { width: 64px; height: 64px; color: #2e7d3c; }
+  .success p { margin: .4rem 0 1.2rem; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+
+<!-- Tekrar kullanılan SVG simgeleri -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-scissors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>
+    <path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/>
+  </symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+  </symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+    <path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/>
+  </symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>
+  </symbol>
+  <symbol id="i-razor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 17 14 6l4 4-11 11H3z"/><path d="M14 6l2-2 4 4-2 2"/>
+  </symbol>
+</svg>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand-row">
+      <div class="pole" aria-hidden="true"><span class="cap"></span><span class="tube"></span><span class="cap"></span></div>
+      <div>
+        <p class="eyebrow sans">Est. 1987 · Mahalle Berberi</p>
+        <h1>Ayvalı Makas<br>Berberhanesi</h1>
+      </div>
+    </div>
+    <p class="tagline">Sıcak havlu, keskin ustura, demli çay. Üç kuşaktır aynı köşede, aynı özenle.</p>
+    <button class="btn open-booking" type="button">
+      <svg aria-hidden="true"><use href="#i-cal"/></svg> Randevu Al
+    </button>
+    <div class="hero-badges sans">
+      <span class="badge">✂ Klasik &amp; modern kesim</span>
+      <span class="badge">☕ Çay bizden</span>
+      <span class="badge">🪒 Ustura tıraşı</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="about" aria-labelledby="h-about">
+    <h2 id="h-about"><svg aria-hidden="true"><use href="#i-scissors"/></svg> Hakkımızda</h2>
+    <div class="card">
+      <p>Ayvalı Makas, Çınaraltı Mahallesi'nin dar sokaklarından birinde, eski bir ayva ağacının gölgesinde açılan küçük bir dükkân. Usta Nurettin'in açtığı tezgâhta bugün torunu Kerem ve ekibi makas sallıyor.</p>
+      <p>Acele etmeyiz: her tıraşa sıcak havlu, her kesime sohbet eşlik eder. Çocuklara sabırla, sakallara saygıyla yaklaşırız.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-prices">
+    <h2 id="h-prices"><svg aria-hidden="true"><use href="#i-razor"/></svg> Fiyat Listesi</h2>
+    <div class="card">
+      <ul class="prices">
+        <li><span class="name">Saç Kesimi<span class="desc sans">Yıkama ve fön dahil</span></span><span class="dots"></span><span class="price sans">450 ₺</span></li>
+        <li><span class="name">Sakal Tıraşı<span class="desc sans">Ustura, sıcak havlu, losyon</span></span><span class="dots"></span><span class="price sans">300 ₺</span></li>
+        <li><span class="name">Saç + Sakal<span class="desc sans">En çok tercih edilen ikili</span></span><span class="dots"></span><span class="price sans">650 ₺</span></li>
+        <li><span class="name">Çocuk Kesimi<span class="desc sans">12 yaş altı</span></span><span class="dots"></span><span class="price sans">300 ₺</span></li>
+        <li><span class="name">Sakal Şekillendirme<span class="desc sans">Makine ve makasla düzeltme</span></span><span class="dots"></span><span class="price sans">250 ₺</span></li>
+        <li><span class="name">Cilt Bakımı<span class="desc sans">Buhar, maske, yüz masajı</span></span><span class="dots"></span><span class="price sans">400 ₺</span></li>
+        <li><span class="name">Damat Paketi<span class="desc sans">Kesim, tıraş, bakım ve bol şans</span></span><span class="dots"></span><span class="price sans">1.500 ₺</span></li>
+      </ul>
+      <p class="note sans">Fiyatlara KDV dahildir. Fiyatlar örnek amaçlıdır.</p>
+    </div>
+  </section>
+
+  <div class="grid">
+    <section aria-labelledby="h-hours" style="margin:0">
+      <h2 id="h-hours"><svg aria-hidden="true"><use href="#i-clock"/></svg> Çalışma Saatleri</h2>
+      <div class="card sans">
+        <table class="hours">
+          <tbody>
+            <tr data-day="1"><td>Pazartesi</td><td class="closed">Kapalı</td></tr>
+            <tr data-day="2"><td>Salı</td><td>09:00 – 20:00</td></tr>
+            <tr data-day="3"><td>Çarşamba</td><td>09:00 – 20:00</td></tr>
+            <tr data-day="4"><td>Perşembe</td><td>09:00 – 20:00</td></tr>
+            <tr data-day="5"><td>Cuma</td><td>09:00 – 21:00</td></tr>
+            <tr data-day="6"><td>Cumartesi</td><td>08:30 – 21:00</td></tr>
+            <tr data-day="0"><td>Pazar</td><td>10:00 – 17:00</td></tr>
+          </tbody>
+        </table>
+        <span class="status" id="status" aria-live="polite"></span>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-addr" style="margin:0">
+      <h2 id="h-addr"><svg aria-hidden="true"><use href="#i-pin"/></svg> Adres</h2>
+      <div class="card">
+        <address>
+          Lavanta Sokak No: 7/A<br>
+          Çınaraltı Mahallesi<br>
+          Kuzeykent / Hayalabad
+        </address>
+        <p class="note sans">Eski fırının karşısı, mavi kepenkli dükkân.</p>
+        <div class="map" aria-hidden="true">
+          <!-- Çizim harita (temsili) -->
+          <svg viewBox="0 0 320 150" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="150" fill="#ece2d2"/>
+            <g fill="#dccfbb">
+              <rect x="10" y="10" width="80" height="50" rx="4"/>
+              <rect x="10" y="90" width="80" height="50" rx="4"/>
+              <rect x="120" y="10" width="70" height="50" rx="4"/>
+              <rect x="220" y="10" width="90" height="50" rx="4"/>
+              <rect x="220" y="90" width="90" height="50" rx="4"/>
+            </g>
+            <circle cx="155" cy="115" r="22" fill="#b9cfa4"/>
+            <path d="M0 75H320M105 0V150M205 0V150" stroke="#fffaf2" stroke-width="12"/>
+            <path d="M0 75H320" stroke="#e8c98f" stroke-width="2" stroke-dasharray="6 6"/>
+            <text x="250" y="70" font-family="system-ui, sans-serif" font-size="9" fill="#6d5f53">Lavanta Sk.</text>
+            <g transform="translate(150 22)">
+              <path d="M0 26s-11-10-11-17a11 11 0 1 1 22 0c0 7-11 17-11 17z" fill="#b3302b"/>
+              <circle cx="0" cy="9" r="4" fill="#fff"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="cta-band">
+    <div class="card">
+      <h2 style="justify-content:center">Sıra beklemeyin</h2>
+      <p class="sans">Size uygun saati seçin, koltuğunuzu hazır tutalım.</p>
+      <button class="btn open-booking" type="button">
+        <svg aria-hidden="true"><use href="#i-cal"/></svg> Randevu Al
+      </button>
+    </div>
+  </section>
+</main>
+
+<footer class="sans">
+  <svg class="divider" viewBox="0 0 120 12" aria-hidden="true">
+    <path d="M0 6h45M75 6h45" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M60 1l5 5-5 5-5-5z" fill="currentColor"/>
+  </svg>
+  © <span id="year"></span> Ayvalı Makas Berberhanesi · Bu site kurgusaldır; işletme, adres ve bilgiler hayal ürünüdür.
+</footer>
+
+<div class="sticky-cta">
+  <button class="btn open-booking" type="button">
+    <svg aria-hidden="true"><use href="#i-cal"/></svg> Randevu Al
+  </button>
+</div>
+
+<!-- Randevu penceresi -->
+<dialog id="booking" aria-labelledby="dlg-title">
+  <div class="dlg-head">
+    <h3 id="dlg-title">Randevu Al</h3>
+    <button class="x" type="button" id="closeX" aria-label="Kapat">×</button>
+  </div>
+
+  <form id="bookingForm" novalidate>
+    <div class="field">
+      <label for="f-name">Ad Soyad</label>
+      <input id="f-name" name="name" type="text" autocomplete="name" required placeholder="Adınız">
+    </div>
+    <div class="field">
+      <label for="f-service">Hizmet</label>
+      <select id="f-service" name="service" required>
+        <option value="">Seçiniz…</option>
+        <option>Saç Kesimi — 450 ₺</option>
+        <option>Sakal Tıraşı — 300 ₺</option>
+        <option>Saç + Sakal — 650 ₺</option>
+        <option>Çocuk Kesimi — 300 ₺</option>
+        <option>Sakal Şekillendirme — 250 ₺</option>
+        <option>Cilt Bakımı — 400 ₺</option>
+        <option>Damat Paketi — 1.500 ₺</option>
+      </select>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="f-date">Tarih</label>
+        <input id="f-date" name="date" type="date" required>
+      </div>
+      <div class="field">
+        <label for="f-time">Saat</label>
+        <select id="f-time" name="time" required>
+          <option value="">Seçiniz…</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label for="f-note">Not <span style="font-weight:400;color:var(--muted)">(isteğe bağlı)</span></label>
+      <textarea id="f-note" name="note" placeholder="Ör. sadece yanları kısalt"></textarea>
+    </div>
+    <p class="hint sans" id="formError" role="alert" style="color:var(--red-dark)" hidden></p>
+    <div class="form-actions">
+      <button class="btn ghost" type="button" id="cancelBtn">Vazgeç</button>
+      <button class="btn" type="submit">Onayla</button>
+    </div>
+    <p class="hint sans">Bu bir demo formdur; bilgileriniz hiçbir yere gönderilmez.</p>
+  </form>
+
+  <div class="success sans" id="success" hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/>
+    </svg>
+    <h3 style="margin:.4rem 0 0;font-family:Georgia,serif">Teşekkürler!</h3>
+    <p id="successText"></p>
+    <button class="btn" type="button" id="doneBtn">Tamam</button>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  // Çalışma saatleri (0 = Pazar). null = kapalı. Değerler dakika cinsinden.
+  const HOURS = {
+    0: [600, 1020], 1: null, 2: [540, 1200], 3: [540, 1200],
+    4: [540, 1200], 5: [540, 1260], 6: [510, 1260]
+  };
+  const pad = n => String(n).padStart(2, "0");
+  const fmt = m => pad(Math.floor(m / 60)) + ":" + pad(m % 60);
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Bugünü vurgula ve açık/kapalı durumunu göster
+  const now = new Date();
+  const day = now.getDay();
+  const row = document.querySelector('.hours tr[data-day="' + day + '"]');
+  if (row) row.classList.add("today");
+  const status = document.getElementById("status");
+  const h = HOURS[day];
+  const mins = now.getHours() * 60 + now.getMinutes();
+  if (h && mins >= h[0] && mins < h[1]) {
+    status.textContent = "● Şu an açığız · " + fmt(h[1]) + "'e kadar";
+    status.classList.add("open");
+  } else {
+    status.textContent = "● Şu an kapalıyız";
+    status.classList.add("shut");
+  }
+
+  // Randevu penceresi
+  const dlg = document.getElementById("booking");
+  const form = document.getElementById("bookingForm");
+  const success = document.getElementById("success");
+  const err = document.getElementById("formError");
+  const dateIn = document.getElementById("f-date");
+  const timeSel = document.getElementById("f-time");
+
+  const toISO = d => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
+  const today = new Date();
+  const max = new Date(); max.setDate(max.getDate() + 30);
+  dateIn.min = toISO(today);
+  dateIn.max = toISO(max);
+
+  function fillTimes() {
+    timeSel.innerHTML = '<option value="">Seçiniz…</option>';
+    if (!dateIn.value) return;
+    const [y, m, d] = dateIn.value.split("-").map(Number);
+    const sel = new Date(y, m - 1, d);
+    const range = HOURS[sel.getDay()];
+    if (!range) {
+      timeSel.innerHTML = '<option value="">Pazartesi kapalıyız</option>';
+      return;
+    }
+    const isToday = toISO(sel) === toISO(new Date());
+    const nowM = new Date().getHours() * 60 + new Date().getMinutes();
+    let count = 0;
+    for (let t = range[0]; t <= range[1] - 30; t += 30) {
+      if (isToday && t <= nowM + 15) continue;
+      const o = document.createElement("option");
+      o.value = o.textContent = fmt(t);
+      timeSel.appendChild(o);
+      count++;
+    }
+    if (!count) timeSel.innerHTML = '<option value="">Bugün için boş saat kalmadı</option>';
+  }
+  dateIn.addEventListener("change", fillTimes);
+
+  function openBooking() {
+    form.reset();
+    fillTimes();
+    err.hidden = true;
+    form.hidden = false;
+    success.hidden = true;
+    if (typeof dlg.showModal === "function") dlg.showModal();
+    else dlg.setAttribute("open", "");
+    setTimeout(() => document.getElementById("f-name").focus(), 50);
+  }
+  function closeBooking() {
+    if (typeof dlg.close === "function") dlg.close();
+    else dlg.removeAttribute("open");
+  }
+
+  document.querySelectorAll(".open-booking").forEach(b => b.addEventListener("click", openBooking));
+  document.getElementById("closeX").addEventListener("click", closeBooking);
+  document.getElementById("cancelBtn").addEventListener("click", closeBooking);
+  document.getElementById("doneBtn").addEventListener("click", closeBooking);
+  dlg.addEventListener("click", e => { if (e.target === dlg) closeBooking(); }); // dışarı tıklayınca kapat
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // Form hiçbir yere gönderilmez.
+    const name = document.getElementById("f-name").value.trim();
+    const service = document.getElementById("f-service").value;
+    const date = dateIn.value;
+    const time = timeSel.value;
+
+    let msg = "";
+    if (!name) msg = "Lütfen adınızı yazın.";
+    else if (!service) msg = "Lütfen bir hizmet seçin.";
+    else if (!date) msg = "Lütfen bir tarih seçin.";
+    else if (!time) msg = "Lütfen uygun bir saat seçin.";
+    if (msg) { err.textContent = msg; err.hidden = false; return; }
+
+    const [y, m, d] = date.split("-").map(Number);
+    const nice = new Date(y, m - 1, d).toLocaleDateString("tr-TR", { weekday: "long", day: "numeric", month: "long" });
+    document.getElementById("successText").textContent =
+      name + ", " + nice + " saat " + time + " için " + service.split(" — ")[0].toLowerCase() +
+      " randevunuz not edildi. (Demo: hiçbir yere gönderilmedi.)";
+    form.hidden = true;
+    success.hidden = false;
+    document.getElementById("doneBtn").focus();
+  });
+})();
+</script>
+</body>
+</html>

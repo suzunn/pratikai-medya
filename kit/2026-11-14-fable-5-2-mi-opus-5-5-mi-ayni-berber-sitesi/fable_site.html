@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fener &amp; Tarak Berberhanesi · Lodosbükü</title>
+<meta name="description" content="Fener &amp; Tarak Berberhanesi: randevuyla çalışan kurgusal bir mahalle berberi. Fiyat listesi, çalışma saatleri ve adres.">
+<meta name="theme-color" content="#17212b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2317212b'/%3E%3Cg stroke='%23e6c680' stroke-width='4' fill='none' stroke-linecap='round'%3E%3Ccircle cx='22' cy='46' r='6'/%3E%3Ccircle cx='42' cy='46' r='6'/%3E%3Cpath d='M25 41 41 14M39 41 23 14'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+  :root {
+    color-scheme: light;
+    --ink: #1b1f24;
+    --night: #17212b;
+    --paper: #f5efe4;
+    --card: #fffaf1;
+    --line: #e3d8c4;
+    --red: #b23a2e;
+    --red-dark: #932d23;
+    --navy: #27497a;
+    --brass: #c29a4b;
+    --brass-light: #e6c680;
+    --muted: #6a6359;
+    --serif: Georgia, "Times New Roman", Times, serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  html.modal-open { overflow: hidden; }
+
+  body {
+    margin: 0;
+    padding-bottom: 96px;
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink);
+    background: var(--paper);
+  }
+
+  h1, h2, h3, p, ul, table, address { margin: 0; }
+  ul { padding: 0; list-style: none; }
+  address { font-style: normal; }
+
+  .wrap { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+  }
+
+  /* ---------- Butonlar ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 54px; padding: 0 28px;
+    font: 700 1.06rem/1 var(--sans); letter-spacing: .02em;
+    border: 0; border-radius: 999px; cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform .12s ease, background-color .15s ease, box-shadow .15s ease;
+  }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .btn--primary {
+    color: #fff; background: var(--red);
+    box-shadow: 0 2px 0 var(--red-dark), 0 10px 24px rgba(178, 58, 46, .35);
+  }
+  .btn--primary:hover { background: #bf4337; }
+  .btn--primary:active { transform: translateY(2px); box-shadow: 0 0 0 var(--red-dark), 0 6px 14px rgba(178, 58, 46, .3); }
+  .btn--ghost { color: var(--ink); background: transparent; box-shadow: inset 0 0 0 2px var(--line); }
+  .btn--ghost:hover { background: #f3ead9; }
+  .btn:focus-visible, .icon-btn:focus-visible { outline: 3px solid var(--brass-light); outline-offset: 3px; }
+  .sheet .btn:focus-visible, .sheet .icon-btn:focus-visible { outline-color: var(--navy); }
+
+  /* ---------- Giriş (hero) ---------- */
+  .hero {
+    color: #f7f1e6;
+    background:
+      radial-gradient(120% 80% at 100% 0%, rgba(194, 154, 75, .20), transparent 60%),
+      radial-gradient(90% 70% at 0% 100%, rgba(39, 73, 122, .35), transparent 65%),
+      var(--night);
+    padding: 44px 0 48px;
+  }
+  .hero__inner { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 22px; }
+
+  .pole { position: relative; width: 26px; min-height: 220px; margin: 14px 0; }
+  .pole::before, .pole::after {
+    content: ""; position: absolute; left: -5px; right: -5px; height: 14px; z-index: 1;
+    background: linear-gradient(90deg, #8a6a2c, var(--brass-light) 45%, #8a6a2c);
+  }
+  .pole::before { top: -14px; border-radius: 9px 9px 3px 3px; }
+  .pole::after { bottom: -14px; border-radius: 3px 3px 9px 9px; }
+  .pole__glass { position: absolute; inset: 0; overflow: hidden; border-radius: 2px; }
+  .pole__glass::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,.38), rgba(255,255,255,.28) 32%, rgba(255,255,255,0) 55%, rgba(0,0,0,.42));
+  }
+  .pole__stripes {
+    position: absolute; left: 0; right: 0; top: -45.25px; height: calc(100% + 45.25px);
+    background: repeating-linear-gradient(135deg,
+      var(--red) 0 8px, #f7f1e6 8px 16px, var(--navy) 16px 24px, #f7f1e6 24px 32px);
+    animation: pole-spin 2.6s linear infinite;
+  }
+  @keyframes pole-spin { to { transform: translateY(45.25px); } }
+
+  .eyebrow {
+    font-size: .74rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--brass-light);
+  }
+  .hero h1 {
+    margin-top: 10px;
+    font: 700 clamp(2.1rem, 9.4vw, 3.7rem)/1.05 var(--serif);
+    letter-spacing: -.01em;
+  }
+  .hero h1 .amp { color: var(--brass-light); font-style: italic; font-weight: 400; }
+  .hero h1 small {
+    display: block; margin-top: 10px;
+    font: 700 .3em/1.2 var(--sans); letter-spacing: .34em; text-transform: uppercase;
+    color: #cfc6b6;
+  }
+  .lead { margin-top: 18px; max-width: 34em; color: #ddd5c6; }
+  .hero .btn { margin-top: 26px; width: 100%; max-width: 320px; }
+
+  .status {
+    display: flex; align-items: center; gap: 8px; margin-top: 18px;
+    font-size: .9rem; color: #cfc6b6; min-height: 1.5em;
+  }
+  .status__dot { width: 9px; height: 9px; border-radius: 50%; background: #8d8679; flex: none; }
+  .status.is-open .status__dot { background: #6fd39a; box-shadow: 0 0 0 4px rgba(111, 211, 154, .18); }
+  .status.is-closed .status__dot { background: #e58b80; }
+
+  .ribbon {
+    height: 8px;
+    background: repeating-linear-gradient(135deg,
+      var(--red) 0 10px, #f7f1e6 10px 20px, var(--navy) 20px 30px, #f7f1e6 30px 40px);
+  }
+
+  /* ---------- Bölümler ---------- */
+  section { padding: 44px 0 0; }
+  h2 { font: 700 1.65rem/1.2 var(--serif); }
+  h2::after {
+    content: ""; display: block; width: 52px; height: 6px; margin-top: 12px; border-radius: 3px;
+    background: linear-gradient(90deg, var(--red) 0 33.4%, var(--brass) 33.4% 66.7%, var(--navy) 66.7%);
+  }
+  .section-note { margin-top: 14px; color: var(--muted); font-size: .95rem; }
+
+  .card {
+    margin-top: 20px; padding: 20px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+  }
+
+  /* Hakkında */
+  .about p { margin-top: 16px; }
+  .perks { display: grid; gap: 10px; margin-top: 20px; }
+  .perks li {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 12px 14px; background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    font-size: .96rem;
+  }
+  .perks svg { width: 22px; height: 22px; flex: none; margin-top: 2px; color: var(--red); }
+  .perks strong { display: block; }
+  .perks span { color: var(--muted); }
+
+  /* Fiyat listesi */
+  .prices li { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .prices li:first-child { padding-top: 2px; }
+  .prices li:last-child { padding-bottom: 2px; border-bottom: 0; }
+  .prices__row { display: flex; align-items: baseline; gap: 8px; }
+  .prices__name { font: 700 1.08rem/1.3 var(--serif); }
+  .prices__dots { flex: 1; min-width: 16px; border-bottom: 2px dotted #cbbfa8; transform: translateY(-4px); }
+  .prices__price { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--red-dark); }
+  .prices__desc { margin-top: 3px; font-size: .9rem; color: var(--muted); }
+  .tag {
+    display: inline-block; margin-left: 6px; padding: 2px 8px; vertical-align: 2px;
+    font: 700 .66rem/1.4 var(--sans); letter-spacing: .08em; text-transform: uppercase;
+    color: #fff; background: var(--navy); border-radius: 999px;
+  }
+
+  /* Saatler */
+  .hours { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  .hours th, .hours td { padding: 10px 8px; border-bottom: 1px solid var(--line); text-align: left; font-weight: 400; }
+  .hours td { text-align: right; white-space: nowrap; }
+  .hours tr:last-child th, .hours tr:last-child td { border-bottom: 0; }
+  .hours .is-closed-day td { color: var(--red-dark); font-weight: 700; }
+  .hours .is-today th, .hours .is-today td { font-weight: 700; background: #f6ecd8; }
+  .hours .is-today th { border-radius: 8px 0 0 8px; box-shadow: inset 4px 0 0 var(--brass); }
+  .hours .is-today td { border-radius: 0 8px 8px 0; }
+  .hours .is-today th::after { content: " · bugün"; font-weight: 400; color: var(--muted); }
+
+  /* Adres */
+  .map { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); }
+  .address { margin-top: 16px; }
+  .address strong { font: 700 1.1rem/1.3 var(--serif); display: block; margin-bottom: 4px; }
+  .address p + p { margin-top: 10px; color: var(--muted); font-size: .95rem; }
+
+  .info-grid { display: grid; gap: 0; }
+
+  /* Kapanış çağrısı */
+  .cta {
+    margin-top: 44px; padding: 28px 22px; text-align: center;
+    color: #f7f1e6; background: var(--night); border-radius: 18px;
+  }
+  .cta h2 { font-size: 1.45rem; }
+  .cta h2::after { margin-left: auto; margin-right: auto; }
+  .cta p { margin-top: 14px; color: #d5ccbc; }
+  .cta .btn { margin-top: 20px; width: 100%; max-width: 320px; }
+
+  footer { margin-top: 40px; padding: 0 20px; text-align: center; font-size: .85rem; color: var(--muted); }
+  footer svg { width: 34px; height: 34px; color: var(--brass); margin-bottom: 8px; }
+
+  /* Sabit randevu butonu */
+  .fab {
+    position: fixed; z-index: 10;
+    left: 16px; right: 16px; bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    transform: translateY(160%); visibility: hidden;
+    transition: transform .25s ease, visibility 0s linear .25s;
+  }
+  .fab.is-visible { transform: none; visibility: visible; transition: transform .25s ease; }
+  .fab .btn { width: 100%; }
+
+  /* ---------- Randevu penceresi ---------- */
+  dialog.sheet {
+    width: 100%; max-width: 100%; max-height: 92vh; max-height: 92dvh;
+    margin: auto 0 0; padding: 0; border: 0;
+    color: var(--ink); background: var(--card);
+    border-radius: 22px 22px 0 0; overflow: auto; overscroll-behavior: contain;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, .3);
+  }
+  dialog.sheet[open] { animation: sheet-in .22s ease-out; }
+  dialog.sheet::backdrop { background: rgba(15, 20, 26, .62); }
+  @keyframes sheet-in { from { transform: translateY(28px); opacity: 0; } }
+
+  .sheet__head {
+    position: sticky; top: 0; z-index: 2;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 16px 12px 14px 20px; background: var(--card); border-bottom: 1px solid var(--line);
+  }
+  .sheet__head h2 { font-size: 1.35rem; outline: none; }
+  .sheet__head h2::after { display: none; }
+  .icon-btn {
+    display: grid; place-items: center; width: 44px; height: 44px; flex: none;
+    border: 0; border-radius: 50%; background: transparent; color: var(--ink); cursor: pointer;
+  }
+  .icon-btn:hover { background: #f1e7d5; }
+  .icon-btn svg { width: 22px; height: 22px; }
+  .sheet__body { padding: 18px 20px calc(22px + env(safe-area-inset-bottom, 0px)); }
+
+  .demo-note {
+    padding: 10px 12px; font-size: .88rem; color: #4e4a43;
+    background: #f6ecd8; border-left: 4px solid var(--brass); border-radius: 6px;
+  }
+
+  .field { margin-top: 16px; min-width: 0; }
+  .field label { display: block; margin-bottom: 6px; font-weight: 700; font-size: .95rem; }
+  .field label small { font-weight: 400; color: var(--muted); }
+  .field input, .field select, .field textarea {
+    display: block; width: 100%; min-width: 0; min-height: 50px; padding: 12px 14px;
+    font: inherit; font-size: 16px; color: var(--ink);
+    background: #fff; border: 1.5px solid #cdc2ae; border-radius: 10px;
+  }
+  .field textarea { min-height: 84px; resize: vertical; }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: 3px solid rgba(39, 73, 122, .28); outline-offset: 0; border-color: var(--navy);
+  }
+  .field [aria-invalid="true"] { border-color: var(--red); background: #fff6f4; }
+  .field__error { margin-top: 5px; font-size: .86rem; font-weight: 600; color: var(--red-dark); }
+  .field__error:empty { display: none; }
+  .field-row { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 12px; }
+
+  .form-actions { display: grid; gap: 10px; margin-top: 22px; }
+  .form-actions .btn { width: 100%; }
+
+  .result { text-align: center; }
+  .result__icon { width: 64px; height: 64px; margin: 6px auto 0; color: #2f8a5b; }
+  .result h3 { margin-top: 10px; font: 700 1.35rem/1.25 var(--serif); outline: none; }
+  .result > p { margin-top: 8px; color: var(--muted); font-size: .95rem; }
+  .summary {
+    margin: 18px 0 0; padding: 4px 16px; text-align: left;
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+  }
+  .summary div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .summary div:last-child { border-bottom: 0; }
+  .summary dt { color: var(--muted); flex: none; }
+  .summary dd { margin: 0; font-weight: 700; text-align: right; overflow-wrap: anywhere; }
+  .result .btn { width: 100%; margin-top: 20px; }
+
+  /* ---------- Geniş ekranlar ---------- */
+  @media (min-width: 600px) {
+    dialog.sheet { width: 500px; margin: auto; border-radius: 20px; max-height: 90vh; box-shadow: 0 20px 60px rgba(0, 0, 0, .35); }
+    .perks { grid-template-columns: repeat(3, 1fr); }
+    .perks li { flex-direction: column; gap: 8px; }
+    .form-actions { grid-template-columns: 1fr 1.4fr; }
+    .form-actions .btn--ghost { order: -1; }
+  }
+  @media (min-width: 760px) {
+    body { font-size: 18px; padding-bottom: 60px; }
+    .hero { padding: 72px 0 76px; }
+    .hero__inner { grid-template-columns: 30px minmax(0, 1fr); gap: 36px; }
+    .pole { width: 30px; }
+    .info-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .card { padding: 24px; }
+    .fab { left: auto; right: 24px; bottom: 24px; }
+    .fab .btn { width: auto; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .pole__stripes, dialog.sheet[open] { animation: none; }
+    .btn, .fab { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero__inner">
+    <div class="pole" aria-hidden="true">
+      <div class="pole__glass"><div class="pole__stripes"></div></div>
+    </div>
+    <div>
+      <p class="eyebrow">Mahalle berberi · 1987'den beri</p>
+      <h1>Fener <span class="amp">&amp;</span> Tarak <small>Berberhanesi</small></h1>
+      <p class="lead">Kehribar Sokak'ın köşesinde üç koltuk, keskin bir ustura ve demli bir çay. Aceleye getirmeden, konuşa konuşa, işini bilen ellerde tıraş.</p>
+      <button type="button" class="btn btn--primary" id="hero-cta" data-open-booking>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+        Randevu Al
+      </button>
+      <p class="status" id="durum" aria-live="polite"><span class="status__dot" aria-hidden="true"></span><span id="durum-metin">Pazartesi–Cumartesi açığız</span></p>
+    </div>
+  </div>
+</header>
+<div class="ribbon" aria-hidden="true"></div>
+
+<main class="wrap">
+
+  <section class="about" aria-labelledby="hakkinda-baslik">
+    <h2 id="hakkinda-baslik">Dükkân</h2>
+    <p>Fener &amp; Tarak, Lodosbükü'nün eski çarşısında, kapısındaki pirinç fenerle tanınan küçük bir berber dükkânı. Klasik makas tıraşından sıcak havlulu ustura tıraşına kadar her işi randevuyla yapıyoruz; böylece siz beklemiyorsunuz, biz de acele etmiyoruz.</p>
+    <ul class="perks">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div><strong>Bekleme yok</strong><span>Her randevuya ayrı vakit ayrılır.</span></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="18" r="3"/><circle cx="17" cy="18" r="3"/><path d="M9 15.5 17 3M15 15.5 7 3"/></svg>
+        <div><strong>Klasik usul</strong><span>Makas, ustura ve sıcak havlu.</span></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5v-5z"/><path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 3v3M12 3v3"/></svg>
+        <div><strong>Çay bizden</strong><span>Koltuğa oturan çayını içmeden kalkmaz.</span></div>
+      </li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="fiyat-baslik">
+    <h2 id="fiyat-baslik">Fiyat Listesi</h2>
+    <div class="card">
+      <ul class="prices" id="hizmet-listesi">
+        <li data-name="Saç Kesimi" data-price="350 TL">
+          <div class="prices__row"><span class="prices__name">Saç Kesimi</span><span class="prices__dots" aria-hidden="true"></span><span class="prices__price">350 TL</span></div>
+          <p class="prices__desc">Makas veya makine; yıkama ve şekillendirme dahil · 30 dk</p>
+        </li>
+        <li data-name="Sakal Tıraşı" data-price="200 TL">
+          <div class="prices__row"><span class="prices__name">Sakal Tıraşı</span><span class="prices__dots" aria-hidden="true"></span><span class="prices__price">200 TL</span></div>
+          <p class="prices__desc">Sıcak havlu ve ustura ile klasik tıraş · 20 dk</p>
+        </li>
+        <li data-name="Saç + Sakal" data-price="500 TL">
+          <div class="prices__row"><span class="prices__name">Saç + Sakal <span class="tag">Favori</span></span><span class="prices__dots" aria-hidden="true"></span><span class="prices__price">500 TL</span></div>
+          <p class="prices__desc">İkisi bir arada; en çok tercih edilen · 45 dk</p>
+        </li>
+        <li data-name="Çocuk Tıraşı" data-price="250 TL">
+          <div class="prices__row"><span class="prices__name">Çocuk Tıraşı</span><span class="prices__dots" aria-hidden="true"></span><span class="prices__price">250 TL</span></div>
+          <p class="prices__desc">12 yaş ve altı; sabırla, acele etmeden · 25 dk</p>
+        </li>
+        <li data-name="Yıkama &amp; Fön" data-price="150 TL">
+          <div class="prices__row"><span class="prices__name">Yıkama &amp; Fön</span><span class="prices__dots" aria-hidden="true"></span><span class="prices__price">150 TL</span></div>
+          <p class="prices__desc">Yıkama, kurutma ve şekillendirme · 15 dk</p>
+        </li>
+        <li data-name="Cilt Bakımı" data-price="300 TL">
+          <div class="prices__row"><span class="prices__name">Cilt Bakımı</span><span class="prices__dots" aria-hidden="true"></span><span class="prices__price">300 TL</span></div>
+          <p class="prices__desc">Buhar, peeling ve maske · 30 dk</p>
+        </li>
+        <li data-name="Kaş &amp; Yüz Alma" data-price="120 TL">
+          <div class="prices__row"><span class="prices__name">Kaş &amp; Yüz Alma</span><span class="prices__dots" aria-hidden="true"></span><span class="prices__price">120 TL</span></div>
+          <p class="prices__desc">İp veya ustura ile · 10 dk</p>
+        </li>
+        <li data-name="Damat Tıraşı" data-price="1.500 TL">
+          <div class="prices__row"><span class="prices__name">Damat Tıraşı</span><span class="prices__dots" aria-hidden="true"></span><span class="prices__price">1.500 TL</span></div>
+          <p class="prices__desc">Saç, sakal, cilt bakımı ve özel hazırlık · 90 dk</p>
+        </li>
+      </ul>
+    </div>
+    <p class="section-note">Fiyatlara KDV dahildir. Nakit ve kart geçerlidir.</p>
+  </section>
+
+  <div class="info-grid">
+    <section aria-labelledby="saat-baslik">
+      <h2 id="saat-baslik">Çalışma Saatleri</h2>
+      <div class="card">
+        <table class="hours">
+          <caption class="sr-only">Günlere göre açılış ve kapanış saatleri</caption>
+          <tbody>
+            <tr data-day="1"><th scope="row">Pazartesi</th><td>09:00 – 20:00</td></tr>
+            <tr data-day="2"><th scope="row">Salı</th><td>09:00 – 20:00</td></tr>
+            <tr data-day="3"><th scope="row">Çarşamba</th><td>09:00 – 20:00</td></tr>
+            <tr data-day="4"><th scope="row">Perşembe</th><td>09:00 – 20:00</td></tr>
+            <tr data-day="5"><th scope="row">Cuma</th><td>09:00 – 20:00</td></tr>
+            <tr data-day="6"><th scope="row">Cumartesi</th><td>09:00 – 21:00</td></tr>
+            <tr data-day="0" class="is-closed-day"><th scope="row">Pazar</th><td>Kapalı</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="section-note">Son randevu kapanıştan 30 dakika önce alınır.</p>
+    </section>
+
+    <section aria-labelledby="adres-baslik">
+      <h2 id="adres-baslik">Adres</h2>
+      <div class="card">
+        <svg class="map" viewBox="0 0 320 180" role="img" aria-label="Dükkânın konumunu gösteren temsili kroki: sahil yolunun altında, Kehribar Sokak üzerinde.">
+          <rect width="320" height="180" fill="#ebe2d0"/>
+          <path d="M0 0H320V30Q240 50 160 28T0 36Z" fill="#b5cbd8"/>
+          <path d="M0 14Q80 4 160 12T320 8" fill="none" stroke="#cfdde6" stroke-width="2"/>
+          <g fill="#dccfb7">
+            <rect x="14" y="80" width="56" height="22" rx="3"/><rect x="14" y="126" width="56" height="42" rx="3"/>
+            <rect x="100" y="80" width="54" height="22" rx="3"/><rect x="162" y="80" width="60" height="22" rx="3"/>
+            <rect x="170" y="126" width="52" height="42" rx="3"/>
+            <rect x="252" y="80" width="56" height="22" rx="3"/><rect x="252" y="126" width="56" height="42" rx="3"/>
+          </g>
+          <rect x="100" y="126" width="62" height="42" rx="6" fill="#bccda6"/>
+          <g fill="#9db583"><circle cx="114" cy="140" r="6"/><circle cx="134" cy="152" r="7"/><circle cx="150" cy="138" r="5"/></g>
+          <g stroke="#fbf6ec" fill="none" stroke-linecap="round">
+            <path d="M0 64H320" stroke-width="11"/>
+            <path d="M0 114H320" stroke-width="14"/>
+            <path d="M85 64V180M237 64V180" stroke-width="12"/>
+          </g>
+          <g font-family="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" fill="#8b8271" font-weight="700">
+            <text x="96" y="117" font-size="8" letter-spacing=".6">KEHRİBAR SK.</text>
+            <text x="14" y="66.8" font-size="7.5" letter-spacing=".6">SAHİL YOLU</text>
+          </g>
+          <path d="M198 110c-9-12-13-17-13-24a13 13 0 1 1 26 0c0 7-4 12-13 24z" fill="#b23a2e" stroke="#fff" stroke-width="1.5"/>
+          <circle cx="198" cy="86" r="4.5" fill="#fff"/>
+        </svg>
+        <address class="address">
+          <strong>Fener &amp; Tarak Berberhanesi</strong>
+          <p>Çınaraltı Mahallesi, Kehribar Sokak No: 7<br>Eski Çarşı, Lodosbükü</p>
+          <p>Tarif: Saat kulesini arkanıza alın, fırını geçince kapısında pirinç fener olan dükkân.</p>
+        </address>
+      </div>
+    </section>
+  </div>
+
+  <div class="cta">
+    <h2>Koltuğunuz hazır olsun</h2>
+    <p>Gününüzü ve saatinizi seçin, gerisini bize bırakın.</p>
+    <button type="button" class="btn btn--primary" data-open-booking>Randevu Al</button>
+  </div>
+
+</main>
+
+<footer>
+  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="32" cy="32" r="29"/><circle cx="22" cy="44" r="5"/><circle cx="42" cy="44" r="5"/><path d="M25 40 41 16M39 40 23 16"/></svg>
+  <p>© 2026 Fener &amp; Tarak Berberhanesi</p>
+  <p>Bu site kurgusal bir işletme için hazırlanmış bir demodur; isim, adres ve fiyatlar uydurmadır.</p>
+</footer>
+
+<div class="fab" id="fab">
+  <button type="button" class="btn btn--primary" data-open-booking>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+    Randevu Al
+  </button>
+</div>
+
+<dialog class="sheet" id="randevu" aria-labelledby="randevu-baslik">
+  <div class="sheet__inner">
+    <div class="sheet__head">
+      <h2 id="randevu-baslik" tabindex="-1">Randevu Al</h2>
+      <button type="button" class="icon-btn" id="randevu-kapat" aria-label="Kapat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+
+    <div class="sheet__body">
+      <form id="randevu-form" novalidate>
+        <p class="demo-note">Bu bir demo formudur: yazdıklarınız hiçbir yere gönderilmez ve kaydedilmez.</p>
+
+        <div class="field">
+          <label for="f-ad">Ad Soyad</label>
+          <input id="f-ad" name="ad" type="text" autocomplete="name" aria-describedby="f-ad-hata" required>
+          <p class="field__error" id="f-ad-hata" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="f-telefon">Telefon</label>
+          <input id="f-telefon" name="telefon" type="tel" inputmode="tel" autocomplete="tel" placeholder="05•• ••• •• ••" aria-describedby="f-telefon-hata" required>
+          <p class="field__error" id="f-telefon-hata" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="f-hizmet">Hizmet</label>
+          <select id="f-hizmet" name="hizmet" aria-describedby="f-hizmet-hata" required>
+            <option value="">Seçin…</option>
+          </select>
+          <p class="field__error" id="f-hizmet-hata" role="alert"></p>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-tarih">Tarih</label>
+            <input id="f-tarih" name="tarih" type="date" aria-describedby="f-tarih-hata" required>
+            <p class="field__error" id="f-tarih-hata" role="alert"></p>
+          </div>
+          <div class="field">
+            <label for="f-saat">Saat</label>
+            <select id="f-saat" name="saat" aria-describedby="f-saat-hata" required></select>
+            <p class="field__error" id="f-saat-hata" role="alert"></p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-mesaj">Not <small>(isteğe bağlı)</small></label>
+          <textarea id="f-mesaj" name="mesaj" rows="2" maxlength="300"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary">Randevuyu Onayla</button>
+          <button type="button" class="btn btn--ghost" id="randevu-vazgec">Vazgeç</button>
+        </div>
+      </form>
+
+      <div class="result" id="randevu-sonuc" hidden>
+        <svg class="result__icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="32" r="27"/><path d="M20 33l8 8 16-17"/></svg>
+        <h3 id="sonuc-baslik" tabindex="-1">Koltuğunuz ayrıldı!</h3>
+        <p>Demo olduğu için bu randevu gerçekte kaydedilmedi ve hiçbir yere gönderilmedi.</p>
+        <dl class="summary" id="sonuc-ozet"></dl>
+        <button type="button" class="btn btn--primary" id="sonuc-tamam">Tamam</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  'use strict';
+
+  // Dakika cinsinden açılış/kapanış; dizin = Date.getDay() (0 = Pazar)
+  var HOURS = [null, [540, 1200], [540, 1200], [540, 1200], [540, 1200], [540, 1200], [540, 1260]];
+  var DAY_NAMES = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
+  var SLOT_STEP = 30;        // dakika
+  var MAX_DAYS_AHEAD = 60;
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function fmtTime(min) { return pad(Math.floor(min / 60)) + ':' + pad(min % 60); }
+  function toIso(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function parseIso(s) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || '');
+    if (!m) return null;
+    var d = new Date(+m[1], +m[2] - 1, +m[3]);
+    return (d.getMonth() === +m[2] - 1 && d.getDate() === +m[3]) ? d : null;
+  }
+  function addDays(d, n) { return new Date(d.getFullYear(), d.getMonth(), d.getDate() + n); }
+  function nowMinutes() { var n = new Date(); return n.getHours() * 60 + n.getMinutes(); }
+
+  /* ---------- Açık / kapalı durumu ---------- */
+  var statusEl = document.getElementById('durum');
+  var statusText = document.getElementById('durum-metin');
+
+  function updateStatus() {
+    var day = new Date().getDay();
+    var mins = nowMinutes();
+    var h = HOURS[day];
+    var open = !!h && mins >= h[0] && mins < h[1];
+    var text = '';
+
+    if (open) {
+      text = 'Şu an açık · Kapanış ' + fmtTime(h[1]);
+    } else {
+      for (var i = 0; i <= 7; i++) {
+        var d = (day + i) % 7;
+        var hh = HOURS[d];
+        if (!hh || (i === 0 && mins >= hh[0])) continue;
+        var label = i === 0 ? 'bugün' : (i === 1 ? 'yarın' : DAY_NAMES[d]);
+        text = 'Şu an kapalı · Açılış: ' + label + ' ' + fmtTime(hh[0]);
+        break;
+      }
+    }
+    statusText.textContent = text;
+    statusEl.classList.toggle('is-open', open);
+    statusEl.classList.toggle('is-closed', !open);
+
+    var rows = document.querySelectorAll('.hours tr[data-day]');
+    for (var r = 0; r < rows.length; r++) {
+      rows[r].classList.toggle('is-today', +rows[r].getAttribute('data-day') === day);
+    }
+  }
+  updateStatus();
+  setInterval(updateStatus, 60000);
+
+  /* ---------- Sabit buton: üstteki buton ekrandan çıkınca görünür ---------- */
+  var fab = document.getElementById('fab');
+  var heroCta = document.getElementById('hero-cta');
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      fab.classList.toggle('is-visible', !entries[0].isIntersecting);
+    }).observe(heroCta);
+  } else {
+    fab.classList.add('is-visible');
+  }
+
+  /* ---------- Randevu formu ---------- */
+  var dialog = document.getElementById('randevu');
+  var form = document.getElementById('randevu-form');
+  var result = document.getElementById('randevu-sonuc');
+  var summary = document.getElementById('sonuc-ozet');
+  var fDate = form.elements.tarih;
+  var fTime = form.elements.saat;
+  var fService = form.elements.hizmet;
+
+  // Hizmet seçeneklerini fiyat listesinden doldur (tek kaynak)
+  var items = document.querySelectorAll('#hizmet-listesi li');
+  for (var i = 0; i < items.length; i++) {
+    var opt = document.createElement('option');
+    opt.value = items[i].getAttribute('data-name');
+    opt.textContent = opt.value + ' — ' + items[i].getAttribute('data-price');
+    fService.appendChild(opt);
+  }
+
+  function slotsFor(date) {
+    var h = HOURS[date.getDay()];
+    if (!h) return [];
+    var earliest = toIso(date) === toIso(new Date()) ? nowMinutes() + 15 : 0;
+    var out = [];
+    for (var t = h[0]; t <= h[1] - SLOT_STEP; t += SLOT_STEP) {
+      if (t >= earliest) out.push(t);
+    }
+    return out;
+  }
+
+  function firstAvailableDate() {
+    var today = new Date();
+    for (var i = 0; i <= 14; i++) {
+      var d = addDays(today, i);
+      if (slotsFor(d).length) return d;
+    }
+    return today;
+  }
+
+  function fillSlots() {
+    var previous = fTime.value;
+    var date = parseIso(fDate.value);
+    var slots = date ? slotsFor(date) : [];
+    var placeholder = 'Seçin…';
+    if (!date) placeholder = 'Önce tarih seçin';
+    else if (!HOURS[date.getDay()]) placeholder = 'Pazar kapalıyız';
+    else if (!slots.length) placeholder = 'Boş saat kalmadı';
+
+    fTime.textContent = '';
+    var first = document.createElement('option');
+    first.value = '';
+    first.textContent = placeholder;
+    fTime.appendChild(first);
+    for (var i = 0; i < slots.length; i++) {
+      var o = document.createElement('option');
+      o.value = o.textContent = fmtTime(slots[i]);
+      fTime.appendChild(o);
+    }
+    fTime.disabled = !slots.length;
+    if (previous && slots.some(function (s) { return fmtTime(s) === previous; })) fTime.value = previous;
+  }
+
+  var checks = {
+    ad: function (v) {
+      return v.trim().length >= 2 ? '' : 'Lütfen adınızı ve soyadınızı yazın.';
+    },
+    telefon: function (v) {
+      var digits = v.replace(/\D/g, '').length;
+      return digits >= 10 && digits <= 13 ? '' : 'Lütfen size ulaşabileceğimiz bir telefon numarası yazın.';
+    },
+    hizmet: function (v) {
+      return v ? '' : 'Lütfen bir hizmet seçin.';
+    },
+    tarih: function (v) {
+      var d = parseIso(v);
+      var today = new Date();
+      if (!d) return 'Lütfen bir tarih seçin.';
+      if (v < toIso(today)) return 'Geçmiş bir tarih seçilemez.';
+      if (v > toIso(addDays(today, MAX_DAYS_AHEAD))) return 'En fazla ' + MAX_DAYS_AHEAD + ' gün sonrasına randevu verebiliyoruz.';
+      if (!HOURS[d.getDay()]) return 'Pazar günleri kapalıyız; lütfen başka bir gün seçin.';
+      if (!slotsFor(d).length) return 'Bu gün için boş saat kalmadı; lütfen başka bir gün seçin.';
+      return '';
+    },
+    saat: function (v) {
+      if (checks.tarih(fDate.value)) return '';   // önce tarih düzelsin
+      return v ? '' : 'Lütfen bir saat seçin.';
+    }
+  };
+
+  function setError(name, msg) {
+    var el = form.elements[name];
+    if (msg) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid');
+    document.getElementById(el.id + '-hata').textContent = msg;
+  }
+  function validateField(name) {
+    var msg = checks[name](form.elements[name].value);
+    setError(name, msg);
+    return !msg;
+  }
+
+  Object.keys(checks).forEach(function (name) {
+    var el = form.elements[name];
+    var recheck = function () {
+      if (el.getAttribute('aria-invalid') === 'true') validateField(name);
+    };
+    el.addEventListener('input', recheck);
+    el.addEventListener('change', recheck);
+  });
+
+  fDate.addEventListener('change', function () {
+    fillSlots();
+    validateField('tarih');
+    if (fTime.getAttribute('aria-invalid') === 'true') validateField('saat');
+  });
+
+  function addSummaryRow(label, value) {
+    var row = document.createElement('div');
+    var dt = document.createElement('dt');
+    var dd = document.createElement('dd');
+    dt.textContent = label;
+    dd.textContent = value;
+    row.appendChild(dt);
+    row.appendChild(dd);
+    summary.appendChild(row);
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();               // form hiçbir yere gönderilmez
+    var firstBad = null;
+    Object.keys(checks).forEach(function (name) {
+      if (!validateField(name) && !firstBad) firstBad = form.elements[name];
+    });
+    if (firstBad) { firstBad.focus(); return; }
+
+    var date = parseIso(fDate.value);
+    summary.textContent = '';
+    addSummaryRow('Ad Soyad', form.elements.ad.value.trim());
+    addSummaryRow('Hizmet', fService.options[fService.selectedIndex].textContent);
+    addSummaryRow('Tarih', date.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', weekday: 'long' }));
+    addSummaryRow('Saat', fTime.value);
+
+    form.hidden = true;
+    result.hidden = false;
+    dialog.scrollTop = 0;
+    document.getElementById('sonuc-baslik').focus();
+  });
+
+  function openBooking() {
+    form.reset();
+    Object.keys(checks).forEach(function (name) { setError(name, ''); });
+    var today = new Date();
+    fDate.min = toIso(today);
+    fDate.max = toIso(addDays(today, MAX_DAYS_AHEAD));
+    fDate.value = toIso(firstAvailableDate());
+    fillSlots();
+    form.hidden = false;
+    result.hidden = true;
+
+    if (typeof dialog.showModal === 'function') dialog.showModal();
+    else dialog.setAttribute('open', '');
+    document.documentElement.classList.add('modal-open');
+    dialog.scrollTop = 0;
+    document.getElementById('randevu-baslik').focus();
+  }
+
+  function closeBooking() {
+    if (typeof dialog.close === 'function') dialog.close();
+    else { dialog.removeAttribute('open'); onClosed(); }
+  }
+  function onClosed() { document.documentElement.classList.remove('modal-open'); }
+  dialog.addEventListener('close', onClosed);
+
+  var openers = document.querySelectorAll('[data-open-booking]');
+  for (var k = 0; k < openers.length; k++) openers[k].addEventListener('click', openBooking);
+
+  document.getElementById('randevu-kapat').addEventListener('click', closeBooking);
+  document.getElementById('randevu-vazgec').addEventListener('click', closeBooking);
+  document.getElementById('sonuc-tamam').addEventListener('click', closeBooking);
+
+  // Pencerenin dışındaki karartıya tıklanınca kapat (içeriden sürüklenen seçimlerde kapanmasın)
+  var pressedBackdrop = false;
+  dialog.addEventListener('mousedown', function (e) { pressedBackdrop = e.target === dialog; });
+  dialog.addEventListener('click', function (e) {
+    if (e.target === dialog && pressedBackdrop) closeBooking();
+    pressedBackdrop = false;
+  });
+})();
+</script>
+</body>
+</html>
