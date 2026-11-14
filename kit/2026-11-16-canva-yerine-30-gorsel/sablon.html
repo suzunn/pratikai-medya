@@ -283,7 +283,7 @@ function rng(seed){
     seed |= 0; seed = seed + 0x6D2B79F5 | 0;
     let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
     t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
-    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    return ((t ^ t >>> 14) >>> 0) / 2 ** 32;
   };
 }
 const iki = n => String(n).padStart(2, "0");
@@ -394,7 +394,7 @@ const IKONLAR = {
     <path d="M40 76c16-3 32-2 44 4M40 100c16-3 32-2 44 4M40 124c16-3 32-2 44 4M116 80c12-6 28-7 44-4M116 104c12-6 28-7 44-4"/></g></svg>`,
   latte: `<svg class="ikon" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="90" fill="none" stroke="currentColor" stroke-width="8"/>
     <circle cx="100" cy="100" r="62" fill="currentColor" opacity=".9"/>
-    <path d="M100 136C62 112 60 78 82 76C92 76 100 84 100 90C100 84 108 76 118 76C140 78 138 112 100 136Z" fill="#1e5a6e"/></svg>`,
+    <path d="M100,136 C62,112 60,78 82,76 C92,76 100,84 100,90 C100,84 108,76 118,76 C140,78 138,112 100,136 Z" fill="#1e5a6e"/></svg>`,
   nota: `<svg class="ikon" viewBox="0 0 200 200" aria-hidden="true"><path d="M74 150V52L162 34V132" fill="none" stroke="currentColor" stroke-width="10" stroke-linejoin="round"/>
     <path d="M74 52L162 34V60L74 78Z" fill="currentColor"/>
     <ellipse cx="54" cy="152" rx="24" ry="17" transform="rotate(-20 54 152)" fill="currentColor"/><ellipse cx="142" cy="134" rx="24" ry="17" transform="rotate(-20 142 134)" fill="currentColor"/></svg>`,
