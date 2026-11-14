@@ -1,0 +1,19 @@
+{
+ "_not": "40-60 saniyelik dikey video (1080x1920) için sahne planı. Köşeli parantezli yerleri doldur. 'an' = sahnenin başladığı kelime ya da saniye. Ekran yazıları x 40-900, y 250-1450 içinde kalsın (YouTube Shorts ve Instagram Reels düğmeleri dışarıyı kapatır).",
+ "baslik": "[en çok 100 karakter, kanca ilk 40-50 karakterde]",
+ "sure_hedef_sn": 50,
+ "kanca": {"soz": "[en çok 8 kelime]", "ekran_yazisi": "[en çok 6 kelime]", "ilk_2_sn_gorsel": "[gerçek kanıt: bitmiş iş, sonuç, fatura]"},
+ "sahneler": [
+  {"bolum": "KANCA", "an": 0, "gorsel": "[kanıt karesi]", "ekran": "[kanca yazısı]", "efekt": "[damga ya da logo]"},
+  {"bolum": "BAHİS", "an": "[2. cümlenin ilk kelimesi]", "gorsel": "[neden önemli: rakam ya da liste]", "ekran": "[rakam]"},
+  {"bolum": "DEMO", "an": "[kelime]", "gorsel": "[işin kaydı; hızlandırılan yerde '8x' gibi gerçek hız etiketi]", "kanit": "süre"},
+  {"bolum": "DEMO", "an": "[kelime]", "gorsel": "[kayıt]", "kanit": "maliyet (liste fiyatı karşılığı)"},
+  {"bolum": "DÖNÜŞ", "an": "[videonun yaklaşık yüzde 45'i]", "gorsel": "[somut yeni bilgi]", "ekran": "[büyük rakam]"},
+  {"bolum": "SONUÇ", "an": "[videonun yaklaşık yüzde 75-85'i]", "gorsel": "[bitmiş iş]", "kanit": "bitmiş dosya", "ekran": "[süre + maliyet]"},
+  {"bolum": "YORUM", "an": "[kelime]", "metin": "[tek cümle: ne işe yarar, nerede bozuldu, kime uygun]"},
+  {"bolum": "ÇAĞRI", "an": "[son 2-3 saniye]", "metin": "[dosyaları istersen yorumlara X yaz]", "gorsel": "[ilk kareye dönüş]"}
+ ],
+ "memeler": [{"an": "[kelime]", "sablon": "[bilinen şablon]", "yazi": "[en çok 2 kelime, Türkçe]", "sure_sn": 1.5}],
+ "logolar": ["[adı geçen her marka: kelime + logo]"],
+ "kontrol": ["ekrandaki her işlem tutuyor", "memede yabancı yazı yok", "efekt sözü örtmüyor", "0,7 saniyeden uzun sessizlik yok", "çağrı yalnız sonda"]
+}

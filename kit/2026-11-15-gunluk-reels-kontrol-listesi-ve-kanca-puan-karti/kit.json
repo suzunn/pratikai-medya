@@ -1,0 +1,26 @@
+{
+ "baslik": "Günlük Reels kontrol listesi ve kanca puan kartı",
+ "tarih": "2026-11-15",
+ "slug": "gunluk-reels-kontrol-listesi-ve-kanca-puan-karti",
+ "oz": "Kanalın günlük Reels'ini Claude'a bıraktığım ilk günün (14 Kasım 2026) iş listesi. 15 Kasım 2026 videosunda gösterildi: konudan yayına 18 adım, 16 puanlık ka…",
+ "yayin_zamani": "2026-11-14T05:56:24+03:00",
+ "dosyalar": [
+  {
+   "ad": "README.md",
+   "boyut": 1418
+  },
+  {
+   "ad": "kanca_puan_karti.md",
+   "boyut": 2292
+  },
+  {
+   "ad": "kontrol_listesi_18_adim.md",
+   "boyut": 3235
+  },
+  {
+   "ad": "sahne_plani_iskelet.json",
+   "boyut": 1903
+  }
+ ],
+ "surum": 1
+}
