@@ -19,7 +19,7 @@ Claude Code kurgusal bir kafe için tek bir şablon ve onu PNG'ye çeviren küç
 2. Bu klasörü olduğu gibi bir yere çıkar. Windows'ta `bas.bat`'a çift tıkla; Mac/Linux'ta terminalde bu klasöre gelip `python3 bas.py` yaz.
 3. 30 PNG `gorseller/` klasörüne düşer (benim bilgisayarımda 18-30 saniye sürdü). Instagram'a 4:5 dikey gönderi olarak doğrudan yüklenir.
 4. Kendi işletmen için: `prompt_kendi_isletmen.txt`'yi doldur, bu klasörde Claude Code'a (ya da şablonu yapıştırarak Claude sohbetine) ver, sonra `bas.py`'yi yeniden çalıştır.
-5. Bir gönderi bozuk görünürse Claude'a tek cümleyle söyle ("6. gönderide başlık küçük kalmış, büyüt" gibi). Benim denememde bu 51 saniye sürdü.
+5. Bir gönderi bozuk görünürse Claude'a kısaca söyle ("6. gönderide başlık küçük kalmış, büyüt" gibi; benim verdiğim istek `prompt_duzeltme.txt`'te). Benim denememde düzeltme 51 saniye sürdü.
 
 ## Bilmen gerekenler
 
