@@ -1,0 +1,30 @@
+{
+ "baslik": "Kafe QR menü şablonu ve QR betiği",
+ "tarih": "2026-11-17",
+ "slug": "kafe-qr-menu-sablonu-ve-qr-betigi",
+ "oz": "Kâğıt menünün görüntüsünü Claude Code'a verip telefonda açılan bir QR menü sitesi ve masa masa QR kodu ürettirdiğim denemenin dosyaları. 17 Kasım 2026 videos…",
+ "yayin_zamani": "2026-11-14T07:56:16+03:00",
+ "dosyalar": [
+  {
+   "ad": "README.md",
+   "boyut": 2645
+  },
+  {
+   "ad": "menu.html",
+   "boyut": 7131
+  },
+  {
+   "ad": "ornek_kagit_menu.png",
+   "boyut": 717851
+  },
+  {
+   "ad": "prompt.txt",
+   "boyut": 1144
+  },
+  {
+   "ad": "qr_yap.py",
+   "boyut": 873
+  }
+ ],
+ "surum": 1
+}

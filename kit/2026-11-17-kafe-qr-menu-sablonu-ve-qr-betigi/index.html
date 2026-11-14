@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kafe QR menü şablonu ve QR betiği · Pratik AI</title><meta name="description" content="Videolarda gösterdiğim dosyalar, promptlar ve şablonlar. Her gün yenisi en üstte."><meta name="theme-color" content="#0B1328"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&family=Unbounded:wght@700&display=swap" rel="stylesheet"><style>:root{--gece:#0B1328;--pano:#13203F;--cizgi:#2B3D6B;--krem:#F3E9D6;--pirinc:#F2B84B;--sis:#A6B6D8}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--gece);color:var(--krem);font:500 16px/1.6 Manrope,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:660px;margin:0 auto;padding:28px 16px 56px}
+a{color:var(--pirinc)}
+.rozet{display:inline-block;font:700 12px/1 Unbounded,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--gece);background:var(--pirinc);padding:7px 11px 6px;border-radius:999px}
+h1{font:700 26px/1.25 Unbounded,system-ui,sans-serif;margin:14px 0 8px;overflow-wrap:anywhere}
+h2{font:700 19px/1.3 Unbounded,system-ui,sans-serif;margin:28px 0 10px}
+h3{font-size:17px;margin:22px 0 8px}
+.alt,.tarih{color:var(--sis)}.alt{margin:0 0 22px}.tarih{font-size:14px}
+.liste{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.kart{display:block;background:var(--pano);border:1px solid var(--cizgi);border-radius:16px;padding:16px 16px 14px;color:inherit;text-decoration:none}
+.kart:hover,.kart:focus-visible{border-color:var(--pirinc)}
+.kart b{display:block;font:700 17px/1.35 Unbounded,system-ui,sans-serif;margin:6px 0}
+.kart .oz{display:block;color:var(--sis);font-size:15px}
+.yeni{color:var(--gece);background:var(--pirinc);border-radius:6px;padding:1px 7px;font-size:12px;font-weight:700;margin-left:6px}
+.bos{background:var(--pano);border:1px dashed var(--cizgi);border-radius:16px;padding:18px;color:var(--sis)}
+.bos b{color:var(--krem)}
+.geri{display:inline-block;margin-bottom:18px;text-decoration:none}
+.md{overflow-wrap:anywhere}.md img{max-width:100%;border-radius:12px}
+.md table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}.md td,.md th{border:1px solid var(--cizgi);padding:6px 8px;text-align:left}
+code{font-family:"JetBrains Mono",ui-monospace,Consolas,monospace;font-size:.92em;background:var(--pano);border-radius:6px;padding:1px 5px}
+pre{position:relative;background:var(--pano);border:1px solid var(--cizgi);border-radius:12px;padding:44px 14px 14px;overflow-x:auto;white-space:pre-wrap}
+pre code{background:none;padding:0}
+.kopyala{position:absolute;top:8px;right:8px;font:700 12px Manrope,system-ui,sans-serif;color:var(--gece);background:var(--pirinc);border:0;border-radius:8px;padding:6px 10px;cursor:pointer}
+.dosyalar ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.dosyalar li{display:flex;justify-content:space-between;gap:12px;align-items:center;background:var(--pano);border:1px solid var(--cizgi);border-radius:12px;padding:12px 14px}
+.dosyalar li a{font-weight:700;overflow-wrap:anywhere}.dosyalar li span{color:var(--sis);font-size:14px;white-space:nowrap}
+footer{margin-top:36px;color:var(--sis);font-size:14px}</style></head><body><main>
+<a class="geri" href="../">← Bütün kitler</a>
+<div class="tarih">17 Kasım 2026</div>
+<h1>Kafe QR menü şablonu ve QR betiği</h1>
+<article class="md"><p>Kâğıt menünün görüntüsünü Claude Code'a verip telefonda açılan bir QR menü sitesi ve masa masa QR kodu ürettirdiğim denemenin
+dosyaları. 17 Kasım 2026 videosunda gösterildi. Kafe (&quot;Telve &amp; Tarçın&quot;) ve menü kurgusal.</p>
+<h2>İçinde ne var</h2>
+<ul>
+<li><code>prompt.txt</code>: Claude Code'a verdiğim prompt, birebir.</li>
+<li><code>ornek_kagit_menu.png</code>: denemede kullandığım örnek kâğıt menü (17 ürün; Latte'nin fiyatı üstü çizilip elle 125 yazılmış).</li>
+<li><code>menu.html</code>: Claude'un yazdığı QR menü sitesi (Claude'un çıktısında adı <code>index.html</code>; kit sayfasında bu ad ayrılmış olduğu için <code>menu.html</code> diye koydum). Tek dosya, internet gerektirmez; kategoriler üstte yapışkan düğme, adresin sonunda <code>?masa=5</code> varsa üstte &quot;Masa 5&quot; yazar.</li>
+<li><code>qr_yap.py</code>: menünün adresini QR koda çeviren betik (Claude yazdı). <code>qr.png</code> + <code>qr.svg</code> üretir; <code>--hepsi</code> ile 1-10. masalar için ayrı QR.</li>
+</ul>
+<h2>Nasıl kullanırsın</h2>
+<ol>
+<li>İndirince <code>menu.html</code>'in adını <code>index.html</code> yap. Kendi menün için onu bir metin düzenleyicide aç, <code>const MENU = [</code> ile başlayan listede ürün adlarını ve fiyatları değiştir. Kafenin adı sayfanın en üstündeki başlık satırında (&quot;Telve &amp; Tarçın&quot; yazan yer).
+İstersen bunu da Claude'a yaptır: kendi menünün fotoğrafını klasöre koy, <code>prompt.txt</code>'deki <code>menu.png</code> adını kendi dosyanın adıyla değiştirip Claude Code'a ver.</li>
+<li>Bilgisayarında dene: klasörde <code>python -m http.server 8017</code> çalıştır, tarayıcıda <code>http://localhost:8017/?masa=5</code> adresini aç.</li>
+<li>QR için önce <code>pip install segno</code>, sonra <code>qr_yap.py</code>'nin başındaki <code>ADRES</code> satırına sitenin gerçek adresini yaz (siteyi nereye koyduysan) ve <code>python qr_yap.py --hepsi</code> çalıştır. Çıkan <code>qr_masa1.png</code> ... <code>qr_masa10.png</code> dosyalarını bastırıp masalara koy.</li>
+</ol>
+<h2>Bilmen gerekenler</h2>
+<ul>
+<li>İşletme adı ve menü kurgusal; kendi bilgilerini yaz. Varsayılan adres <code>http://localhost:8017/</code> yalnız kendi bilgisayarında çalışır: telefonla okutmadan önce adresi değiştir.</li>
+<li>Bu sürümde yönetim paneli yok: fiyat değişince <code>index.html</code>'i düzenleyip yeniden yüklemen gerekir.</li>
+<li>Videodaki süre (43 saniye) ve maliyet (0,17 $, API liste fiyatı karşılığı; Max abonelikte ayrıca ödemedim) benim denememe ait; senin denemende farklı çıkabilir.</li>
+<li>Claude Code bu oturumda komut çalıştıramıyordu; betiği ben çalıştırdım, 10 QR'ın hepsini bilgisayarda okutup kontrol ettim.</li>
+<li>Armut'taki 2.000-7.000 TL bir talep/teklif bandıdır (Kasım 2026), kazanç sözü değildir.</li>
+</ul>
+<p>Pratik AI · her gün yeni kit: https://suzunn.github.io/pratikai-medya/kit/</p>
+</article>
+<section class="dosyalar"><h2>Dosyalar</h2><ul><li><a href="menu.html" download>menu.html</a><span>7 KB</span></li><li><a href="ornek_kagit_menu.png" download>ornek_kagit_menu.png</a><span>701 KB</span></li><li><a href="prompt.txt" download>prompt.txt</a><span>1 KB</span></li><li><a href="qr_yap.py" download>qr_yap.py</a><span>1 KB</span></li></ul></section>
+<footer>Pratik AI · Instagram <a href="https://www.instagram.com/pratikaitr/">@pratikaitr</a> · YouTube <a href="https://www.youtube.com/channel/UCC1pagUml-skLPoiApaLKbA">PratikAI</a></footer></main><script>document.querySelectorAll('pre').forEach(function(p){var b=document.createElement('button');b.className='kopyala';
+b.type='button';b.textContent='Kopyala';b.onclick=function(){navigator.clipboard.writeText(p.innerText.replace(/Kopyala$|Kopyalandı$/,'').trim()).then(function(){
+b.textContent='Kopyalandı';setTimeout(function(){b.textContent='Kopyala'},1500)})};p.appendChild(b)})</script></body></html>

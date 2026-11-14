@@ -1,0 +1,6 @@
+Bu klasördeki menu.png, kurgusal bir kafenin kâğıt menüsünün görüntüsü. Bu menüyü müşterinin masadaki QR kodu okutunca telefonunda açılacak bir QR menü sitesine çevir.
+
+1) index.html: tek dosya, CSS ve JavaScript aynı dosyada. Telefonda güzel görünsün. Üstte kafenin adı; kategoriler üstte yapışkan düğmeler olsun, dokununca o bölüme kaysın; her ürünün adı ve fiyatı (TL). Adresin sonunda ?masa=5 gibi bir masa numarası varsa sayfanın üstünde "Masa 5" yazsın. Dış kaynak kullanma: CDN, internetten font ya da görsel yok.
+2) qr_yap.py: Python'daki segno kütüphanesiyle menünün adresini QR koda çeviren kısa bir betik. Adres ve masa numarası betiğin başında değişken olsun (varsayılan adres http://localhost:8017/ ve masa 5). qr.png ve qr.svg yazsın; --hepsi verilirse 1'den 10'a kadar her masa için ayrı QR dosyası üretsin.
+
+Ürün adlarını ve fiyatları menüden birebir al; bir fiyatın üstü çizilip yanına elle yeni fiyat yazılmışsa yeni fiyatı kullan. Gerçek bir işletme adı, telefon numarası ya da e-posta ekleme. Bitince ne yaptığını tek cümleyle söyle.
