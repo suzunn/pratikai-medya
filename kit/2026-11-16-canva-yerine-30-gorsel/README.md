@@ -9,7 +9,7 @@ Claude Code kurgusal bir kafe için tek bir şablon ve onu PNG'ye çeviren küç
 - `bas.py`: bilgisayardaki Microsoft Edge ya da Google Chrome'u görünmez (headless) çalıştırıp 30 gönderiyi `gorseller/gonderi_01.png` ... `gonderi_30.png` olarak basar. Yalnız Python'un kendi kütüphanesini kullanır, ek kurulum istemez
 - `bas.bat`: Windows için tek tık (çift tıkla, `bas.py`'yi çalıştırır)
 - `prompt.txt`: Claude Code'a verdiğim ilk prompt, birebir
-- `prompt_duzeltme.txt`: ilk baskıda 4 gönderinin yerleşimi bozuk çıktı; düzeltmek için verdiğim tek cümlelik istek, birebir
+- `prompt_duzeltme.txt`: ilk baskıda 4 gönderinin yerleşimi bozuk çıktı; düzeltmek için verdiğim kısa istek (4 cümle), birebir
 - `prompt_kendi_isletmen.txt`: şablonu kendi işletmene uyarlatmak için doldurulacak prompt (köşeli parantezli yerler)
 - `ornek/`: basılan 30 gönderiden 4 örnek
 
