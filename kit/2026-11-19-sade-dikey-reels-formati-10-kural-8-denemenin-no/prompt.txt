@@ -1,0 +1,17 @@
+Kendi Reels/Shorts formatını bulmak için Claude Code'a verebileceğin prompt (köşeli parantezli yerleri doldur):
+
+---
+Kısa dikey videolarım için sade, okunur bir format arıyorum. Konum: [ör. yapay zekâ araçlarıyla yaptığım işler, ekran kaydı ağırlıklı].
+
+1. [konu] üzerine bu yıl yayınlanmış, çok izlenmiş 10-15 Short'un linkini sana veriyorum: [linkler].
+   Her birini indir, saniyede 1 kare çıkar, ilk 2,5 saniyeyi yarım saniyede bir kare olarak ayrıca incele.
+2. Her video için şunları tabloya yaz: süre, ekranda aynı anda kaç yazı var, altyazı kaç kelime ve nerede,
+   yüz/maskot ne kadar görünüyor, ortalama kesim aralığı (ffmpeg sahne tespiti), ilk 2 saniyede ne görünüyor, sessizlik var mı.
+3. Ortak kalıbı en çok 10 kural olarak yaz. Her kuralın yanına hangi videolardan çıktığını not et.
+4. Bu kurallarla benim şu videomun ilk 20 saniyesini iki farklı şekilde yeniden kur: [videonun ya da sahnelerin yolu].
+   İkisinden birer kare alıp yan yana karşılaştırma görseli yap.
+5. Ben beğenmediğim yeri söyleyeceğim. Her turda yalnız dediğimi değiştir, değişikliği bir satırla yaz.
+
+Kurallar: hiçbir yazı ekranın kenarına 30 pikselden daha yakın olmasın. Ekranda aynı anda en çok 1 yazı olsun (altyazı; gerekirse yanında tek bir rakam).
+Başka kanalların videolarını yalnız inceleme için kullan, kendi videoma kare koyma.
+---

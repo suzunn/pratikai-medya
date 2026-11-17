@@ -1,0 +1,34 @@
+{
+ "baslik": "Sade dikey Reels formatı: 10 kural, 8 denemenin notları ve parça planı",
+ "tarih": "2026-11-19",
+ "slug": "sade-dikey-reels-formati-10-kural-8-denemenin-no",
+ "oz": "Günlük Reels formatımı Claude'la 8 denemede bulduk. Bu kitte o günün kuralları, her turda ne dediğim ve dikey parça planının örneği var. Videoda 19 Kasım 202…",
+ "yayin_zamani": "2026-11-17T18:45:04+03:00",
+ "dosyalar": [
+  {
+   "ad": "README.md",
+   "boyut": 1746
+  },
+  {
+   "ad": "arastirma_ozeti.md",
+   "boyut": 2229
+  },
+  {
+   "ad": "dikey_parca_plan_ornegi.json",
+   "boyut": 6980
+  },
+  {
+   "ad": "format_kurallari.md",
+   "boyut": 1820
+  },
+  {
+   "ad": "prompt.txt",
+   "boyut": 1431
+  },
+  {
+   "ad": "revize_turlari.md",
+   "boyut": 1565
+  }
+ ],
+ "surum": 1
+}

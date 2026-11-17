@@ -1,0 +1,410 @@
+{
+ "_not": "Ornek dikey parca plani (Pratik AI, 19 Kas 2026). Her sahne 1080x1920 dikey tuvalde kurulur; koordinatlar piksel, 't' = belirme ani (sn). Turler: gorsel (src, x, y, w, don, kose), halka (cx, cy, rx, ry, t, renk), buyutec, ok, telefon, konsol (buyuk yazili satirlar). Kural: hicbir oge ekranin sol/sag kenarina 30 px'ten yakin olmaz. Gorsel yollari ornektir, kendi karelerini koy.",
+ "cikti": "kurgu",
+ "zemin": "#1C1322",
+ "sahneler": [
+  {
+   "ad": "kanca",
+   "sure": 11.0,
+   "ogeler": [
+    {
+     "tur": "gorsel",
+     "src": "ornek_kareler/A_0.6.png",
+     "x": 60,
+     "y": 170,
+     "w": 480,
+     "don": -3,
+     "kose": 26
+    },
+    {
+     "tur": "gorsel",
+     "src": "ornek_kareler/A8_1.0.png",
+     "x": 545,
+     "y": 170,
+     "w": 480,
+     "don": 2,
+     "kose": 26
+    }
+   ]
+  },
+  {
+   "ad": "zaman",
+   "tur": "konsol",
+   "sure": 6.0,
+   "y": 300,
+   "satirlar": [
+    {
+     "metin": "14 Kas · format günü",
+     "font": 50,
+     "renk": "#9C8FA8",
+     "ust": 0
+    },
+    {
+     "metin": "12:49  A · B",
+     "font": 76,
+     "kalin": 800,
+     "ust": 40,
+     "t": 1.9
+    },
+    {
+     "metin": "13:49  A1 · A2 · A3",
+     "font": 76,
+     "kalin": 800,
+     "t": 2.4
+    },
+    {
+     "metin": "15:02  A4 · A5",
+     "font": 76,
+     "kalin": 800,
+     "t": 2.9
+    },
+    {
+     "metin": "15:40  A6 · A7",
+     "font": 76,
+     "kalin": 800,
+     "t": 3.4
+    },
+    {
+     "metin": "15:57  A8 ✓",
+     "font": 96,
+     "kalin": 800,
+     "renk": "#5BD67D",
+     "t": 3.9,
+     "ust": 30
+    }
+   ]
+  },
+  {
+   "ad": "kart",
+   "sure": 5.0,
+   "ogeler": [
+    {
+     "tur": "gorsel",
+     "src": "ornek_kareler/kart_1.0.png",
+     "x": 190,
+     "y": 110,
+     "w": 700,
+     "kose": 26
+    },
+    {
+     "tur": "halka",
+     "cx": 486,
+     "cy": 562,
+     "rx": 270,
+     "ry": 205,
+     "t": 0.9,
+     "renk": "#EE3B45"
+    }
+   ]
+  },
+  {
+   "ad": "ab",
+   "sure": 5.0,
+   "ogeler": [
+    {
+     "tur": "gorsel",
+     "src": "ornek_kareler/A_5.2.png",
+     "x": 50,
+     "y": 170,
+     "w": 480,
+     "kose": 26
+    },
+    {
+     "tur": "gorsel",
+     "src": "ornek_kareler/B_5.2.png",
+     "x": 550,
+     "y": 170,
+     "w": 480,
+     "kose": 26,
+     "t": 0.7
+    }
+   ]
+  },
+  {
+   "ad": "kedi",
+   "sure": 5.0,
+   "ogeler": [
+    {
+     "tur": "gorsel",
+     "src": "ornek_kareler/A_0.6.png",
+     "x": 190,
+     "y": 110,
+     "w": 700,
+     "kose": 26
+    },
+    {
+     "tur": "halka",
+     "cx": 612,
+     "cy": 975,
+     "rx": 215,
+     "ry": 265,
+     "t": 0.8,
+     "renk": "#EE3B45"
+    }
+   ]
+  },
+  {
+   "ad": "a123",
+   "sure": 6.0,
+   "ogeler": [
+    {
+     "tur": "gorsel",
+     "src": "ornek_kareler/A1_1.4.png",
+     "x": 50,
+     "y": 420,
+     "w": 320,
+     "kose": 22
+    },
+    {
+     "tur": "gorsel",
+     "src": "ornek_kareler/A2_2.6.png",
+     "x": 380,
+     "y": 420,
+     "w": 320,
+     "kose": 22,
+     "t": 0.6
+    },
+    {
+     "tur": "gorsel",
+     "src": "ornek_kareler/A1_7.0.png",
+     "x": 710,
+     "y": 420,
+     "w": 320,
+     "kose": 22,
+     "t": 1.2
+    }
+   ]
+  },
+  {
+   "ad": "yazilar",
+   "sure": 8.0,
+   "ogeler": [
+    {
+     "tur": "gorsel",
+     "src": "ornek_kareler/A1_13.0.png",
+     "x": 190,
+     "y": 110,
+     "w": 700,
+     "kose": 26
+    },
+    {
+     "tur": "halka",
+     "cx": 485,
+     "cy": 365,
+     "rx": 255,
+     "ry": 60,
+     "t": 0.25,
+     "renk": "#EE3B45",
+     "kalin": 10
+    },
+    {
+     "tur": "halka",
+     "cx": 520,
+     "cy": 458,
+     "rx": 300,
+     "ry": 45,
+     "t": 0.7,
+     "renk": "#EE3B45",
+     "kalin": 10
+    },
+    {
+     "tur": "halka",
+     "cx": 480,
+     "cy": 872,
+     "rx": 250,
+     "ry": 60,
+     "t": 1.15,
+     "renk": "#EE3B45",
+     "kalin": 10
+    }
+   ]
+  },
+  {
+   "ad": "inceleme",
+   "tur": "konsol",
+   "sure": 7.0,
+   "y": 330,
+   "satirlar": [
+    {
+     "metin": "13 Short",
+     "font": 180,
+     "kalin": 800,
+     "ust": 0
+    },
+    {
+     "metin": "saniyede 1 kare",
+     "font": 64,
+     "renk": "#9C8FA8",
+     "ust": 10,
+     "t": 0.6
+    },
+    {
+     "metin": "→ 10 kural",
+     "font": 150,
+     "kalin": 800,
+     "renk": "#FFD23F",
+     "ust": 60,
+     "t": 2.1
+    }
+   ]
+  },
+  {
+   "ad": "kurallar",
+   "tur": "konsol",
+   "sure": 6.0,
+   "y": 330,
+   "satirlar": [
+    {
+     "metin": "1  ekranda tek yazı",
+     "font": 76,
+     "kalin": 800,
+     "ust": 0
+    },
+    {
+     "metin": "3  kararma yok",
+     "font": 76,
+     "kalin": 800,
+     "ust": 40,
+     "t": 1.5
+    },
+    {
+     "metin": "7  sonuç ilk 2 sn'de",
+     "font": 76,
+     "kalin": 800,
+     "ust": 40,
+     "t": 2.65
+    }
+   ]
+  },
+  {
+   "ad": "kenar",
+   "sure": 5.0,
+   "ogeler": [
+    {
+     "tur": "gorsel",
+     "src": "ornek_kareler/A4_13.5.png",
+     "x": 150,
+     "y": 100,
+     "w": 780,
+     "kose": 26
+    },
+    {
+     "tur": "halka",
+     "cx": 883,
+     "cy": 385,
+     "rx": 70,
+     "ry": 85,
+     "t": 0.6,
+     "renk": "#EE3B45"
+    }
+   ]
+  },
+  {
+   "ad": "a8",
+   "sure": 6.0,
+   "ogeler": [
+    {
+     "tur": "gorsel",
+     "src": "ornek_kareler/A8_1.0.png",
+     "x": 50,
+     "y": 420,
+     "w": 320,
+     "kose": 22
+    },
+    {
+     "tur": "gorsel",
+     "src": "ornek_kareler/A8_5.5.png",
+     "x": 380,
+     "y": 420,
+     "w": 320,
+     "kose": 22,
+     "t": 0.5
+    },
+    {
+     "tur": "gorsel",
+     "src": "ornek_kareler/A8_14.5.png",
+     "x": 710,
+     "y": 420,
+     "w": 320,
+     "kose": 22,
+     "t": 1.0
+    }
+   ]
+  },
+  {
+   "ad": "kenar0",
+   "tur": "konsol",
+   "sure": 5.0,
+   "y": 330,
+   "satirlar": [
+    {
+     "metin": "kenar ölçümü",
+     "font": 64,
+     "renk": "#9C8FA8",
+     "ust": 0
+    },
+    {
+     "metin": "148 kare",
+     "font": 170,
+     "kalin": 800,
+     "ust": 20
+    },
+    {
+     "metin": "0 kesik ✓",
+     "font": 160,
+     "kalin": 800,
+     "renk": "#5BD67D",
+     "ust": 20,
+     "t": 0.9
+    }
+   ]
+  },
+  {
+   "ad": "onay",
+   "sure": 6.0,
+   "ogeler": [
+    {
+     "tur": "gorsel",
+     "src": "ornek_kareler/son_1.0.png",
+     "x": 50,
+     "y": 170,
+     "w": 480,
+     "kose": 26
+    },
+    {
+     "tur": "gorsel",
+     "src": "ornek_kareler/son_32.0.png",
+     "x": 550,
+     "y": 170,
+     "w": 480,
+     "kose": 26,
+     "t": 0.8
+    }
+   ]
+  },
+  {
+   "ad": "kapanis",
+   "sure": 5.0,
+   "ogeler": [
+    {
+     "tur": "gorsel",
+     "src": "ornek_kareler/A_0.6.png",
+     "x": 60,
+     "y": 840,
+     "w": 460,
+     "don": -3,
+     "kose": 26
+    },
+    {
+     "tur": "gorsel",
+     "src": "ornek_kareler/A8_1.0.png",
+     "x": 555,
+     "y": 840,
+     "w": 460,
+     "don": 2,
+     "kose": 26
+    }
+   ]
+  }
+ ]
+}
