@@ -1,0 +1,30 @@
+{
+ "baslik": "Videoların için geçiş efekti ve alt müzik ürettirme: promptlar",
+ "tarih": "2026-11-20",
+ "slug": "videolarin-icin-gecis-efekti-ve-alt-muzik-uretti",
+ "oz": "Claude'a kendi videolarım için 8 geçiş efekti ve 4 vokalsiz alt müzik ürettirdiğim denemenin promptları ve kullanım notları. 20 Kasım 2026 videosunda gösteri…",
+ "yayin_zamani": "2026-11-17T21:09:40+03:00",
+ "dosyalar": [
+  {
+   "ad": "README.md",
+   "boyut": 2518
+  },
+  {
+   "ad": "claude_istegi.txt",
+   "boyut": 1101
+  },
+  {
+   "ad": "efekt_promptlari.txt",
+   "boyut": 1522
+  },
+  {
+   "ad": "muzik_promptlari.txt",
+   "boyut": 1516
+  },
+  {
+   "ad": "ses_kutuphanesi_notu.md",
+   "boyut": 2492
+  }
+ ],
+ "surum": 1
+}

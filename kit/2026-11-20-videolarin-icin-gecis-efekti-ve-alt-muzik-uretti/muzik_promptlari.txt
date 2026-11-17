@@ -1,0 +1,17 @@
+3 ALT MUZIK ISTEGI - PROMPTLAR (birebir, 14 Kas 2026)
+Model: KIE ai-music-api/generate, model V6, custom_mode acik, instrumental (vokalsiz) acik, sure 60 sn.
+Her istek 2 parca dondurur (3 istek = 6 parca; 4'unu tuttum). Istek basina 12 kredi (o gunku fiyat).
+
+OLMASIN LISTESI (negative_tags, ucunde de ayni):
+vocals, singing, choir, humming, spoken word, EDM drop, dubstep, epic trailer, big build-up, risers, guitar solo, loud lead melody, bright piano, harsh hi-hats, sudden stops
+
+1) lofi tech (sonuc: M3, 85 BPM)
+instrumental minimal lo-fi hip hop bed for a tech voice-over, soft dusty drums, warm muted Rhodes chords low in the mix, mellow round sub bass, 85 BPM, constant steady energy from start to end, no build-ups, no breaks, sparse, loopable, leaves room for speech
+
+2) minimal elektronik (sonuc: M1, 108 BPM; bu videonun altinda calan)
+instrumental minimal modern electronic underscore, soft plucked synth pattern, gentle pulsing pad, light clicky percussion, round deep bass, 108 BPM, even steady energy the whole time, no drops, no risers, loopable background bed for a tech explainer voice-over
+
+3) derin house (sonuc: M2 ve M4, 118 BPM)
+instrumental calm minimal deep house groove, soft muted kick, light shaker, warm low pad, subtle marimba plucks, 118 BPM, steady hypnotic loop, no breakdown, no build-up, understated background music under a voice-over, modern tech vibe
+
+Neden boyle yazdim: alt muzik konusmayi bastirmamali. "Sabit enerji", "build-up yok", "drop yok" ve vokal yasagi bunun icin.

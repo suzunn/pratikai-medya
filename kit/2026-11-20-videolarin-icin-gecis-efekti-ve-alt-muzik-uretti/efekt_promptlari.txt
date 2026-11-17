@@ -1,0 +1,28 @@
+8 GECIS EFEKTI - PROMPTLAR (birebir, 14 Kas 2026)
+Model: KIE ai-music-api/sounds, model V6. Her istek 2 surum dondurur. Istek basina 2,5 kredi (o gunku fiyat).
+Her promptun sonuna su ek kondu (tek ses, muziksiz):
+, no music, no melody, no voice, single isolated sound effect, clean, close mic
+
+E1 hava supurme (genel sahne gecisi)
+one soft deep air whoosh, low-pitched breathy swipe passing by, warm and muffled, no high hiss, under one second
+
+E2 tok kesme (sert kesme, madde basi)
+one single deep soft thump, punchy low muffled impact like a felt mallet on a big drum, dry, very short cut hit
+
+E3 kart cevirme (liste maddesi, ekran degisimi)
+one thick playing card flipped and slapped down onto a wooden table, soft paper flick then tap, short
+
+E4 dijital tik (arayuz / ekran kaydi gecisi)
+one short soft digital glitch stutter, low-pitched rounded data blip and tick, warm, not harsh, interface transition
+
+E5 bant geri sarma (once/sonra, geri donus ani)
+short tape rewind, reel to reel tape spinning backward fast for half a second, warm low wobbly pitch
+
+E6 bas dususu (vurgu ani; telefonda zayif, baska efektle ust uste kullan)
+one short sub bass drop, deep smooth falling low tone boom, about one second, cinematic transition hit
+
+E7 tok pop (kucuk oge belirmesi, yazi cikisi)
+one single soft hollow wooden pop, round muted knock like a cork popping, short, warm
+
+E8 ters tok (zoom / yakinlasma gecisi)
+a short reversed soft whoosh swelling up and ending in a muffled low thud, suck-in transition, under one second

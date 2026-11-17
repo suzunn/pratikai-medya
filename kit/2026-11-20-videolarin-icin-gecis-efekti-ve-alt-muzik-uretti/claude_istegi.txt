@@ -1,0 +1,7 @@
+Videolarım için kendi ses kütüphanemi kurmak istiyorum. Bu klasörde çalış.
+
+1. Kısa dikey videolarda sahne geçişlerinde kullanacağım 8 farklı geçiş efekti için İngilizce prompt yaz: yumuşak hava süpürmesi, tok kesme vuruşu, kart çevirme, dijital tık, bant geri sarma, bas düşüşü, tok pop, ters whoosh. Her biri tek, temiz, müziksiz ve 1 saniyeden kısa olsun. Telefon hoparlöründe de duyulsun, tiz cızırtı olmasın.
+2. Konuşmanın altında çalacak 3 vokalsiz alt müzik için stil metni yaz: sabit enerji, build-up ve drop yok, konuşmaya yer bırakan sade düzenleme. Ayrıca "olmasın" listesi yaz.
+3. Promptları önce bana göster. Ben onaylayınca ses modeline gönder (erişim bilgisi ortam değişkeninde, ekrana yazdırma), her isteğin kaç kredi tuttuğunu bir dosyaya yaz.
+4. Gelen sesleri indir, her efektte en güçlü anı 0,3 ile 1,2 saniye arasında kırp, tepeyi -2 dBFS'e getir. Müzikleri -20 LUFS'e getir, uçlarına kısa fade koy.
+5. Hepsini anlamlı adlarla bir klasöre koy ve her dosya için bir satırlık "nerede kullanılır" notu yaz.
