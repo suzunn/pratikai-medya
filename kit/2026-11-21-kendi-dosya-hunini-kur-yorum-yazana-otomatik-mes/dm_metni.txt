@@ -1,0 +1,34 @@
+OTOMATİK MESAJ METNİ ÖRNEKLERİ (Pratik AI, 21 Kasım 2026)
+
+Kural: kısa tut, tek düğme koy. Mesajın işi yalnız sayfayı açtırmak.
+
+1) Benim kullandığım (kare görsel + metin + düğme)
+   Metin : Merhaba! Buradan ücretsiz indirebilirsin
+   Düğme : Dosyaları aç
+   Link  : [kit sayfanın adresi]
+
+2) Hangi videodan geldiğini bilmeyenler için
+   Metin : Selam, DOSYA yazdığın için teşekkürler. Bütün videoların dosyaları tek sayfada, en yenisi en üstte.
+   Düğme : Kitleri gör
+
+3) Kısa
+   Metin : İstediğin dosyalar burada.
+   Düğme : Aç
+
+4) Takip hatırlatmalı (zorlamadan)
+   Metin : Dosyalar burada. Her gün yenisi ekleniyor, kaçırmak istemezsen takipte kal.
+   Düğme : Dosyaları aç
+
+
+VİDEONUN SON CÜMLESİ İÇİN KALIPLAR
+(Çağrı yalnız son 2-3 saniyede olsun; videonun ortasında istenmesin.)
+
+- Dosyaları istersen yorumlara DOSYA yaz, DM'den göndereyim.
+- Şablonu istersen yorumlara DOSYA yaz, mesajla göndereyim.
+- Mesaj gelmediyse mesaj isteklerine bak.
+
+
+DİKKAT
+- Instagram yorum başına tek otomatik mesaja izin veriyor, yorumdan sonraki 7 gün içinde.
+- Seni takip etmeyen kişide mesaj "istekler"e düşer.
+- "Kazan", "garanti" gibi sözler kullanma; mesaj spam gibi görünür.

@@ -1,0 +1,99 @@
+<!doctype html>
+<!--
+  Ücretsiz kitler sayfası şablonu (Pratik AI, 21 Kasım 2026).
+  Tek dosya, internet gerektirmez. Köşeli parantezli yerleri kendi bilgilerinle değiştir.
+  Yeni kit = listenin EN ÜSTÜNE yeni bir <li> kartı. Tarihi data-tarih alanına YYYY-AA-GG biçiminde yaz:
+  sayfa, tarihi bugün olan karta "YENİ" etiketini kendisi koyar; tarihi gelecekte olan kartı gizler.
+-->
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>[Kanal adın] · Ücretsiz Kitler</title>
+<meta name="description" content="Videolarda gösterdiğim dosyalar, promptlar ve şablonlar. Her gün yenisi en üstte.">
+<meta name="theme-color" content="#0B1328">
+<style>
+:root{--gece:#0B1328;--pano:#13203F;--cizgi:#2B3D6B;--krem:#F3E9D6;--vurgu:#F2B84B;--sis:#A6B6D8}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--gece);color:var(--krem);font:500 16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:660px;margin:0 auto;padding:28px 16px 56px}
+a{color:var(--vurgu)}
+.rozet{display:inline-block;font:800 12px/1 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--gece);background:var(--vurgu);padding:7px 11px 6px;border-radius:999px}
+h1{font:800 27px/1.2 system-ui,sans-serif;margin:14px 0 8px}
+.alt{color:var(--sis);margin:0 0 18px}
+.adim{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 22px;padding:0;list-style:none}
+.adim li{background:var(--pano);border:1px solid var(--cizgi);border-radius:12px;padding:10px 8px;text-align:center;font-size:13px;color:var(--sis)}
+.adim b{display:block;color:var(--krem);font-size:15px}
+.liste{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.kart{display:block;background:var(--pano);border:1px solid var(--cizgi);border-radius:16px;padding:16px 16px 14px;color:inherit;text-decoration:none}
+.kart:hover,.kart:focus-visible{border-color:var(--vurgu)}
+.tarih{color:var(--sis);font-size:14px}
+.yeni{color:var(--gece);background:var(--vurgu);border-radius:6px;padding:1px 7px;font-size:12px;font-weight:800;margin-left:6px}
+.kart b{display:block;font:800 18px/1.3 system-ui,sans-serif;margin:6px 0}
+.kart .oz{display:block;color:var(--sis);font-size:15px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.not{margin-top:22px;background:var(--pano);border:1px dashed var(--cizgi);border-radius:16px;padding:14px 16px;color:var(--sis);font-size:15px}
+.not b{color:var(--krem)}
+footer{margin-top:30px;color:var(--sis);font-size:14px}
+</style>
+</head>
+<body>
+<main>
+<span class="rozet">Ücretsiz</span>
+<h1>[Kanal adın] · Ücretsiz Kitler</h1>
+<p class="alt">Videolarda gösterdiğim dosyalar, promptlar ve şablonlar. Her gün yenisi en üstte.</p>
+
+<ol class="adim">
+  <li><b>1</b>Yoruma DOSYA yaz</li>
+  <li><b>2</b>Mesajdaki düğmeye bas</li>
+  <li><b>3</b>Kitini indir</li>
+</ol>
+
+<ol class="liste" id="liste">
+  <!-- ÖRNEK KART 1: yenisini bunun ÜSTÜNE kopyala -->
+  <li data-tarih="2026-11-16">
+    <a class="kart" href="[kitin linki]">
+      <span class="tarih">16 Kasım 2026</span>
+      <b>Örnek: Berber randevu sitesi şablonu</b>
+      <span class="oz">Videoda yaptığım işin dosyaları: prompt, tek dosyalık site ve kısa kullanım notu. Kendi işletmenin bilgilerini yazıp kullan.</span>
+    </a>
+  </li>
+  <!-- ÖRNEK KART 2 -->
+  <li data-tarih="2026-11-15">
+    <a class="kart" href="[kitin linki]">
+      <span class="tarih">15 Kasım 2026</span>
+      <b>Örnek: Kafe QR menü şablonu</b>
+      <span class="oz">Kâğıt menüyü telefonda açılan bir menüye çeviren şablon ve masa masa QR kodu üreten küçük bir betik.</span>
+    </a>
+  </li>
+  <!-- ÖRNEK KART 3 -->
+  <li data-tarih="2026-11-14">
+    <a class="kart" href="[kitin linki]">
+      <span class="tarih">14 Kasım 2026</span>
+      <b>Örnek: 30 Instagram görseli için HTML şablonu</b>
+      <span class="oz">Tek HTML şablondan bir haftalık gönderi görsellerini basan dosyalar ve kullandığım promptlar.</span>
+    </a>
+  </li>
+</ol>
+
+<p class="not"><b>Mesaj gelmedi mi?</b> Beni takip etmiyorsan otomatik mesaj gelen kutuna değil, <b>mesaj isteklerine</b> düşer. Önce oraya bak.</p>
+
+<footer>[Kanal adın] · <a href="[Instagram linkin]">Instagram</a> · <a href="[YouTube linkin]">YouTube</a></footer>
+</main>
+<script>
+(function () {
+  // Türkiye saatiyle bugün (UTC+3). Gelecek tarihli kartlar gizlenir, bugünkü karta "YENİ" eklenir.
+  var bugun = new Date(Date.now() + 3 * 3600e3).toISOString().slice(0, 10);
+  var kartlar = document.querySelectorAll("#liste > li[data-tarih]");
+  for (var i = 0; i < kartlar.length; i++) {
+    var li = kartlar[i], t = li.getAttribute("data-tarih");
+    if (t > bugun) { li.style.display = "none"; continue; }
+    if (t === bugun) {
+      var s = li.querySelector(".tarih");
+      if (s && !s.querySelector(".yeni")) { var y = document.createElement("span"); y.className = "yeni"; y.textContent = "YENİ"; s.appendChild(y); }
+    }
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+ "baslik": "Kendi DOSYA hunini kur: yorum yazana otomatik mesaj ve ücretsiz kit sayfası",
+ "tarih": "2026-11-21",
+ "slug": "kendi-dosya-hunini-kur-yorum-yazana-otomatik-mes",
+ "oz": "Videonun sonunda \"yorumlara DOSYA yaz\" deyip yorum yazana otomatik mesaj attığım düzenin kurulum notları. 21 Kasım 2026 videosunda gösterildi. İçinde mesaj m…",
+ "yayin_zamani": "2026-11-17T21:25:11+03:00",
+ "dosyalar": [
+  {
+   "ad": "README.md",
+   "boyut": 4659
+  },
+  {
+   "ad": "dm_metni.txt",
+   "boyut": 1252
+  },
+  {
+   "ad": "kit_sayfasi.html",
+   "boyut": 5093
+  }
+ ],
+ "surum": 1
+}
