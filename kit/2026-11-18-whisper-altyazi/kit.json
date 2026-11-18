@@ -1,0 +1,22 @@
+{
+ "baslik": "Whisper altyazı betiği: videoya bilgisayarında, ücretsiz altyazı",
+ "tarih": "2026-11-18",
+ "slug": "whisper-altyazi",
+ "oz": "\"CapCut'a para verme: altyazıyı bilgisayarımdaki Whisper yazdı\" videosunda kullandığım betiğin aynısı. Videoyu verirsin; konuşmayı Whisper ile yazıya döker, …",
+ "yayin_zamani": "2026-11-18T11:30:40+03:00",
+ "dosyalar": [
+  {
+   "ad": "README.md",
+   "boyut": 2608
+  },
+  {
+   "ad": "altyazi_yap.bat",
+   "boyut": 211
+  },
+  {
+   "ad": "altyazi_yap.py",
+   "boyut": 6160
+  }
+ ],
+ "surum": 1
+}
