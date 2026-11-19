@@ -1,0 +1,26 @@
+{
+ "baslik": "Kanalını Claude'a yönettir: haftalık akış, günlük kontrol listesi, kanca puan kartı",
+ "tarih": "2026-11-22",
+ "slug": "kanalini-claude-a-yonettir-haftalik-akis-gunluk",
+ "oz": "Kanalımın günlük Reels'ini bir hafta boyunca Claude'a bıraktım. 22 Kasım 2026 videosunda ilk haftanın raporunu gösterdim: 4 video toplam 11.561 kez izlendi, …",
+ "yayin_zamani": "2026-11-19T22:20:17+03:00",
+ "dosyalar": [
+  {
+   "ad": "README.md",
+   "boyut": 1569
+  },
+  {
+   "ad": "gunluk_kontrol_listesi.md",
+   "boyut": 1688
+  },
+  {
+   "ad": "haftalik_akis.md",
+   "boyut": 2217
+  },
+  {
+   "ad": "kanca_puan_karti.md",
+   "boyut": 2437
+  }
+ ],
+ "surum": 1
+}
