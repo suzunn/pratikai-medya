@@ -1,0 +1,22 @@
+{
+ "baslik": "Yorum cevaplama rehberi: elle mi otomatik mi, 3 cevap şablonu ve Meta kuralları",
+ "tarih": "2026-11-23",
+ "slug": "yorum-cevaplama-rehberi-elle-mi-otomatik-mi-3-ce",
+ "oz": "DOSYA yazan herkese yorumdan cevap vermenin iki yolu ve benim kullandığım 3 cevap cümlesi. 23 Kasım 2026 videosunda gösterildi: otomatik cevap ücretli planda…",
+ "yayin_zamani": "2026-11-19T22:14:48+03:00",
+ "dosyalar": [
+  {
+   "ad": "README.md",
+   "boyut": 3481
+  },
+  {
+   "ad": "cevap_sablonlari.txt",
+   "boyut": 962
+  },
+  {
+   "ad": "prompt.txt",
+   "boyut": 1031
+  }
+ ],
+ "surum": 1
+}

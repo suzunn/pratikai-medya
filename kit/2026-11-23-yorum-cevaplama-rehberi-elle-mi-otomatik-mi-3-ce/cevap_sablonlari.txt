@@ -1,0 +1,23 @@
+YORUM CEVAP ŞABLONLARI (Pratik AI, 23 Kasım 2026)
+
+Claude'un DOSYA yazanlara yorumdan yazdığı 3 cümle (birebir). Sırayla kullandı: 1, 2, 3, 1, 2, 3...
+
+1. DM'den gönderdim, gelmediyse mesaj isteklerine bak
+2. Gönderdim, DM gelmediyse mesaj isteklerine bakabilirsin
+3. DM'den attım, göremezsen mesaj isteklerine bir bak
+
+Neden "mesaj istekleri"? Seni takip etmeyen birine giden özel mesaj gelen kutusuna değil, mesaj isteklerine düşer
+(Meta, Instagram "Private Replies").
+
+KENDİ CÜMLENİ YAZARKEN
+
+- Kısa tut: tek cümle, link yok.
+- Ne yaptığını söyle: "gönderdim", "attım", "DM'ye bıraktım".
+- Mesaj gelmezse nereye bakacağını söyle: "mesaj isteklerine bak".
+- En az 3 farklı cümle hazırla ve sırayla kullan.
+
+Örnek kalıplar (boşluğa kendi kelimeni yaz):
+
+- DM'den gönderdim, ____ gelmediyse mesaj isteklerine bak
+- Attım bile, ____ için DM'ye bakabilirsin
+- Gönderdim, görmezsen mesaj isteklerinde duruyor olabilir

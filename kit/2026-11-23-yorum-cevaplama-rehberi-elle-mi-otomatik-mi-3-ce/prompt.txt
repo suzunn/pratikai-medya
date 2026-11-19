@@ -1,0 +1,18 @@
+Claude'a verdiğim talimatın düzenli hâli (tarayıcı eklentisiyle, Instagram kendi hesabımla açıkken).
+Köşeli parantezli yerleri kendine göre doldur.
+
+---
+Tarayıcıdan kendin yaz. Instagram'da [VİDEO TARİHİ] tarihli Reels'imin yorumlarını aç.
+"[KELİME]" yazan ve henüz cevap verilmemiş her yoruma tek tek cevap yaz.
+
+Kurallar:
+1. Yazmaya başlamadan önce açık hesabın [HESAP ADIN] olduğunu kontrol et. Başka bir hesap açıksa hiçbir şey yazma, bana söyle ve bekle.
+2. Spam gibi durmasın diye şu 3 cümleyi sırayla kullan (1, 2, 3, 1, 2, 3...):
+   1) DM'den gönderdim, gelmediyse mesaj isteklerine bak
+   2) Gönderdim, DM gelmediyse mesaj isteklerine bakabilirsin
+   3) DM'den attım, göremezsen mesaj isteklerine bir bak
+3. Cevaba link koyma. Aynı yoruma iki kez cevap yazma.
+4. Her cevaptan sonra birkaç saniye bekle.
+5. Bir düğme tıklanmazsa ekrandaki yerinden tıklamayı dene, olmazsa o yorumu atla ve not et.
+6. Bitince kaç yoruma cevap yazdığını ve atladıklarını listele.
+---

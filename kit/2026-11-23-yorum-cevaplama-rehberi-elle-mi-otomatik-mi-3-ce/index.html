@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Yorum cevaplama rehberi: elle mi otomatik mi, 3 cevap şablonu ve Meta kuralları · Pratik AI</title><meta name="description" content="Videolarda gösterdiğim dosyalar, promptlar ve şablonlar. Her gün yenisi en üstte."><meta name="theme-color" content="#0B1328"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&family=Unbounded:wght@700&display=swap" rel="stylesheet"><style>:root{--gece:#0B1328;--pano:#13203F;--cizgi:#2B3D6B;--krem:#F3E9D6;--pirinc:#F2B84B;--sis:#A6B6D8}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--gece);color:var(--krem);font:500 16px/1.6 Manrope,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:660px;margin:0 auto;padding:28px 16px 56px}
+a{color:var(--pirinc)}
+.rozet{display:inline-block;font:700 12px/1 Unbounded,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--gece);background:var(--pirinc);padding:7px 11px 6px;border-radius:999px}
+h1{font:700 26px/1.25 Unbounded,system-ui,sans-serif;margin:14px 0 8px;overflow-wrap:anywhere}
+h2{font:700 19px/1.3 Unbounded,system-ui,sans-serif;margin:28px 0 10px}
+h3{font-size:17px;margin:22px 0 8px}
+.alt,.tarih{color:var(--sis)}.alt{margin:0 0 22px}.tarih{font-size:14px}
+.liste{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.kart{display:block;background:var(--pano);border:1px solid var(--cizgi);border-radius:16px;padding:16px 16px 14px;color:inherit;text-decoration:none}
+.kart:hover,.kart:focus-visible{border-color:var(--pirinc)}
+.kart b{display:block;font:700 17px/1.35 Unbounded,system-ui,sans-serif;margin:6px 0}
+.kart .oz{display:block;color:var(--sis);font-size:15px}
+.yeni{color:var(--gece);background:var(--pirinc);border-radius:6px;padding:1px 7px;font-size:12px;font-weight:700;margin-left:6px}
+.bos{background:var(--pano);border:1px dashed var(--cizgi);border-radius:16px;padding:18px;color:var(--sis)}
+.bos b{color:var(--krem)}
+.geri{display:inline-block;margin-bottom:18px;text-decoration:none}
+.md{overflow-wrap:anywhere}.md img{max-width:100%;border-radius:12px}
+.md table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}.md td,.md th{border:1px solid var(--cizgi);padding:6px 8px;text-align:left}
+code{font-family:"JetBrains Mono",ui-monospace,Consolas,monospace;font-size:.92em;background:var(--pano);border-radius:6px;padding:1px 5px}
+pre{position:relative;background:var(--pano);border:1px solid var(--cizgi);border-radius:12px;padding:44px 14px 14px;overflow-x:auto;white-space:pre-wrap}
+pre code{background:none;padding:0}
+.kopyala{position:absolute;top:8px;right:8px;font:700 12px Manrope,system-ui,sans-serif;color:var(--gece);background:var(--pirinc);border:0;border-radius:8px;padding:6px 10px;cursor:pointer}
+.dosyalar ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.dosyalar li{display:flex;justify-content:space-between;gap:12px;align-items:center;background:var(--pano);border:1px solid var(--cizgi);border-radius:12px;padding:12px 14px}
+.dosyalar li a{font-weight:700;overflow-wrap:anywhere}.dosyalar li span{color:var(--sis);font-size:14px;white-space:nowrap}
+footer{margin-top:36px;color:var(--sis);font-size:14px}</style></head><body><main>
+<a class="geri" href="../">← Bütün kitler</a>
+<div class="tarih">23 Kasım 2026</div>
+<h1>Yorum cevaplama rehberi: elle mi otomatik mi, 3 cevap şablonu ve Meta kuralları</h1>
+<article class="md"><p>DOSYA yazan herkese yorumdan cevap vermenin iki yolu ve benim kullandığım 3 cevap cümlesi. 23 Kasım 2026 videosunda
+gösterildi: otomatik cevap ücretli plandaydı, Claude tarayıcıda 39 yoruma tek tek cevap yazdı.</p>
+<h2>İçinde ne var</h2>
+<ul>
+<li><code>README.md</code>: bu dosya; elle ve otomatik cevabın farkı, Meta'nın özel yanıt kuralları, spam gibi görünmemek için notlar.</li>
+<li><code>cevap_sablonlari.txt</code>: yorumlara yazdığım 3 cevap cümlesi (birebir) ve kendi cümleni yazarken işine yarayacak birkaç kalıp.</li>
+<li><code>prompt.txt</code>: Claude'a tarayıcıdan yorum cevaplatırken verdiğim talimatın düzenli hâli.</li>
+</ul>
+<h2>Elle mi, otomatik mi?</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Elle (sen ya da Claude tarayıcıda)</th>
+<th>Otomatik cevap aracı</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ücret</td>
+<td>Araç ücreti yok</td>
+<td>Kullandığım araçta (ReplyRush) yoruma otomatik cevap ücretsiz planda kapalı, Lite planda açık: ayda 10 $ (fiyat sayfası, 18 Kasım 2026)</td>
+</tr>
+<tr>
+<td>Hız</td>
+<td>Yorum başına birkaç tıklama</td>
+<td>Yorum gelir gelmez</td>
+</tr>
+<tr>
+<td>Ne zaman mantıklı</td>
+<td>Onlarca yorum, ara sıra</td>
+<td>Her gün yüzlerce yorum</td>
+</tr>
+<tr>
+<td>Dikkat</td>
+<td>Doğru hesapla açık olduğundan emin ol</td>
+<td>Aracın Meta onaylı olduğuna bak</td>
+</tr>
+</tbody>
+</table>
+<p>Benim fikrim: haftada birkaç düzine yorum için ücretli plana gerek yok. Yorumlar yüzlerle gelmeye başlarsa otomatik cevap daha mantıklı.</p>
+<h2>Meta'nın özel yanıt kuralları (Instagram)</h2>
+<p>Kaynak: Meta for Developers, Instagram Platform &quot;Private Replies&quot; sayfası (17 Kasım 2026'da okundu). Otomatik DM araçları bu kurala göre çalışır.</p>
+<ol>
+<li>Bir yoruma en fazla 1 özel mesaj gönderilebilir. Kişi mesaja cevap verirse konuşma 24 saat içinde sürebilir.</li>
+<li>Özel mesaj, yorumun yazılmasından sonraki 7 gün içinde gönderilmeli. Daha eski yorumlara otomatik mesaj gitmez.</li>
+<li>Kişi hesabını takip ediyorsa mesaj gelen kutusuna düşer. Takip etmiyorsa mesaj isteklerine düşer. Bu yüzden cevap cümlelerimde
+&quot;gelmediyse mesaj isteklerine bak&quot; diyorum.</li>
+</ol>
+<h2>Spam gibi görünmemek için (benim uyguladıklarım)</h2>
+<ul>
+<li>Aynı cümleyi art arda yapıştırma. 3 farklı cümleyi sırayla kullandım (<code>cevap_sablonlari.txt</code>).</li>
+<li>Cevaba link koyma. Linki DM'de ver; yorumda yalnız kısa bir cümle olsun.</li>
+<li>Çok hızlı gitme. Her cevap arasında birkaç saniye bırak, yüzlerce yorumu tek oturumda bitirmeye çalışma.</li>
+<li>Yanlış hesaptan yazma. Tarayıcıda hangi hesabın açık olduğuna yazmadan önce bak. Claude ilk denemede başka bir hesap açık
+olduğunu görünce hiç yazmadı, doğru hesaba geçmemi bekledi.</li>
+<li>Cevap verdiğin yorumu not et. Aynı kişiye iki kez cevap yazma.</li>
+</ul>
+<h2>Claude'a nasıl yaptırdım</h2>
+<ol>
+<li>Tarayıcıda Instagram'ı kendi hesabımla açtım (Claude'un tarayıcı eklentisiyle).</li>
+<li><code>prompt.txt</code>'deki talimatı verdim: hangi videonun yorumları, hangi kelime, hangi 3 cümle, hangi hesap.</li>
+<li>Claude yorumları tek tek bulup altına cevap yazdı. Bir tıklama hata verince ekrandaki yerinden tıklayıp devam etti.</li>
+<li>Sonunda 37 + 1 + 1 = 39 cevap yazdı; videonun yorum sayısı 61'den 95 civarına çıktı (cevaplar dahil).</li>
+</ol>
+<h2>Bilmen gerekenler</h2>
+<ul>
+<li>Rakamlar benim hesabıma ait (18 Kasım 2026); senin hesabında farklı olur.</li>
+<li>Fiyatlar aracın Kasım 2026 fiyat sayfasından; değişebilir, kullanmadan önce kendin bak.</li>
+<li>Bu rehber bir kazanç sözü değildir. Instagram kurallarına uymak hesabın sahibinin sorumluluğundadır.</li>
+</ul>
+<p>Pratik AI · her gün yeni kit: https://suzunn.github.io/pratikai-medya/kit/</p>
+</article>
+<section class="dosyalar"><h2>Dosyalar</h2><ul><li><a href="cevap_sablonlari.txt" download>cevap_sablonlari.txt</a><span>1 KB</span></li><li><a href="prompt.txt" download>prompt.txt</a><span>1 KB</span></li></ul></section>
+<footer>Pratik AI · Instagram <a href="https://www.instagram.com/pratikaitr/">@pratikaitr</a> · YouTube <a href="https://www.youtube.com/channel/UCC1pagUml-skLPoiApaLKbA">PratikAI</a></footer></main><script>document.querySelectorAll('pre').forEach(function(p){var b=document.createElement('button');b.className='kopyala';
+b.type='button';b.textContent='Kopyala';b.onclick=function(){navigator.clipboard.writeText(p.innerText.replace(/Kopyala$|Kopyalandı$/,'').trim()).then(function(){
+b.textContent='Kopyalandı';setTimeout(function(){b.textContent='Kopyala'},1500)})};p.appendChild(b)})</script></body></html>
