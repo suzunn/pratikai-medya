@@ -1,0 +1,30 @@
+{
+ "baslik": "Kanal temanı Claude'a çizdir: üç tema promptu, Korsan Atölye paleti ve kart şablonu",
+ "tarih": "2026-11-25",
+ "slug": "kanal-temani-claude-a-cizdir-uc-tema-promptu-kor",
+ "oz": "Videolarım siyah zemin üstüne beyaz yazıydı ve bana fazla sıradan geliyordu. Claude aynı videonun ilk 20 saniyesini üç ayrı temayla çizdi, ben Korsan Atölye'…",
+ "yayin_zamani": "2026-11-23T01:49:16+03:00",
+ "dosyalar": [
+  {
+   "ad": "README.md",
+   "boyut": 2024
+  },
+  {
+   "ad": "ornek_kart.html",
+   "boyut": 5605
+  },
+  {
+   "ad": "renk_paleti_ve_fontlar.md",
+   "boyut": 1972
+  },
+  {
+   "ad": "tema_karsilastirma.jpg",
+   "boyut": 673158
+  },
+  {
+   "ad": "tema_promptu.txt",
+   "boyut": 2259
+  }
+ ],
+ "surum": 1
+}

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Korsan Atölye (T1) örnek kart · Pratik AI</title>
+<!-- Fontlar: Google Fonts, SIL Open Font License. İnternet yoksa yedek fontlar devreye girer. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Caveat:wght@700&family=Manrope:wght@500;800&display=swap" rel="stylesheet">
+<style>
+  /* Korsan Atölye (T1) renkleri */
+  :root {
+    --kagit: #EEE2C6; --kagit2: #F7EFDC; --kraft: #D9C29A;
+    --murekkep: #2A1B12; --soluk: #7A6450;
+    --kirmizi: #C8352B; --sari: #F2B417; --fosfor: rgba(255, 205, 40, .78);
+    --kart-beyaz: #FFFDF6;
+    --f-rakam: "Alfa Slab One", Rockwell, Georgia, serif;
+    --f-govde: "Manrope", "Segoe UI", system-ui, sans-serif;
+    --f-el: "Caveat", "Segoe Print", cursive;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #2B2118; }
+  body { display: grid; place-items: center; overflow: hidden; }
+
+  /* 1080x1920 dikey tuval; pencereye sığacak kadar küçülür (ekran görüntüsü almak için) */
+  .tuval { position: relative; width: 1080px; height: 1920px; flex: none; overflow: hidden;
+    transform-origin: center; transform: scale(var(--olcek, .4));
+    background-color: var(--kagit);
+    background-image:
+      radial-gradient(ellipse 70% 55% at 50% 45%, rgba(255, 250, 235, .55), transparent 70%),
+      radial-gradient(circle at 12% 18%, rgba(150, 100, 40, .14) 0 90px, transparent 220px),
+      radial-gradient(circle at 88% 74%, rgba(150, 100, 40, .12) 0 70px, transparent 260px),
+      repeating-linear-gradient(0deg, rgba(90, 60, 25, .07) 0 2px, transparent 2px 120px),
+      repeating-linear-gradient(90deg, rgba(90, 60, 25, .07) 0 2px, transparent 2px 120px); }
+  /* yanık kenar */
+  .tuval::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 60;
+    box-shadow: inset 0 0 180px rgba(110, 65, 20, .55), inset 0 0 40px rgba(80, 45, 10, .35); }
+
+  /* soluk pusula gülü */
+  .pusula { position: absolute; left: 690px; top: 1480px; width: 420px; height: 420px; opacity: .16; }
+
+  /* matbaa başlık + fosfor kalem */
+  .baslik { position: absolute; left: 50px; top: 210px; width: 840px; text-align: center; color: var(--murekkep); }
+  .baslik .dev { display: block; font: 400 300px/0.95 var(--f-rakam); color: var(--kirmizi);
+    text-shadow: 3px 3px 0 rgba(42, 27, 18, .25); }
+  .baslik .satir { font: 400 110px/1.12 var(--f-rakam);
+    background: linear-gradient(transparent 58%, var(--fosfor) 58%, var(--fosfor) 92%, transparent 92%);
+    -webkit-box-decoration-break: clone; box-decoration-break: clone; padding: 0 10px; }
+
+  /* bantlı fotoğraf kartı: beyaz pay + iki yarı saydam bant, hafif eğik */
+  .kart { position: absolute; left: 90px; top: 860px; width: 860px; padding: 18px; background: var(--kart-beyaz);
+    border-radius: 6px; transform: rotate(-1.6deg);
+    box-shadow: 0 2px 0 rgba(60, 35, 10, .25), 0 22px 36px rgba(70, 40, 10, .32), 0 6px 10px rgba(70, 40, 10, .2); }
+  .kart .resim { height: 420px; border-radius: 2px; display: grid; place-items: center; text-align: center;
+    background: repeating-linear-gradient(135deg, #e9dfca 0 22px, #e2d6bd 22px 44px);
+    font: 800 46px/1.3 var(--f-govde); color: var(--soluk); }
+  .bant { position: absolute; width: 170px; height: 50px; background: rgba(242, 226, 170, .82);
+    box-shadow: 0 2px 4px rgba(60, 35, 10, .18); clip-path: polygon(3% 0, 97% 4%, 100% 100%, 0 94%); }
+
+  /* el notu (seyrek kullan) */
+  .el { position: absolute; left: 600px; top: 1360px; font: 700 78px/1 var(--f-el); color: var(--kirmizi); transform: rotate(-4deg); }
+
+  /* el çizimi kırmızı mürekkep halka: çizilerek gelir */
+  .halka path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: ciz .45s ease-out .6s forwards; }
+  @keyframes ciz { to { stroke-dashoffset: 0; } }
+</style>
+</head>
+<body>
+<div class="tuval" id="tuval">
+  <svg class="pusula" viewBox="0 0 100 100" aria-hidden="true">
+    <circle cx="50" cy="50" r="46" fill="none" stroke="#2A1B12" stroke-width="1.5"/>
+    <circle cx="50" cy="50" r="38" fill="none" stroke="#2A1B12" stroke-width="0.8" stroke-dasharray="2 3"/>
+    <path d="M50 4 L56 44 L96 50 L56 56 L50 96 L44 56 L4 50 L44 44 Z" fill="#2A1B12" fill-opacity=".5"/>
+  </svg>
+
+  <div class="baslik"><b class="dev">63</b><span class="satir">dakikada üç tema</span></div>
+
+  <div class="kart">
+    <div class="resim">Ekran görüntün<br>buraya</div>
+    <i class="bant" style="left:100px; top:-24px; rotate:-6deg"></i>
+    <i class="bant" style="right:100px; top:-22px; rotate:5deg"></i>
+  </div>
+
+  <!-- halka: kartın içindeki hedefin etrafına (koordinatları kendine göre değiştir) -->
+  <svg class="halka" style="position:absolute; left:0; top:0; overflow:visible; z-index:20" width="10" height="10" aria-hidden="true">
+    <path d="M290 1085 C 290 1000, 540 985, 690 1025 C 830 1065, 800 1170, 610 1185 C 430 1198, 280 1160, 310 1075"
+          pathLength="1" fill="none" stroke="#C8352B" stroke-width="11" stroke-linecap="round"/>
+  </svg>
+
+  <div class="el">kendi notun</div>
+</div>
+<script>
+  // tuvali pencereye sığdır
+  function sigdir() {
+    var o = Math.min(window.innerWidth / 1080, window.innerHeight / 1920) * 0.96;
+    document.getElementById("tuval").style.setProperty("--olcek", o.toFixed(3));
+  }
+  window.addEventListener("resize", sigdir); sigdir();
+</script>
+</body>
+</html>

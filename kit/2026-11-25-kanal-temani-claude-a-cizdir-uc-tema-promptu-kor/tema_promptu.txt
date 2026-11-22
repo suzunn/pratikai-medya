@@ -1,0 +1,34 @@
+KANAL TEMANI CLAUDE'A ÇİZDİRME PROMPTU (Pratik AI, 25 Kasım 2026)
+Köşeli parantezli yerleri kendi kanalına göre doldur, sonra Claude'a (Claude Code ya da sohbet) olduğu gibi ver.
+
+---
+
+Kısa dikey videolarımın (Reels / Shorts) görünüşü çok sıradan duruyor: [şu anki görünüm, ör. "siyah zemin üstüne beyaz yazı"].
+Kanalın konusu: [konu]. İzleyicim: [kitle].
+
+Benim için 3 AYRI görsel tema hazırla. Her tema bambaşka bir dünyadan gelsin, birbirine benzemesin
+(ör. biri eski kâğıt ve el işi, biri çizgi roman, biri gece ve neon).
+
+Her tema için şunları yaz:
+1. Kısa bir ad ve tek cümlelik fikir.
+2. Renk paleti: 5-7 renk, hex koduyla ve görevleriyle (zemin, yazı, vurgu, uyarı).
+3. Fontlar: yalnız ücretsiz ve ticari kullanıma açık (SIL Open Font License) Google Fonts. Başlık, gövde, rakam ve
+   el yazısı için ayrı ayrı seç. Türkçe harfleri (ğ, ş, ı, İ, ç, ö, ü) desteklediklerini kontrol et.
+4. İmza öğeleri: her videoda tekrar edecek 3-4 parça (ör. bantlı fotoğraf kartı, el çizimi halka, fosfor kalem çizgisi).
+5. Altyazı stili: font, renk, kontur, konuşulan kelimenin vurgusu.
+
+En önemlisi: üç temayı AYNI içerikle göster ki karşılaştırabileyim. Videomdan şu 3 sahneyi her temada çiz:
+- Kanca sahnesi: [ilk 3 saniyede ekranda ne var]
+- Bilgi sahnesi: [ör. bir ekran görüntüsü ve altında büyük bir rakam]
+- Rakam sahnesi: [ör. iki büyük rakam ve küçük ikonlar]
+Her sahne 1080x1920 dikey, tek dosya HTML olsun (dış bağlantı yalnız Google Fonts). Sonunda 3 tema x 3 sahneyi tek bir
+karşılaştırma görselinde yan yana diz (her satır bir tema).
+
+Kurallar:
+- Yazılar ekranın sağdaki 180 pikseline ve alttaki yaklaşık 470 piksele girmesin (uygulamanın düğmeleri ve açıklaması orada).
+- Metin en az 60 piksel, önemli rakamlar 200 piksel ve üstü olsun. İçerik ekranın yüzde 75-85'ini doldursun.
+- İlk 3 saniyede ekranda yalnız tek büyük başlık ve tek görsel olsun.
+- Altyazının çıkacağı yatay bandı boş bırak.
+
+Hangisini seçtiğimi ben söyleyeceğim. Seçtiğimi her videoda kullanabileceğim bir şablona çevir (ortak CSS + örnek sahneler)
+ve eski videolarımın görünüşünü bozmadığını kontrol et.
