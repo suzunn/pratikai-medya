@@ -1,0 +1,12 @@
+Kurgusal bir pastane için mobil sipariş sayfası yap: Pudra Bulut Pastanesi. Tek dosya olsun: index.html (CSS ve JavaScript içinde; CDN, web fontu ya da görsel dosyası gibi dış kaynak kullanma). Sayfa telefonda açılacak, 360-430 px genişliğe göre tasarla.
+
+Müşteri pastasını kendisi tasarlasın:
+- Kişi sayısı: 6, 10, 16
+- Kat: 1, 2, 3
+- Krema rengi: vanilya, pudra pembe, çikolata, fıstık yeşili
+- Pastanın üstüne yazı (en çok 20 karakter)
+- Teslim günü: en erken yarın; önümüzdeki 7 günü düğme olarak göster (tarih seçici penceresi kullanma)
+
+Seçimler değiştikçe sayfanın üstündeki pasta çizimi (CSS ya da SVG) hemen değişsin: kat sayısı, krema rengi ve üstteki yazı görünsün. Fiyat da sayfanın içindeki örnek fiyat listesinden canlı hesaplansın (TL). Listeyi kodun başında kolay değiştirilecek şekilde tut, sayfada "örnek fiyat" yazsın.
+
+En altta "Siparişi hazırla" düğmesi olsun: basınca WhatsApp'a gidecek sipariş mesajının önizlemesini sayfada göstersin (kişi, kat, renk, yazı, gün, fiyat). Bağlantı açmasın, mesaj göndermesin; WhatsApp numarası yer tutucu kalsın. Gerçek kişi adı, telefon ya da adres yazma.

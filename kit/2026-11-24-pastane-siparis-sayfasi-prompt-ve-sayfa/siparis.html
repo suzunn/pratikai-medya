@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F7D6DE">
+<title>Pudra Bulut Pastanesi · Pastanı Tasarla</title>
+<style>
+  :root {
+    --zemin: #FFF8F4;
+    --kart: #FFFFFF;
+    --pudra: #F7D6DE;
+    --pudra-koyu: #EBB3C1;
+    --vurgu: #B8466B;
+    --vurgu-koyu: #8E2F50;
+    --metin: #4A2E3A;
+    --soluk: #8B6F7A;
+    --cizgi: #EBDCE0;
+    --hata: #B3261E;
+    --yaricap: 16px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--zemin);
+    color: var(--metin);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.45;
+  }
+  .sayfa {
+    max-width: 430px;
+    margin: 0 auto;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
+  }
+
+  /* ---------- Üst vitrin: pasta çizimi ---------- */
+  .vitrin {
+    background:
+      radial-gradient(120px 60px at 15% 20%, rgba(255,255,255,.75), transparent 70%),
+      radial-gradient(140px 70px at 85% 10%, rgba(255,255,255,.6), transparent 70%),
+      linear-gradient(180deg, #F9DCE3 0%, #FBE9EC 100%);
+    border-radius: 0 0 28px 28px;
+    padding: 14px 16px 12px;
+    box-shadow: 0 6px 18px rgba(142, 47, 80, .10);
+    z-index: 5;
+  }
+  @media (min-height: 700px) {
+    .vitrin { position: sticky; top: 0; }
+    .onizleme { scroll-margin-top: 270px; }
+  }
+  .marka {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .marka h1 {
+    margin: 0;
+    font-size: 1.15rem;
+    letter-spacing: .2px;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--vurgu-koyu);
+  }
+  .marka small {
+    display: block;
+    font-family: system-ui, sans-serif;
+    font-size: .78rem;
+    color: var(--soluk);
+    font-weight: 400;
+  }
+  .fiyat-cip {
+    text-align: right;
+    background: rgba(255,255,255,.85);
+    border-radius: 999px;
+    padding: 6px 12px;
+    white-space: nowrap;
+  }
+  .fiyat-cip .etiket {
+    display: block;
+    font-size: .68rem;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    color: var(--soluk);
+  }
+  .fiyat-cip strong {
+    font-size: 1.1rem;
+    color: var(--vurgu-koyu);
+  }
+  #pasta {
+    display: block;
+    width: 100%;
+    height: 180px;
+    margin-top: 4px;
+  }
+
+  /* ---------- Form bölümleri ---------- */
+  form { padding: 4px 16px 0; }
+  fieldset {
+    border: 0;
+    margin: 16px 0 0;
+    padding: 14px;
+    background: var(--kart);
+    border-radius: var(--yaricap);
+    box-shadow: 0 1px 3px rgba(74, 46, 58, .08);
+  }
+  legend {
+    float: left;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  legend .ipucu {
+    font-weight: 400;
+    font-size: .82rem;
+    color: var(--soluk);
+    margin-left: 4px;
+  }
+  .izgara { clear: both; display: grid; gap: 8px; }
+  .izgara.uc { grid-template-columns: repeat(3, 1fr); }
+  .izgara.iki { grid-template-columns: repeat(2, 1fr); }
+  .izgara.dort { grid-template-columns: repeat(4, 1fr); }
+
+  .secim { position: relative; display: block; }
+  .secim input {
+    position: absolute;
+    opacity: 0;
+    width: 1px; height: 1px;
+    margin: 0;
+  }
+  .kutu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    min-height: 56px;
+    padding: 8px 4px;
+    border: 2px solid var(--cizgi);
+    border-radius: 14px;
+    background: #FFFDFC;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: border-color .15s, background-color .15s, transform .1s;
+  }
+  .kutu:active { transform: scale(.97); }
+  .kutu b { font-size: 1rem; }
+  .kutu .alt { font-size: .74rem; color: var(--soluk); }
+  .secim input:checked + .kutu {
+    border-color: var(--vurgu);
+    background: #FCEEF2;
+  }
+  .secim input:checked + .kutu .alt { color: var(--vurgu-koyu); }
+  .secim input:focus-visible + .kutu {
+    outline: 3px solid #4C7BD9;
+    outline-offset: 2px;
+  }
+
+  .kutu.renk { flex-direction: row; justify-content: flex-start; gap: 10px; padding: 8px 10px; }
+  .numune {
+    flex: none;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    border: 2px solid rgba(0,0,0,.08);
+    box-shadow: inset 0 -4px 0 rgba(0,0,0,.08);
+  }
+  .renk .yazilar { display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
+  .renk .yazilar b { font-size: .92rem; }
+
+  .gun .kutu { min-height: 70px; padding: 6px 2px; }
+  .gun .kutu .gun-adi { font-size: .74rem; color: var(--soluk); }
+  .gun .kutu b { font-size: 1.25rem; line-height: 1.1; }
+  .gun .kutu .ay { font-size: .74rem; }
+  .gun .ilk .gun-adi { color: var(--vurgu-koyu); font-weight: 700; }
+
+  .yazi-alani { clear: both; }
+  .yazi-alani input {
+    width: 100%;
+    font: inherit;
+    font-size: 1rem;
+    padding: 12px 14px;
+    border: 2px solid var(--cizgi);
+    border-radius: 14px;
+    background: #FFFDFC;
+    color: var(--metin);
+  }
+  .yazi-alani input:focus { outline: none; border-color: var(--vurgu); }
+  .sayac { display: flex; justify-content: space-between; font-size: .8rem; color: var(--soluk); margin-top: 6px; }
+  .sayac.dolu #sayacSayi { color: var(--vurgu-koyu); font-weight: 700; }
+
+  .hata {
+    clear: both;
+    margin: 10px 0 0;
+    color: var(--hata);
+    font-size: .88rem;
+    font-weight: 600;
+  }
+  fieldset.uyari { box-shadow: 0 0 0 2px var(--hata); }
+
+  /* ---------- Toplam ve düğme ---------- */
+  .toplam {
+    margin-top: 16px;
+    background: var(--kart);
+    border-radius: var(--yaricap);
+    padding: 14px;
+    box-shadow: 0 1px 3px rgba(74, 46, 58, .08);
+  }
+  .toplam h2 { margin: 0 0 8px; font-size: 1rem; }
+  .kalemler { list-style: none; margin: 0; padding: 0; font-size: .9rem; }
+  .kalemler li { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px dashed var(--cizgi); }
+  .kalemler li span:last-child { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .genel { display: flex; justify-content: space-between; align-items: baseline; margin-top: 10px; }
+  .genel strong { font-size: 1.35rem; color: var(--vurgu-koyu); font-variant-numeric: tabular-nums; }
+  .not { font-size: .78rem; color: var(--soluk); margin: 6px 0 0; }
+
+  .ana-dugme {
+    display: block;
+    width: 100%;
+    margin-top: 16px;
+    min-height: 56px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--vurgu);
+    color: #fff;
+    font: inherit;
+    font-size: 1.08rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(184, 70, 107, .3);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .ana-dugme:active { background: var(--vurgu-koyu); }
+  .ana-dugme:focus-visible { outline: 3px solid #4C7BD9; outline-offset: 3px; }
+
+  /* ---------- WhatsApp önizleme ---------- */
+  .onizleme {
+    margin-top: 18px;
+    border-radius: var(--yaricap);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    background: #EFE7DD;
+  }
+  .onizleme[hidden] { display: none; }
+  .wa-ust {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #1F6E5C;
+    color: #fff;
+    padding: 10px 12px;
+  }
+  .wa-avatar {
+    flex: none;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--pudra);
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+  }
+  .wa-ust b { display: block; font-size: .95rem; }
+  .wa-ust span { font-size: .76rem; opacity: .9; }
+  .wa-govde {
+    padding: 14px 12px;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,.35) 0 2px, transparent 3px) 0 0 / 28px 28px,
+      #EFE7DD;
+  }
+  .balon {
+    margin-left: auto;
+    max-width: 92%;
+    background: #DCF8C6;
+    border-radius: 12px 2px 12px 12px;
+    padding: 10px 12px 6px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: .92rem;
+    color: #1d2b24;
+  }
+  .balon .saat { display: block; text-align: right; font-size: .7rem; color: #5f7a6a; margin-top: 4px; }
+  .wa-alt {
+    background: #fff;
+    padding: 10px 12px 12px;
+    font-size: .82rem;
+    color: var(--soluk);
+  }
+  .wa-alt p { margin: 0 0 8px; }
+  .ikincil-dugme {
+    font: inherit;
+    font-size: .9rem;
+    font-weight: 600;
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 2px solid var(--vurgu);
+    background: #fff;
+    color: var(--vurgu-koyu);
+    cursor: pointer;
+  }
+  .ikincil-dugme:focus-visible { outline: 3px solid #4C7BD9; outline-offset: 2px; }
+  #kopyaDurum { margin-left: 8px; font-weight: 600; color: #1F6E5C; }
+
+  footer { text-align: center; font-size: .75rem; color: var(--soluk); padding: 20px 16px 0; }
+
+  .gizli {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+<div class="sayfa">
+
+  <header class="vitrin">
+    <div class="marka">
+      <h1>Pudra Bulut Pastanesi <small>Pastanı kendin tasarla</small></h1>
+      <div class="fiyat-cip" aria-live="polite">
+        <span class="etiket">Örnek fiyat</span>
+        <strong id="ustFiyat">—</strong>
+      </div>
+    </div>
+    <svg id="pasta" viewBox="0 0 320 230" role="img" aria-labelledby="pastaBaslik">
+      <title id="pastaBaslik">Pasta önizlemesi</title>
+      <defs id="pastaDefs"></defs>
+      <g id="pastaCizim"></g>
+    </svg>
+  </header>
+
+  <form id="siparisFormu" novalidate>
+
+    <fieldset>
+      <legend>Kişi sayısı</legend>
+      <div class="izgara uc" id="kisiSecenekleri"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Kat</legend>
+      <div class="izgara uc" id="katSecenekleri"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Krema rengi</legend>
+      <div class="izgara iki" id="renkSecenekleri"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend><label for="yazi">Pastanın üstüne yazı</label> <span class="ipucu">(isteğe bağlı)</span></legend>
+      <div class="yazi-alani">
+        <input id="yazi" name="yazi" type="text" autocomplete="off" enterkeyhint="done"
+               placeholder="Örn: İyi ki doğdun" aria-describedby="sayac">
+        <div class="sayac" id="sayac"><span id="yaziUcretNotu"></span><span><span id="sayacSayi">0</span>/<span id="sayacSinir">20</span> karakter</span></div>
+      </div>
+    </fieldset>
+
+    <fieldset id="gunAlani" aria-describedby="gunHata">
+      <legend>Teslim günü <span class="ipucu">(en erken yarın)</span></legend>
+      <div class="izgara dort gun" id="gunSecenekleri"></div>
+      <p class="hata" id="gunHata" hidden>Lütfen bir teslim günü seç.</p>
+    </fieldset>
+
+    <section class="toplam" aria-labelledby="toplamBaslik">
+      <h2 id="toplamBaslik">Fiyat özeti</h2>
+      <ul class="kalemler" id="kalemler"></ul>
+      <div class="genel">
+        <span>Toplam <small>(örnek fiyat)</small></span>
+        <strong id="altFiyat">—</strong>
+      </div>
+      <p class="not">Fiyatlar örnek fiyattır; kesin tutar pastane onayıyla belirlenir.</p>
+    </section>
+
+    <button type="submit" class="ana-dugme">Siparişi hazırla</button>
+
+    <section class="onizleme" id="onizleme" hidden aria-labelledby="onizlemeBaslik" tabindex="-1">
+      <div class="wa-ust">
+        <div class="wa-avatar" aria-hidden="true">🎂</div>
+        <div>
+          <b id="onizlemeBaslik">WhatsApp mesaj önizlemesi</b>
+          <span>Alıcı: Pudra Bulut Pastanesi · <span id="waNumara"></span> (yer tutucu)</span>
+        </div>
+      </div>
+      <div class="wa-govde">
+        <div class="balon"><span id="mesajMetni"></span><span class="saat" id="mesajSaat"></span></div>
+      </div>
+      <div class="wa-alt">
+        <p>Bu yalnızca bir önizlemedir: hiçbir bağlantı açılmadı, mesaj gönderilmedi. Seçimlerini değiştirirsen önizleme de güncellenir.</p>
+        <button type="button" class="ikincil-dugme" id="kopyalaDugme">Metni kopyala</button>
+        <span id="kopyaDurum" role="status"></span>
+      </div>
+    </section>
+  </form>
+
+  <footer>Pudra Bulut Pastanesi kurgusal bir pastanedir.</footer>
+</div>
+
+<script>
+/* =========================================================
+   ÖRNEK FİYAT LİSTESİ — kolayca değiştirilebilir (TL)
+   ========================================================= */
+const FIYAT_LISTESI = {
+  // Kişi sayısına göre taban fiyat (tek katlı pasta)
+  kisi: { 6: 650, 10: 950, 16: 1400 },
+  // Kat sayısına göre ek ücret
+  kat: { 1: 0, 2: 400, 3: 850 },
+  // Krema rengine göre ek ücret
+  renk: { vanilya: 0, pembe: 60, cikolata: 90, fistik: 140 },
+  // Pastanın üstüne yazı yazdırma ücreti (yazı boşsa alınmaz)
+  yazi: 50
+};
+
+const PARA_BIRIMI = "TL";
+const YAZI_SINIRI = 20;
+const GUN_SAYISI = 7;                       // yarından başlayarak gösterilecek gün sayısı
+const WHATSAPP_NUMARASI = "+90 5XX XXX XX XX"; // YER TUTUCU — gerçek numara değildir
+
+const VARSAYILAN = { kisi: "10", kat: "2", renk: "pembe" };
+
+// Krema renkleri: ad + çizimde kullanılan tonlar
+const RENKLER = {
+  vanilya:  { ad: "Vanilya",       ana: "#F6E7C1", acik: "#FFF7E3", koyu: "#E0C68A", yazi: "#8A5A2B" },
+  pembe:    { ad: "Pudra pembe",   ana: "#F5C3CF", acik: "#FFE4EA", koyu: "#E39BAD", yazi: "#8E2F50" },
+  cikolata: { ad: "Çikolata",      ana: "#7A4A35", acik: "#9A6449", koyu: "#56301F", yazi: "#FCEBD5" },
+  fistik:   { ad: "Fıstık yeşili", ana: "#BCD39A", acik: "#DDEBC6", koyu: "#93B06B", yazi: "#3F5A22" }
+};
+
+/* ========================================================= */
+
+const GUN_ADLARI = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+const GUN_KISA = ["Paz", "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt"];
+const AY_ADLARI = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+const AY_KISA = ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"];
+
+const SVG_NS = "http://www.w3.org/2000/svg";
+const sayiBicim = new Intl.NumberFormat("tr-TR");
+const tl = n => sayiBicim.format(n) + " " + PARA_BIRIMI;
+const $ = id => document.getElementById(id);
+const form = $("siparisFormu");
+const yaziInput = $("yazi");
+
+/* ---------- Seçenek düğmelerini oluştur ---------- */
+function secimOlustur(ad, deger, icerik, secili) {
+  const label = document.createElement("label");
+  label.className = "secim";
+  const input = document.createElement("input");
+  input.type = "radio";
+  input.name = ad;
+  input.value = deger;
+  if (secili) input.checked = true;
+  const kutu = document.createElement("span");
+  kutu.className = "kutu";
+  icerik(kutu);
+  label.append(input, kutu);
+  return label;
+}
+function ekle(ebeveyn, etiket, sinif, metin) {
+  const el = document.createElement(etiket);
+  if (sinif) el.className = sinif;
+  if (metin != null) el.textContent = metin;
+  ebeveyn.appendChild(el);
+  return el;
+}
+const ekMetni = n => (n > 0 ? "+" + tl(n) : "ek ücret yok");
+
+Object.keys(FIYAT_LISTESI.kisi).forEach(k => {
+  $("kisiSecenekleri").appendChild(secimOlustur("kisi", k, kutu => {
+    ekle(kutu, "b", null, k + " kişi");
+    ekle(kutu, "span", "alt", tl(FIYAT_LISTESI.kisi[k]));
+  }, k === VARSAYILAN.kisi));
+});
+
+Object.keys(FIYAT_LISTESI.kat).forEach(k => {
+  $("katSecenekleri").appendChild(secimOlustur("kat", k, kutu => {
+    ekle(kutu, "b", null, k + " kat");
+    ekle(kutu, "span", "alt", ekMetni(FIYAT_LISTESI.kat[k]));
+  }, k === VARSAYILAN.kat));
+});
+
+Object.keys(RENKLER).forEach(k => {
+  const r = RENKLER[k];
+  $("renkSecenekleri").appendChild(secimOlustur("renk", k, kutu => {
+    kutu.classList.add("renk");
+    const n = ekle(kutu, "span", "numune");
+    n.style.background = r.ana;
+    n.setAttribute("aria-hidden", "true");
+    const y = ekle(kutu, "span", "yazilar");
+    ekle(y, "b", null, r.ad);
+    ekle(y, "span", "alt", ekMetni(FIYAT_LISTESI.renk[k] || 0));
+  }, k === VARSAYILAN.renk));
+});
+
+// Teslim günleri: yarından itibaren 7 gün
+const bugun = new Date();
+const gunler = [];
+for (let i = 1; i <= GUN_SAYISI; i++) {
+  const t = new Date(bugun.getFullYear(), bugun.getMonth(), bugun.getDate() + i);
+  const deger = t.getFullYear() + "-" + String(t.getMonth() + 1).padStart(2, "0") + "-" + String(t.getDate()).padStart(2, "0");
+  gunler.push({ deger, tarih: t });
+  const label = secimOlustur("gun", deger, kutu => {
+    if (i === 1) kutu.classList.add("ilk");
+    ekle(kutu, "span", "gun-adi", i === 1 ? "Yarın" : GUN_KISA[t.getDay()]);
+    ekle(kutu, "b", null, String(t.getDate()));
+    ekle(kutu, "span", "ay", AY_KISA[t.getMonth()]);
+  }, false);
+  label.querySelector("input").setAttribute("aria-label",
+    (i === 1 ? "Yarın, " : "") + t.getDate() + " " + AY_ADLARI[t.getMonth()] + " " + GUN_ADLARI[t.getDay()]);
+  $("gunSecenekleri").appendChild(label);
+}
+const gunBilgisi = deger => gunler.find(g => g.deger === deger);
+const uzunTarih = t => t.getDate() + " " + AY_ADLARI[t.getMonth()] + " " + t.getFullYear() + " " + GUN_ADLARI[t.getDay()];
+
+$("sayacSinir").textContent = YAZI_SINIRI;
+$("yaziUcretNotu").textContent = FIYAT_LISTESI.yazi > 0 ? "Yazı: +" + tl(FIYAT_LISTESI.yazi) : "Yazı ücretsiz";
+$("waNumara").textContent = WHATSAPP_NUMARASI;
+
+/* ---------- Durum ve fiyat ---------- */
+function durum() {
+  return {
+    kisi: form.elements.kisi.value,
+    kat: form.elements.kat.value,
+    renk: form.elements.renk.value,
+    yazi: yaziInput.value.trim(),
+    gun: form.elements.gun.value
+  };
+}
+
+function fiyatHesapla(d) {
+  const kalemler = [
+    [d.kisi + " kişilik pasta (taban)", FIYAT_LISTESI.kisi[d.kisi] || 0],
+    [d.kat + " kat", FIYAT_LISTESI.kat[d.kat] || 0],
+    ["Krema: " + RENKLER[d.renk].ad, FIYAT_LISTESI.renk[d.renk] || 0]
+  ];
+  if (d.yazi) kalemler.push(["Pasta üstü yazı", FIYAT_LISTESI.yazi]);
+  const toplam = kalemler.reduce((s, k) => s + k[1], 0);
+  return { kalemler, toplam };
+}
+
+/* ---------- Pasta çizimi (SVG) ---------- */
+function svgEl(ad, ozellik, ebeveyn) {
+  const el = document.createElementNS(SVG_NS, ad);
+  for (const k in ozellik) el.setAttribute(k, ozellik[k]);
+  if (ebeveyn) ebeveyn.appendChild(el);
+  return el;
+}
+
+function pastaCiz(d) {
+  const defs = $("pastaDefs");
+  const g = $("pastaCizim");
+  defs.replaceChildren();
+  g.replaceChildren();
+
+  const r = RENKLER[d.renk];
+  const katSayisi = Number(d.kat);
+  const kisiAnahtarlari = Object.keys(FIYAT_LISTESI.kisi);
+  const boyutSirasi = Math.max(0, kisiAnahtarlari.indexOf(d.kisi));
+  const altGenislik = Math.min(250, 170 + boyutSirasi * 36);
+  const yukseklikler = { 1: [80], 2: [62, 48], 3: [52, 42, 34] }[katSayisi] || [80];
+
+  // Gövde için yatay gölgelendirme
+  const grad = svgEl("linearGradient", { id: "govdeGrad", x1: "0", x2: "1", y1: "0", y2: "0" }, defs);
+  svgEl("stop", { offset: "0", "stop-color": r.acik }, grad);
+  svgEl("stop", { offset: "0.35", "stop-color": r.ana }, grad);
+  svgEl("stop", { offset: "0.75", "stop-color": r.ana }, grad);
+  svgEl("stop", { offset: "1", "stop-color": r.koyu }, grad);
+
+  // Tabak
+  svgEl("ellipse", { cx: 160, cy: 214, rx: altGenislik / 2 + 26, ry: 11, fill: "#000", opacity: ".08" }, g);
+  svgEl("ellipse", { cx: 160, cy: 210, rx: altGenislik / 2 + 24, ry: 10, fill: "#FFFFFF", stroke: "#E7D3D9", "stroke-width": 1.5 }, g);
+
+  let taban = 208;
+  let altKat = null;
+  let genislik = altGenislik;
+
+  for (let i = 0; i < katSayisi; i++) {
+    const h = yukseklikler[i];
+    const x = 160 - genislik / 2;
+    const ust = taban - h;
+
+    const clip = svgEl("clipPath", { id: "kat" + i }, defs);
+    svgEl("rect", { x, y: ust, width: genislik, height: h, rx: 9 }, clip);
+
+    const katG = svgEl("g", {}, g);
+    svgEl("rect", { x, y: ust, width: genislik, height: h, rx: 9, fill: "url(#govdeGrad)" }, katG);
+
+    // Üstten akan krema
+    const parca = Math.max(5, Math.round(genislik / 20));
+    let yol = `M${x - 2},${ust - 2} H${x + genislik + 2} V${ust + 10}`;
+    for (let p = parca - 1; p >= 0; p--) {
+      const bas = x + (genislik * p) / parca;
+      const orta = x + (genislik * (p + 0.5)) / parca;
+      const derinlik = p % 2 ? 14 : 26;
+      yol += ` Q${orta},${ust + derinlik} ${bas},${ust + 10}`;
+    }
+    yol += " Z";
+    const akis = svgEl("g", { "clip-path": `url(#kat${i})` }, katG);
+    svgEl("path", { d: yol, fill: r.acik }, akis);
+    svgEl("rect", { x, y: ust, width: genislik, height: 4, fill: "#fff", opacity: ".35" }, akis);
+
+    // Alt kenarda krema boncukları
+    const boncukSayisi = Math.floor(genislik / 11);
+    const aralik = genislik / boncukSayisi;
+    for (let b = 0; b < boncukSayisi; b++) {
+      svgEl("circle", { cx: x + aralik * (b + 0.5), cy: taban - 1, r: 4.4, fill: r.koyu }, katG);
+      svgEl("circle", { cx: x + aralik * (b + 0.5) - 1.2, cy: taban - 2.4, r: 1.3, fill: "#fff", opacity: ".45" }, katG);
+    }
+
+    if (i === 0) altKat = { x, ust, genislik, h };
+    taban = ust;
+    genislik = genislik * 0.72;
+  }
+
+  // Tepede kiraz
+  svgEl("path", { d: `M160,${taban - 10} q4,-12 12,-16`, stroke: "#5C7A2E", "stroke-width": 2.2, fill: "none", "stroke-linecap": "round" }, g);
+  svgEl("circle", { cx: 160, cy: taban - 7, r: 8, fill: "#C8324B" }, g);
+  svgEl("circle", { cx: 157, cy: taban - 10, r: 2.4, fill: "#fff", opacity: ".6" }, g);
+
+  // Üstteki yazı — en geniş katın önüne
+  if (d.yazi) {
+    const maxGenislik = altKat.genislik - 26;
+    const uzunluk = Array.from(d.yazi).length;
+    const boyut = Math.max(9, Math.min(18, maxGenislik / (uzunluk * 0.56)));
+    const metin = svgEl("text", {
+      x: 160,
+      y: altKat.ust + altKat.h * 0.64,
+      "text-anchor": "middle",
+      "dominant-baseline": "middle",
+      "font-family": "Georgia, 'Times New Roman', serif",
+      "font-style": "italic",
+      "font-weight": "700",
+      "font-size": boyut.toFixed(1),
+      fill: r.yazi
+    }, g);
+    metin.textContent = d.yazi;
+    try {
+      if (metin.getComputedTextLength() > maxGenislik) {
+        metin.setAttribute("textLength", maxGenislik);
+        metin.setAttribute("lengthAdjust", "spacingAndGlyphs");
+      }
+    } catch (e) { /* ölçüm desteklenmiyorsa tahmini boyut yeterli */ }
+  }
+
+  $("pastaBaslik").textContent =
+    `${d.kisi} kişilik, ${d.kat} katlı, ${RENKLER[d.renk].ad.toLocaleLowerCase("tr-TR")} kremalı pasta` +
+    (d.yazi ? `, üzerinde “${d.yazi}” yazıyor` : ", üzerinde yazı yok");
+}
+
+/* ---------- Mesaj ---------- */
+function mesajOlustur(d, fiyat) {
+  const gun = gunBilgisi(d.gun);
+  return [
+    "Merhaba Pudra Bulut Pastanesi! Pasta siparişi vermek istiyorum:",
+    "",
+    "• Kişi sayısı: " + d.kisi + " kişilik",
+    "• Kat: " + d.kat + " kat",
+    "• Krema rengi: " + RENKLER[d.renk].ad,
+    "• Pasta üstü yazı: " + (d.yazi ? "“" + d.yazi + "”" : "Yok"),
+    "• Teslim günü: " + (gun ? uzunTarih(gun.tarih) : "-"),
+    "• Fiyat: " + tl(fiyat.toplam) + " (örnek fiyat)",
+    "",
+    "Uygunluk ve ödeme bilgisi için dönüşünüzü bekliyorum. Teşekkürler!"
+  ].join("\n");
+}
+
+/* ---------- Güncelleme ---------- */
+function guncelle() {
+  const d = durum();
+  const fiyat = fiyatHesapla(d);
+
+  $("ustFiyat").textContent = tl(fiyat.toplam);
+  $("altFiyat").textContent = tl(fiyat.toplam);
+  const liste = $("kalemler");
+  liste.replaceChildren();
+  fiyat.kalemler.forEach(([ad, tutar]) => {
+    const li = ekle(liste, "li");
+    ekle(li, "span", null, ad);
+    ekle(li, "span", null, tutar > 0 ? tl(tutar) : "—");
+  });
+
+  pastaCiz(d);
+
+  if (d.gun) gunHatasi(false);
+
+  // Önizleme açıksa güncel tut
+  if (!$("onizleme").hidden && d.gun) {
+    $("mesajMetni").textContent = mesajOlustur(d, fiyat);
+  }
+}
+
+function gunHatasi(goster) {
+  $("gunHata").hidden = !goster;
+  $("gunAlani").classList.toggle("uyari", goster);
+}
+
+/* ---------- Olaylar ---------- */
+form.addEventListener("change", guncelle);
+
+yaziInput.addEventListener("input", () => {
+  const karakterler = Array.from(yaziInput.value);
+  if (karakterler.length > YAZI_SINIRI) {
+    yaziInput.value = karakterler.slice(0, YAZI_SINIRI).join("");
+  }
+  const n = Array.from(yaziInput.value).length;
+  $("sayacSayi").textContent = n;
+  $("sayac").classList.toggle("dolu", n >= YAZI_SINIRI);
+  guncelle();
+});
+yaziInput.addEventListener("keydown", e => {
+  if (e.key === "Enter") { e.preventDefault(); yaziInput.blur(); }
+});
+
+const azHareket = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const d = durum();
+  if (!d.gun) {
+    gunHatasi(true);
+    $("gunAlani").scrollIntoView({ behavior: azHareket ? "auto" : "smooth", block: "center" });
+    form.querySelector('input[name="gun"]').focus({ preventScroll: true });
+    return;
+  }
+  const fiyat = fiyatHesapla(d);
+  $("mesajMetni").textContent = mesajOlustur(d, fiyat);
+  const s = new Date();
+  $("mesajSaat").textContent = String(s.getHours()).padStart(2, "0") + ":" + String(s.getMinutes()).padStart(2, "0") + " ✓";
+  $("kopyaDurum").textContent = "";
+  const onizleme = $("onizleme");
+  onizleme.hidden = false;
+  onizleme.scrollIntoView({ behavior: azHareket ? "auto" : "smooth", block: "start" });
+  onizleme.focus({ preventScroll: true });
+});
+
+$("kopyalaDugme").addEventListener("click", async () => {
+  const metin = $("mesajMetni").textContent;
+  try {
+    await navigator.clipboard.writeText(metin);
+    $("kopyaDurum").textContent = "Kopyalandı";
+  } catch (e) {
+    $("kopyaDurum").textContent = "Kopyalanamadı; metni basılı tutarak seçebilirsin.";
+  }
+});
+
+guncelle();
+</script>
+</body>
+</html>

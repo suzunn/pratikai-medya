@@ -1,0 +1,22 @@
+{
+ "baslik": "Pastane sipariş sayfası: prompt ve sayfa",
+ "tarih": "2026-11-24",
+ "slug": "pastane-siparis-sayfasi-prompt-ve-sayfa",
+ "oz": "Müşterinin pastasını kendisi tasarladığı tek dosyalık mobil sipariş sayfası: kişi sayısı, kat, krema rengi ve üst yazı seçiliyor, pasta çizimi ve fiyat anınd…",
+ "yayin_zamani": "2026-11-23T02:22:57+03:00",
+ "dosyalar": [
+  {
+   "ad": "README.md",
+   "boyut": 3864
+  },
+  {
+   "ad": "prompt.txt",
+   "boyut": 1207
+  },
+  {
+   "ad": "siparis.html",
+   "boyut": 25657
+  }
+ ],
+ "surum": 1
+}
