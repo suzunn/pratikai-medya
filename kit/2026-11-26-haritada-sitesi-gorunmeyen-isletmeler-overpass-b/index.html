@@ -39,8 +39,9 @@ Kadıköy'de 1.595 işletmenin 1.231'inde site bilgisi çıkmadı.</p>
 <li><code>prompt.txt</code>: Claude'a verdiğim istek, birebir.</li>
 <li><code>ara.py</code>: Claude'un yazdığı betik (yalnız Python'un standart kütüphanesi). Overpass API'ye tek istek atar; <code>ozet.json</code>, <code>liste.csv</code> ve
 <code>harita.html</code> yazar.</li>
-<li><code>harita_sablon.html</code>: <code>ara.py</code>'nin doldurduğu harita şablonu. Dış kaynak kullanmaz (CDN, font, harita karosu yok); işletme adı
-haritaya da sayfanın kaynağına da yazılmaz, yalnız nokta.</li>
+<li><code>harita_sablon.html</code>: <code>ara.py</code>'nin doldurduğu harita şablonu, Claude'un yazdığı. Dış kaynak kullanmaz (CDN, font, harita karosu yok);
+işletme adı haritaya da sayfanın kaynağına da yazılmaz, yalnız nokta. Tek değişikliğim: noktaların sırasını karıştıran küçük rastgele
+sayı üretecindeki sabiti onaltılık yazdım (<code>0x7FFFFFFF</code>, sayı aynı). Gizlilik denetimim o uzun sayıyı telefon numarası sanıyordu.</li>
 </ul>
 <p>Videodaki gerçek işletme listesi ve CSV kitte yok. Kendi listeni betiği çalıştırarak kendin üretirsin.</p>
 <h2>Nasıl çalışır</h2>

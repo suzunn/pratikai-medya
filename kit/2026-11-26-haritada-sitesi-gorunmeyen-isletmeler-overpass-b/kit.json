@@ -3,11 +3,11 @@
  "tarih": "2026-11-26",
  "slug": "haritada-sitesi-gorunmeyen-isletmeler-overpass-b",
  "oz": "Bir ilçedeki kafe, restoran, pastane, berber/kuaför ve çiçekçilerden OpenStreetMap'te web sitesi bilgisi girilmemiş olanları sayan betik ve sonucu noktalarla…",
- "yayin_zamani": "2026-11-23T01:52:42+03:00",
+ "yayin_zamani": "2026-11-23T01:57:05+03:00",
  "dosyalar": [
   {
    "ad": "README.md",
-   "boyut": 3917
+   "boyut": 4159
   },
   {
    "ad": "ara.py",
