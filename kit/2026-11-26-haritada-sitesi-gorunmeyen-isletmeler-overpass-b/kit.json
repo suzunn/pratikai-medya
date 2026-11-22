@@ -1,0 +1,26 @@
+{
+ "baslik": "Haritada sitesi görünmeyen işletmeler: Overpass betiği ve harita şablonu",
+ "tarih": "2026-11-26",
+ "slug": "haritada-sitesi-gorunmeyen-isletmeler-overpass-b",
+ "oz": "Bir ilçedeki kafe, restoran, pastane, berber/kuaför ve çiçekçilerden OpenStreetMap'te web sitesi bilgisi girilmemiş olanları sayan betik ve sonucu noktalarla…",
+ "yayin_zamani": "2026-11-23T01:52:42+03:00",
+ "dosyalar": [
+  {
+   "ad": "README.md",
+   "boyut": 3917
+  },
+  {
+   "ad": "ara.py",
+   "boyut": 11701
+  },
+  {
+   "ad": "harita_sablon.html",
+   "boyut": 10093
+  },
+  {
+   "ad": "prompt.txt",
+   "boyut": 2418
+  }
+ ],
+ "surum": 1
+}

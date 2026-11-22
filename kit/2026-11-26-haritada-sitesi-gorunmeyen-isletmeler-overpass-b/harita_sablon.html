@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="data:,">
+<title>Web sitesi bilgisi olmayan işletmeler</title>
+<style>
+  :root {
+    --kirmizi: #d62828;
+    --gri: #9aa0a6;
+    --metin: #1d1d1f;
+    --ikincil: #6b6b72;
+    --zemin: #f5f4f0;
+    --kart: #ffffff;
+    --cizgi: #3a3a3a;
+    --cubuk: #ecebe7;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--zemin);
+    color: var(--metin);
+    -webkit-text-size-adjust: 100%;
+  }
+  main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: max(18px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))
+             max(20px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .ust-baslik { font-size: .82rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ikincil); margin: 0; }
+  .sayi {
+    font-size: clamp(3.2rem, 19vw, 5.6rem);
+    font-weight: 800;
+    line-height: 1;
+    margin: 6px 0 4px;
+    color: var(--kirmizi);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -.02em;
+  }
+  .aciklama { margin: 0; font-size: 1.02rem; line-height: 1.35; }
+  .aciklama small { display: block; color: var(--ikincil); font-size: .85rem; margin-top: 2px; }
+
+  .kirilim { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .kirilim li { display: grid; grid-template-columns: 1fr auto; row-gap: 3px; font-size: .92rem; }
+  .kirilim .deger { font-variant-numeric: tabular-nums; color: var(--ikincil); }
+  .kirilim .deger b { color: var(--metin); }
+  .kirilim .cubuk { grid-column: 1 / -1; height: 6px; border-radius: 3px; background: var(--cubuk); overflow: hidden; }
+  .kirilim .cubuk span { display: block; height: 100%; width: 0; background: var(--kirmizi); border-radius: 3px;
+                         transition: width 2.8s cubic-bezier(.2,.7,.2,1); }
+
+  .harita {
+    position: relative;
+    background: var(--kart);
+    border-radius: 14px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 4px 18px rgba(0,0,0,.05);
+    overflow: hidden;
+  }
+  .harita svg { display: block; width: 100%; height: auto; max-height: 72svh; }
+  .sinir { fill: none; stroke: var(--cizgi); stroke-width: 1.2; stroke-linejoin: round; stroke-linecap: round; opacity: .75; }
+  .gri { fill: var(--gri); fill-opacity: .6; }
+  .kir { fill: var(--kirmizi); fill-opacity: .85; }
+  .n {
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: belir .35s ease-out forwards;
+  }
+  @keyframes belir {
+    from { opacity: 0; transform: scale(0); }
+    70%  { opacity: 1; transform: scale(1.35); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .atif {
+    position: absolute; right: 6px; bottom: 6px;
+    font-size: 11px; line-height: 1.2;
+    padding: 3px 6px; border-radius: 4px;
+    background: rgba(255,255,255,.88);
+    color: var(--ikincil);
+  }
+  .atif a { color: inherit; }
+
+  .lejant { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .85rem; color: var(--ikincil); margin: 0; }
+  .lejant span::before {
+    content: ""; display: inline-block; vertical-align: middle;
+    border-radius: 50%; margin-right: 6px;
+  }
+  .lejant .l-kir::before { width: 10px; height: 10px; background: var(--kirmizi); }
+  .lejant .l-gri::before { width: 6px; height: 6px; background: var(--gri); margin-left: 2px; margin-right: 8px; }
+  .dipnot { font-size: .78rem; color: var(--ikincil); margin: 0; line-height: 1.4; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .n { animation: none; opacity: 1; }
+    .kirilim .cubuk span { transition: none; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="ust-baslik" id="baslik">Web sitesi bilgisi</p>
+    <div class="sayi" id="sayi" aria-live="off">0</div>
+    <p class="aciklama" id="aciklama"></p>
+  </header>
+
+  <ul class="kirilim" id="kirilim"></ul>
+
+  <figure class="harita" style="margin:0">
+    <svg id="svg" role="img" aria-labelledby="svg-baslik" xmlns="http://www.w3.org/2000/svg">
+      <title id="svg-baslik">İşletmelerin konumlarını gösteren nokta haritası</title>
+    </svg>
+    <div class="atif">
+      <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap katkıda bulunanlar, ODbL</a>
+    </div>
+  </figure>
+
+  <p class="lejant"><span class="l-kir">Site bilgisi yok</span><span class="l-gri">Site bilgisi var</span></p>
+  <p class="dipnot" id="dipnot"></p>
+</main>
+
+<script>
+const VERI = /*__VERI__*/null;
+
+(function () {
+  "use strict";
+  if (!VERI) {
+    document.getElementById("aciklama").textContent = "Veri yok: bu şablon ara.py tarafından doldurulur.";
+    return;
+  }
+
+  const SURE = 3000;          // noktaların toplam belirme süresi (ms)
+  const NOKTA_SURESI = 350;   // tek noktanın animasyonu (ms)
+  const NS = "http://www.w3.org/2000/svg";
+  const sayiBicim = new Intl.NumberFormat("tr-TR");
+  const yuzdeBicim = new Intl.NumberFormat("tr-TR", { maximumFractionDigits: 1 });
+  const yuzde = (a, b) => (b ? (100 * a) / b : 0);
+  const azalt = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // --- metinler ---
+  document.getElementById("baslik").textContent = VERI.ilce + " · web sitesi bilgisi olmayan işletmeler";
+  document.title = VERI.ilce + ": web sitesi bilgisi olmayan işletmeler";
+  const aciklama = document.getElementById("aciklama");
+  aciklama.textContent = "işletmenin OpenStreetMap kaydında web sitesi yok.";
+  const kucuk = document.createElement("small");
+  kucuk.textContent = "Toplam " + sayiBicim.format(VERI.toplam) + " işletme içindeki payı: %" +
+    yuzdeBicim.format(yuzde(VERI.yok, VERI.toplam));
+  aciklama.appendChild(kucuk);
+
+  // --- kategori kırılımı ---
+  const liste = document.getElementById("kirilim");
+  const cubuklar = [];
+  VERI.kategoriler.forEach(function (k) {
+    const li = document.createElement("li");
+    const ad = document.createElement("span");
+    ad.textContent = k.ad;
+    const deger = document.createElement("span");
+    deger.className = "deger";
+    const b = document.createElement("b");
+    b.textContent = sayiBicim.format(k.yok);
+    deger.append(b, " / " + sayiBicim.format(k.toplam) + " · %" + yuzdeBicim.format(yuzde(k.yok, k.toplam)));
+    const cubuk = document.createElement("div");
+    cubuk.className = "cubuk";
+    const dolgu = document.createElement("span");
+    cubuk.appendChild(dolgu);
+    cubuklar.push([dolgu, yuzde(k.yok, k.toplam)]);
+    li.append(ad, deger, cubuk);
+    liste.appendChild(li);
+  });
+
+  // --- tarih dipnotu ---
+  const dipnot = document.getElementById("dipnot");
+  let tarih = "";
+  if (VERI.osm_tarihi) {
+    const t = new Date(VERI.osm_tarihi);
+    if (!isNaN(t)) tarih = t.toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" });
+  }
+  dipnot.textContent = "Kaynak: OpenStreetMap" + (tarih ? " (veri tarihi " + tarih + ")" : "") +
+    ". Yalnız adı girilmiş kayıtlar sayıldı; website, contact:website ve url etiketlerinden biri varsa site bilgisi var kabul edildi.";
+
+  // --- harita ---
+  const svg = document.getElementById("svg");
+  svg.setAttribute("viewBox", "0 0 " + VERI.genislik + " " + VERI.yukseklik);
+
+  if (VERI.sinir.length) {
+    const yol = document.createElementNS(NS, "path");
+    yol.setAttribute("class", "sinir");
+    yol.setAttribute("vector-effect", "non-scaling-stroke");
+    yol.setAttribute("d", VERI.sinir.map(function (c) {
+      return "M" + c.map(function (p) { return p[0] + " " + p[1]; }).join("L");
+    }).join(""));
+    svg.appendChild(yol);
+  }
+
+  // Belirme sırası: merkezden dışa doğru dalga, biraz rastgelelikle.
+  let tohum = 7;
+  const rastgele = function () { tohum = (tohum * 16807) % 2147483647; return tohum / 2147483647; };
+  const cx = VERI.genislik / 2, cy = VERI.yukseklik / 2;
+  const capMax = Math.hypot(cx, cy) || 1;
+  const sira = VERI.noktalar.map(function (p, i) {
+    return [i, Math.hypot(p[0] - cx, p[1] - cy) / capMax + rastgele() * 0.15];
+  }).sort(function (a, b) { return a[1] - b[1]; });
+
+  const n = sira.length;
+  const adim = n > 1 ? (SURE - NOKTA_SURESI) / (n - 1) : 0;
+  const gecikmeler = new Array(n);
+  sira.forEach(function (s, derece) { gecikmeler[s[0]] = derece * adim; });
+
+  const grupGri = document.createElementNS(NS, "g");
+  const grupKir = document.createElementNS(NS, "g");
+  grupGri.setAttribute("class", "gri");
+  grupKir.setAttribute("class", "kir");
+  const kirGecikmeleri = [];
+
+  VERI.noktalar.forEach(function (p, i) {
+    const c = document.createElementNS(NS, "circle");
+    const siteVar = p[3] === 1;
+    c.setAttribute("cx", p[0]);
+    c.setAttribute("cy", p[1]);
+    c.setAttribute("r", siteVar ? 2.6 : 4.8);
+    c.setAttribute("class", "n");
+    c.style.animationDelay = Math.round(gecikmeler[i]) + "ms";
+    if (siteVar) grupGri.appendChild(c);
+    else { grupKir.appendChild(c); kirGecikmeleri.push(gecikmeler[i]); }
+  });
+  svg.append(grupGri, grupKir);   // kırmızılar üstte
+
+  // --- sayaç: kırmızı noktalar belirdikçe artar ---
+  const sayi = document.getElementById("sayi");
+  kirGecikmeleri.sort(function (a, b) { return a - b; });
+  const sonDegerYaz = function () {
+    sayi.textContent = sayiBicim.format(VERI.yok);
+    cubuklar.forEach(function (c) { c[0].style.width = c[1] + "%"; });
+  };
+
+  if (azalt || !kirGecikmeleri.length) { sonDegerYaz(); return; }
+
+  requestAnimationFrame(function () {
+    cubuklar.forEach(function (c) { c[0].style.width = c[1] + "%"; });
+  });
+  const baslangic = performance.now();
+  let j = 0;
+  (function kare(simdi) {
+    const gecen = simdi - baslangic;
+    while (j < kirGecikmeleri.length && kirGecikmeleri[j] + NOKTA_SURESI * 0.5 <= gecen) j++;
+    sayi.textContent = sayiBicim.format(j);
+    if (j < kirGecikmeleri.length) requestAnimationFrame(kare);
+    else sonDegerYaz();
+  })(baslangic);
+})();
+</script>
+</body>
+</html>
