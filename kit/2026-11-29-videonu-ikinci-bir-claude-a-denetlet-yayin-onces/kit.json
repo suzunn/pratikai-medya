@@ -1,0 +1,26 @@
+{
+ "baslik": "Videonu ikinci bir Claude'a denetlet: yayın öncesi kontrol listesi, denetçi promptu ve rapor şablonu",
+ "tarih": "2026-11-29",
+ "slug": "videonu-ikinci-bir-claude-a-denetlet-yayin-onces",
+ "oz": "Videolarımı bir Claude yapıyor, yayından önce de ikinci bir Claude kontrol ediyor. 19 Kasım gecesi dört videoda 10 hata buldu, hepsi yayından önce düzeldi. D…",
+ "yayin_zamani": "2026-11-23T04:17:06+03:00",
+ "dosyalar": [
+  {
+   "ad": "README.md",
+   "boyut": 1894
+  },
+  {
+   "ad": "denetci_promptu.txt",
+   "boyut": 1752
+  },
+  {
+   "ad": "denetim_listesi.md",
+   "boyut": 3226
+  },
+  {
+   "ad": "denetim_raporu_sablonu.md",
+   "boyut": 2098
+  }
+ ],
+ "surum": 1
+}
