@@ -1,0 +1,16 @@
+Kurgusal bir çiçekçi için Instagram Reels'te yayınlanacak 3 dikey reklam yap: Kırk Sümbül Çiçekçilik. Video programı kullanmıyoruz; reklamları HTML, CSS ve SVG animasyonu olarak yazacaksın, ekran kaydını ben alacağım.
+
+Bu klasöre üç ayrı tek dosya yaz: reklam_1.html, reklam_2.html, reklam_3.html (CSS ve gerekiyorsa JavaScript içinde; CDN, web fontu, görsel ya da ses dosyası gibi dış kaynak kullanma, sistem fontları yeter).
+- Her reklam tam 15 saniye sürsün ve son karede dursun.
+- Sahne 9:16, tasarım ölçüsü 1080x1920 olsun ve pencereye sığacak şekilde ölçeklensin; telefonda (360x640) tam ekran ve rahat okunur görünsün. Reels arayüzü alt ve sağ kenarı kapattığı için önemli yazıları ve fiyatı ortada tut.
+- Çiçekleri, buketi ve süslemeleri CSS ya da SVG ile kendin çiz. Yazılar hareketli olsun (kinetik tipografi).
+- Kayıtta her kare aynı çıksın diye hareket zamana bağlı olsun: animasyonları CSS @keyframes ile saniye cinsinden yaz. JavaScript kullanırsan zamanı yalnız document.timeline.currentTime'dan oku; setTimeout, setInterval, Date.now ya da tohumsuz Math.random kullanma.
+
+Reklamların konusu:
+1) Yılbaşı buketi: kırmızı-beyaz yılbaşı buketi ve fiyatı.
+2) Aynı gün teslim: belli bir saate kadar verilen sipariş aynı gün kapıda.
+3) İlk siparişe kampanya: ilk siparişe indirim.
+
+Üçü aynı markanın serisi gibi dursun (aynı logo ve renk ailesi), ama her birinin açılışı ve hareketi farklı olsun. Son 2-3 saniyede marka adı ve "Sipariş için bize yaz" gibi kısa bir çağrı olsun. Fiyat, saat ve kampanya örnek: yanlarında küçük "örnek" yazsın. Gerçek telefon, adres, web sitesi ya da sosyal medya hesabı yazma.
+
+Bitince ne yaptığını kısaca söyle.

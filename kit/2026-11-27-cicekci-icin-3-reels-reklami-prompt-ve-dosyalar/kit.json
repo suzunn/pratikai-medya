@@ -1,0 +1,30 @@
+{
+ "baslik": "Çiçekçi için 3 Reels reklamı: prompt ve dosyalar",
+ "tarih": "2026-11-27",
+ "slug": "cicekci-icin-3-reels-reklami-prompt-ve-dosyalar",
+ "oz": "Kurgusal bir çiçekçi (Kırk Sümbül Çiçekçilik) için Claude Code'un yazdığı 15'er saniyelik üç dikey reklam: yılbaşı buketi, aynı gün teslim ve ilk siparişe in…",
+ "yayin_zamani": "2026-11-23T08:27:10+03:00",
+ "dosyalar": [
+  {
+   "ad": "README.md",
+   "boyut": 4838
+  },
+  {
+   "ad": "prompt.txt",
+   "boyut": 1780
+  },
+  {
+   "ad": "reklam_1.html",
+   "boyut": 26576
+  },
+  {
+   "ad": "reklam_2.html",
+   "boyut": 23563
+  },
+  {
+   "ad": "reklam_3.html",
+   "boyut": 22782
+  }
+ ],
+ "surum": 1
+}

@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Kırk Sümbül Çiçekçilik · Reklam 2 · Aynı Gün Teslim</title>
+<!--
+  Reklam 2 — Aynı gün teslim · 15 sn · 1080x1920 · son karede durur
+  0.0–1.1   Açılış: üç renk şeridi yukarı kalkar
+  1.0–4.7   "Bugün SİPARİŞ VER" yanlardan kayar; çalar saat kurulur, akrep 14.00'e döner, saat çalar
+  4.8–11.5  "Aynı gün KAPINDA!"; marka arabası gelir, kapı açılır, buket kapıya zıplar
+  11.6–15   Kapanış: şeritler iner, logo yuvarlanarak gelir, "Sipariş için bize yaz"
+  Tüm hareketler CSS @keyframes (saniye); bulut ve güneş hareketleri tam 15. saniyede biter.
+  Baştan oynatmak için sayfayı yenileyin (F5).
+-->
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;background:#12081a;cursor:none}
+#stage{position:absolute;left:50%;top:50%;width:1080px;height:1920px;margin:-960px 0 0 -540px;transform:scale(var(--s,.3333));overflow:hidden;color:#2b1238;
+  background:radial-gradient(520px 520px at 0% 8%,#e6d9fa 0%,rgba(230,217,250,0) 100%),radial-gradient(640px 640px at 100% 92%,#ecdffb 0%,rgba(236,223,251,0) 100%),#fff6ec;
+  font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif}
+.layer{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:visible}
+.serif{font-family:Georgia,"Times New Roman",Times,serif}
+.ornek{display:inline-block;font:600 30px/1 "Segoe UI",system-ui,sans-serif;font-style:normal;letter-spacing:1px;padding:7px 16px 9px;border:3px solid currentColor;border-radius:999px;vertical-align:middle;opacity:.9}
+.fb{transform-box:fill-box;transform-origin:center}
+
+/* açılış şeritleri */
+.band{position:absolute;top:0;width:361px;height:1920px;z-index:30;animation:bandUp .7s cubic-bezier(.7,0,.3,1) both}
+.b1{left:0;background:#2b1238;animation-delay:.15s}.b2{left:360px;background:#9b7fd4;animation-delay:.27s}.b3{left:720px;background:#f2b544;animation-delay:.39s}
+@keyframes bandUp{from{transform:none}to{transform:translateY(-105%)}}
+
+/* marka rozeti */
+.chip{position:absolute;top:236px;left:0;width:100%;display:flex;justify-content:center;z-index:5;animation:chipIn .7s cubic-bezier(.2,.8,.3,1) .9s both}
+.chip>div{display:flex;align-items:center;gap:16px;padding:8px 32px 8px 8px;border-radius:999px;background:#2b1238;color:#fff6ec}
+.chip svg{width:68px;height:68px;display:block}
+.chip span{font:italic 40px/1 Georgia,"Times New Roman",serif}
+@keyframes chipIn{from{transform:translateY(-50px);opacity:0}to{transform:none;opacity:1}}
+
+/* başlık */
+.t1,.t2{position:absolute;left:0;width:100%;text-align:center;z-index:5;white-space:nowrap}
+.t1{top:322px;height:130px;font-size:116px;line-height:1.1;font-style:italic;color:#7a5bc4}
+.t2{top:452px;height:170px;font-size:140px;line-height:1.1;font-weight:900}
+.t1 span,.t2>div{position:absolute;left:0;top:0;width:100%}
+.t2 span{display:inline-block}
+.bg1{animation:dropIn .6s cubic-bezier(.2,.8,.3,1.2) 1.0s both,upAway .4s ease-in 4.75s forwards}
+.bg2{animation:riseIn .6s cubic-bezier(.2,.8,.3,1.2) 4.95s both}
+.w1{animation:inL .6s cubic-bezier(.2,.9,.3,1.1) 1.2s both,outL .45s cubic-bezier(.7,0,1,.5) 4.75s forwards}
+.w2{animation:inR .6s cubic-bezier(.2,.9,.3,1.1) 1.38s both,outR .45s cubic-bezier(.7,0,1,.5) 4.75s forwards}
+.w3{animation:slam .55s cubic-bezier(.3,.8,.35,1.15) 5.05s both}
+.bar{position:absolute;left:250px;top:150px;width:580px;height:18px;border-radius:9px;background:#f2b544;transform-origin:left;animation:barIn .5s ease-out 5.5s both}
+@keyframes dropIn{from{transform:translateY(-120px);opacity:0}to{transform:none;opacity:1}}
+@keyframes riseIn{from{transform:translateY(120px);opacity:0}to{transform:none;opacity:1}}
+@keyframes upAway{from{transform:none;opacity:1}to{transform:translateY(-120px);opacity:0}}
+@keyframes inL{0%{transform:translateX(-1100px) skewX(-25deg);opacity:0}70%{transform:translateX(20px) skewX(8deg);opacity:1}100%{transform:none;opacity:1}}
+@keyframes inR{0%{transform:translateX(1100px) skewX(25deg);opacity:0}70%{transform:translateX(-20px) skewX(-8deg);opacity:1}100%{transform:none;opacity:1}}
+@keyframes outL{from{transform:none;opacity:1}to{transform:translateX(-1200px) skewX(25deg);opacity:0}}
+@keyframes outR{from{transform:none;opacity:1}to{transform:translateX(1200px) skewX(-25deg);opacity:0}}
+@keyframes slam{0%{transform:scale(2.6) rotate(-6deg);opacity:0}60%{transform:scale(.94) rotate(1deg);opacity:1}100%{transform:none;opacity:1}}
+@keyframes barIn{from{transform:scaleX(0)}to{transform:none}}
+
+/* saat sahnesi */
+.clockIn{animation:popIn .55s cubic-bezier(.3,.8,.35,1.3) .7s both}
+.clockOut{animation:clockOut .5s ease-in 4.75s forwards}
+.rim{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .8s ease-out .85s both}
+.ticks{animation:fadeIn .4s ease-out 1.25s both}
+.hh{animation:hh 1.6s cubic-bezier(.45,0,.2,1) 1.4s both}
+.mh{animation:mh 1.6s cubic-bezier(.45,0,.2,1) 1.4s both}
+.shake{animation:shake .6s ease-in-out 3.0s 1}
+.ring{opacity:0;animation:ring .9s ease-out 3.0s both}
+.stalk{transform-box:fill-box;transform-origin:50% 100%;animation:grow .9s cubic-bezier(.3,.8,.3,1.1) var(--d) both,fadeDown .45s ease-in 4.75s forwards}
+@keyframes popIn{from{transform:scale(0);opacity:0}to{transform:none;opacity:1}}
+@keyframes clockOut{from{transform:none;opacity:1}to{transform:scale(0) rotate(160deg);opacity:0}}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes hh{from{transform:rotate(270deg)}to{transform:rotate(420deg)}}
+@keyframes mh{from{transform:rotate(0deg)}to{transform:rotate(1800deg)}}
+@keyframes shake{0%,100%{transform:none}15%,45%,75%{transform:rotate(-5deg)}30%,60%,90%{transform:rotate(5deg)}}
+@keyframes ring{0%{transform:scale(1);opacity:0}8%{opacity:.9}100%{transform:scale(1.45);opacity:0}}
+@keyframes grow{from{transform:scaleY(0)}to{transform:none}}
+@keyframes fadeDown{from{transform:none;opacity:1}to{transform:translateY(60px);opacity:0}}
+
+/* teslimat sahnesi */
+.road{animation:roadIn .6s cubic-bezier(.3,.8,.3,1) 4.95s both}
+.house{animation:houseIn .7s cubic-bezier(.3,.8,.35,1.25) 5.1s both}
+.sunIn{animation:popIn .6s cubic-bezier(.3,.8,.35,1.3) 5.25s both}
+.rays{animation:spin 9.75s linear 5.25s both}
+.van{animation:drive 1.8s cubic-bezier(.15,.75,.25,1) 5.4s both}
+.wheel{animation:roll 1.8s cubic-bezier(.15,.75,.25,1) 5.4s both}
+.vbob{transform-box:fill-box;transform-origin:50% 100%;animation:bob .2s ease-in-out 5.4s 9,brake .45s ease-out 7.2s 1}
+.spd{animation:spd 1.8s linear 5.4s both}
+.door{transform-box:fill-box;transform-origin:0 50%;animation:door .5s cubic-bezier(.3,.7,.3,1) 7.35s both}
+.hopx{animation:hopx .8s linear 7.6s both}
+.hopy{animation:hopy .8s 7.6s both}
+.hrt{animation:hrt 1.5s ease-out var(--d) both}
+@keyframes roadIn{from{transform:scaleX(0)}to{transform:none}}
+@keyframes houseIn{from{transform:translateY(260px);opacity:0}to{transform:none;opacity:1}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(110deg)}}
+@keyframes drive{from{transform:translateX(-1000px)}to{transform:none}}
+@keyframes roll{from{transform:rotate(0deg)}to{transform:rotate(1680deg)}}
+@keyframes bob{0%,100%{transform:none}50%{transform:translateY(-6px)}}
+@keyframes brake{0%,100%{transform:none}40%{transform:rotate(1.6deg)}}
+@keyframes spd{0%{opacity:0}10%{opacity:.9}75%{opacity:.9}100%{opacity:0}}
+@keyframes door{from{transform:none}to{transform:scaleX(.14)}}
+@keyframes hopx{0%{transform:translateX(-420px);opacity:0}10%{opacity:1}100%{transform:none;opacity:1}}
+@keyframes hopy{0%{transform:translateY(-150px);animation-timing-function:cubic-bezier(.3,.6,.5,1)}45%{transform:translateY(-330px);animation-timing-function:cubic-bezier(.5,0,.7,.4)}100%{transform:none}}
+@keyframes hrt{0%{transform:translateY(0) scale(.2);opacity:0}20%{transform:translateY(-30px) scale(1);opacity:1}100%{transform:translateY(-220px) scale(.8);opacity:0}}
+
+/* saat bandı (fiyat yerine saat) */
+.pillw{position:absolute;top:1170px;left:0;width:100%;display:flex;justify-content:center;z-index:6}
+.pill{display:flex;align-items:center;gap:18px;padding:20px 34px 22px 26px;border-radius:999px;background:#2b1238;color:#fff6ec;font-weight:700;font-size:54px;line-height:1;white-space:nowrap;
+  box-shadow:0 16px 40px rgba(43,18,56,.3);animation:popIn .55s cubic-bezier(.3,.8,.35,1.35) 3.15s both,bump .5s ease-in-out 10.2s 1}
+.pill b{color:#f2b544}
+.pill .ornek{color:#d9c8f5}
+.pill svg{width:60px;height:60px;flex:none}
+@keyframes bump{0%,100%{transform:none}50%{transform:scale(1.07)}}
+.words{position:absolute;top:1312px;left:0;width:100%;text-align:center;font-size:52px;font-style:italic;color:#7a5bc4;z-index:5;white-space:nowrap}
+.words span{display:inline-block;animation:wordPop .45s cubic-bezier(.3,.8,.35,1.4) var(--d) both}
+@keyframes wordPop{from{transform:translateY(40px) scale(.5);opacity:0}to{transform:none;opacity:1}}
+
+/* bulutlar: tek geçiş, 15. sn'de biter */
+.cl1{animation:cloud1 15s linear both}.cl2{animation:cloud2 15s linear both}
+@keyframes cloud1{from{transform:translateX(-260px)}to{transform:translateX(1180px)}}
+@keyframes cloud2{from{transform:translateX(1180px)}to{transform:translateX(-120px)}}
+
+/* kapanış */
+.col{position:absolute;top:0;width:361px;height:1920px;z-index:20;background:#2b1238;animation:colDown .6s cubic-bezier(.7,0,.3,1) both}
+.c1{left:0;animation-delay:11.55s}.c2{left:360px;animation-delay:11.67s}.c3{left:720px;animation-delay:11.79s}
+@keyframes colDown{from{transform:translateY(-105%)}to{transform:none}}
+#end{z-index:21;color:#fff6ec}
+.glow{background:radial-gradient(70% 45% at 50% 45%,#4c2263 0%,rgba(43,18,56,0) 100%);animation:fadeIn .8s ease-out 12.1s both}
+.e-emb{position:absolute;left:375px;top:420px;width:330px;height:330px;animation:rollIn 1s cubic-bezier(.2,.8,.3,1) 12.15s both}
+@keyframes rollIn{from{transform:translateX(-820px) rotate(-560deg)}to{transform:none}}
+.e-name{position:absolute;top:790px;left:0;width:100%;text-align:center;font-size:128px;line-height:1.05;font-style:italic}
+.e-name span{display:inline-block;animation:key .25s ease-out calc(12.65s + var(--i) * .07s) both}
+@keyframes key{from{transform:scale(1.8);opacity:0}to{transform:none;opacity:1}}
+.e-sub{position:absolute;top:950px;left:0;width:100%;text-align:center;font-weight:600;font-size:44px;letter-spacing:22px;padding-left:22px;color:#cdb6f5;animation:riseIn .6s ease-out 13.4s both}
+.e-line{position:absolute;top:1030px;left:410px;width:260px;height:4px;border-radius:2px;background:#f2b544;animation:barIn .6s ease-out 13.5s both}
+.ctaw{position:absolute;top:1074px;left:0;width:100%;display:flex;justify-content:center}
+.cta{display:flex;align-items:center;gap:20px;padding:26px 48px 28px 40px;border-radius:999px;background:#f2b544;color:#2b1238;font-weight:800;font-size:54px;line-height:1;white-space:nowrap;
+  box-shadow:0 16px 44px rgba(242,181,68,.35);animation:ctaSlide .7s cubic-bezier(.2,.8,.3,1) 13.6s both,honk .6s ease-in-out 14.25s 1}
+.cta svg{width:62px;height:62px;flex:none}
+@keyframes ctaSlide{0%{transform:translateX(900px)}70%{transform:translateX(-24px)}100%{transform:none}}
+@keyframes honk{0%,100%{transform:none}20%,60%{transform:rotate(-3deg) scale(1.04)}40%,80%{transform:rotate(3deg) scale(1.04)}}
+.remind{position:absolute;top:1228px;left:0;width:100%;text-align:center;font-size:38px;color:rgba(255,246,236,.88);white-space:nowrap;animation:riseIn .6s ease-out 13.9s both}
+.remind .ornek{margin:0 12px;color:#cdb6f5}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <defs>
+  <g id="fl"><circle cx="0" cy="-5.5" r="5.5"/><circle cx="4.8" cy="-2.75" r="5.5"/><circle cx="4.8" cy="2.75" r="5.5"/><circle cx="0" cy="5.5" r="5.5"/><circle cx="-4.8" cy="2.75" r="5.5"/><circle cx="-4.8" cy="-2.75" r="5.5"/><circle r="3" fill="#fff6ec"/></g>
+  <symbol id="logo" viewBox="0 0 200 200">
+   <circle cx="100" cy="100" r="94" fill="#2b1238" stroke="#e9c46a" stroke-width="6"/>
+   <circle cx="100" cy="100" r="83" fill="none" stroke="#e9c46a" stroke-width="1.5" opacity=".6"/>
+   <path d="M100 176V100" stroke="#6fae7c" stroke-width="7" stroke-linecap="round"/>
+   <path d="M99 174C72 164 58 138 60 112C80 124 95 148 99 174Z" fill="#6fae7c"/>
+   <path d="M101 174C128 164 142 138 140 112C120 124 105 148 101 174Z" fill="#4f8a5b"/>
+   <use href="#fl" x="100" y="40" fill="#c2a8f5"/>
+   <use href="#fl" x="92" y="53" fill="#9273dc"/><use href="#fl" x="108" y="53" fill="#9273dc"/>
+   <use href="#fl" x="85" y="66" fill="#c2a8f5"/><use href="#fl" x="100" y="66" fill="#9273dc"/><use href="#fl" x="115" y="66" fill="#c2a8f5"/>
+   <use href="#fl" x="83" y="80" fill="#9273dc"/><use href="#fl" x="100" y="80" fill="#c2a8f5"/><use href="#fl" x="117" y="80" fill="#9273dc"/>
+   <use href="#fl" x="85" y="94" fill="#c2a8f5"/><use href="#fl" x="100" y="94" fill="#9273dc"/><use href="#fl" x="115" y="94" fill="#c2a8f5"/>
+   <use href="#fl" x="92" y="107" fill="#9273dc"/><use href="#fl" x="108" y="107" fill="#9273dc"/>
+  </symbol>
+  <!-- sümbül sapı (taban 0,0) -->
+  <g id="stalk">
+   <path d="M0 0V-330" stroke="#4f8a5b" stroke-width="10" stroke-linecap="round"/>
+   <path d="M-2 0C-40-50-50-130-38-190C-10-130 0-70-2 0Z" fill="#6fae7c"/>
+   <path d="M2 0C40-50 50-110 40-160C15-110 2-60 2 0Z" fill="#4f8a5b"/>
+   <use href="#fl" transform="translate(0 -350) scale(2.2)" fill="#c2a8f5"/>
+   <use href="#fl" transform="translate(-16 -318) scale(2.2)" fill="#9273dc"/><use href="#fl" transform="translate(16 -318) scale(2.2)" fill="#9273dc"/>
+   <use href="#fl" transform="translate(-24 -284) scale(2.2)" fill="#c2a8f5"/><use href="#fl" transform="translate(0 -284) scale(2.2)" fill="#9273dc"/><use href="#fl" transform="translate(24 -284) scale(2.2)" fill="#c2a8f5"/>
+   <use href="#fl" transform="translate(-24 -250) scale(2.2)" fill="#9273dc"/><use href="#fl" transform="translate(0 -250) scale(2.2)" fill="#c2a8f5"/><use href="#fl" transform="translate(24 -250) scale(2.2)" fill="#9273dc"/>
+   <use href="#fl" transform="translate(-16 -216) scale(2.2)" fill="#c2a8f5"/><use href="#fl" transform="translate(16 -216) scale(2.2)" fill="#c2a8f5"/>
+   <use href="#fl" transform="translate(0 -186) scale(2.2)" fill="#9273dc"/>
+  </g>
+  <!-- küçük buket (taban 0,0) -->
+  <g id="minib">
+   <path d="M-14-70L-30-118M14-70L30-116M0-70V-130" stroke="#4f8a5b" stroke-width="5"/>
+   <ellipse cx="-30" cy="-124" rx="15" ry="19" fill="#ff6f8e"/><ellipse cx="30" cy="-122" rx="15" ry="19" fill="#ff8fa8"/>
+   <use href="#fl" transform="translate(0 -150) scale(1.4)" fill="#9b7fd4"/><use href="#fl" transform="translate(-9 -132) scale(1.4)" fill="#7a5bc4"/><use href="#fl" transform="translate(9 -132) scale(1.4)" fill="#9b7fd4"/>
+   <path d="M-46-80H46L14 0H-14Z" fill="#fff6ec" stroke="#d9c6e4" stroke-width="3"/>
+   <circle cy="-34" r="9" fill="#f2b544"/>
+  </g>
+  <path id="heart" d="M0 8C-14-4-10-20 0-12C10-20 14-4 0 8Z" fill="#ff6f8e"/>
+ </defs>
+</svg>
+
+<div id="stage">
+ <!-- bulutlar -->
+ <svg class="layer" viewBox="0 0 1080 1920" style="z-index:1" fill="#e6dcf8">
+  <g class="cl1"><g transform="translate(0 700)"><circle r="40"/><circle cx="45" cy="-15" r="52"/><circle cx="95" cy="0" r="38"/><rect x="0" y="0" width="95" height="38"/></g></g>
+  <g class="cl2"><g transform="translate(0 1480) scale(1.3)"><circle r="40"/><circle cx="45" cy="-15" r="52"/><circle cx="95" cy="0" r="38"/><rect x="0" y="0" width="95" height="38"/></g></g>
+ </svg>
+
+ <svg class="layer" viewBox="0 0 1080 1920" style="z-index:2">
+  <!-- SAHNE A: sümbüller + çalar saat -->
+  <g class="stalk" style="--d:1.8s"><use href="#stalk" transform="translate(150 1110)"/></g>
+  <g class="stalk" style="--d:2.0s"><use href="#stalk" transform="translate(930 1110) scale(-1 1)"/></g>
+  <g class="clockOut fb">
+   <g transform="translate(540 880)">
+    <g class="shake">
+     <g class="clockIn fb">
+      <circle cx="-150" cy="-190" r="62" fill="#f2b544"/><circle cx="150" cy="-190" r="62" fill="#f2b544"/>
+      <path d="M-140 200L-180 255M140 200L180 255" stroke="#2b1238" stroke-width="16" stroke-linecap="round"/>
+      <circle r="230" fill="#fffdf8"/>
+      <circle class="rim" r="230" fill="none" stroke="#2b1238" stroke-width="18" pathLength="1" transform="rotate(-90)"/>
+      <circle r="200" fill="none" stroke="#c9b6f2" stroke-width="4"/>
+      <g class="ticks">
+       <g stroke="#2b1238" stroke-width="8" stroke-linecap="round">
+        <path d="M0-205V-182" transform="rotate(30)"/><path d="M0-205V-182" transform="rotate(60)"/><path d="M0-205V-182" transform="rotate(120)"/><path d="M0-205V-182" transform="rotate(150)"/>
+        <path d="M0-205V-182" transform="rotate(210)"/><path d="M0-205V-182" transform="rotate(240)"/><path d="M0-205V-182" transform="rotate(300)"/><path d="M0-205V-182" transform="rotate(330)"/>
+       </g>
+       <g font-family="Georgia,serif" font-size="56" fill="#2b1238" text-anchor="middle" dominant-baseline="central">
+        <text x="0" y="-152">12</text><text x="155" y="0">3</text><text x="0" y="155">6</text><text x="-155" y="0">9</text>
+       </g>
+      </g>
+      <g class="hh"><path d="M-11 20L-8-118Q0-134 8-118L11 20Z" fill="#2b1238"/></g>
+      <g class="mh"><path d="M-7 24L-5-172Q0-186 5-172L7 24Z" fill="#7a5bc4"/></g>
+      <circle r="18" fill="#f2b544"/><circle r="7" fill="#2b1238"/>
+     </g>
+    </g>
+    <circle class="ring" r="230" fill="none" stroke="#f2b544" stroke-width="10"/>
+   </g>
+  </g>
+
+  <!-- SAHNE B: yol, ev, güneş, araba -->
+  <g class="road fb"><rect x="-20" y="1050" width="1120" height="74" fill="#3b2a4d"/><path d="M0 1087H1080" stroke="#fff6ec" stroke-width="6" stroke-dasharray="46 34"/></g>
+  <g transform="translate(190 690)"><g class="sunIn fb">
+   <g class="rays" stroke="#f2b544" stroke-width="10" stroke-linecap="round">
+    <path d="M0-78V-104"/><path d="M0-78V-104" transform="rotate(45)"/><path d="M0-78V-104" transform="rotate(90)"/><path d="M0-78V-104" transform="rotate(135)"/>
+    <path d="M0-78V-104" transform="rotate(180)"/><path d="M0-78V-104" transform="rotate(225)"/><path d="M0-78V-104" transform="rotate(270)"/><path d="M0-78V-104" transform="rotate(315)"/>
+   </g>
+   <circle r="56" fill="#f2b544"/>
+  </g></g>
+  <g class="house">
+   <rect x="870" y="690" width="40" height="90" fill="#2b1238"/>
+   <rect x="645" y="800" width="280" height="250" fill="#ffd9c4"/>
+   <path d="M615 812L785 680L955 812Z" fill="#2b1238"/>
+   <path d="M645 814H925" stroke="#f2b544" stroke-width="8"/>
+   <rect x="668" y="842" width="58" height="58" rx="6" fill="#ffe7a1" stroke="#2b1238" stroke-width="6"/><path d="M697 842V900M668 871H726" stroke="#2b1238" stroke-width="5"/>
+   <rect x="845" y="842" width="58" height="58" rx="6" fill="#ffe7a1" stroke="#2b1238" stroke-width="6"/><path d="M874 842V900M845 871H903" stroke="#2b1238" stroke-width="5"/>
+   <rect x="729" y="894" width="112" height="156" rx="8" fill="#2b1238"/>
+   <rect x="735" y="900" width="100" height="150" rx="5" fill="#ffe7a1"/>
+   <g class="door"><rect x="735" y="900" width="100" height="150" rx="5" fill="#7a5bc4"/><circle cx="818" cy="980" r="7" fill="#f2b544"/></g>
+   <rect x="720" y="1040" width="130" height="12" rx="4" fill="#c9a48e"/>
+  </g>
+  <g class="van">
+   <g class="vbob">
+    <g class="spd" stroke="#9b7fd4" stroke-width="8" stroke-linecap="round"><path d="M20 860H80"/><path d="M0 910H70"/><path d="M30 960H90"/></g>
+    <rect x="110" y="816" width="290" height="180" rx="22" fill="#9b7fd4"/>
+    <rect x="110" y="978" width="290" height="14" fill="#f2b544"/>
+    <use href="#logo" x="185" y="830" width="140" height="140"/>
+    <path d="M400 876H470Q500 876 512 906L525 946Q530 956 530 966V996H400Z" fill="#2b1238"/>
+    <path d="M418 891H468Q486 891 494 911L503 941H418Z" fill="#cfe8ff"/>
+    <rect x="395" y="986" width="140" height="16" rx="8" fill="#1d1226"/>
+    <circle cx="522" cy="966" r="7" fill="#ffd36b"/>
+   </g>
+   <g class="wheel fb"><circle cx="180" cy="1016" r="34" fill="#1d1226"/><circle cx="180" cy="1016" r="15" fill="#e0d6ef"/><path d="M180 1001V1031M165 1016H195" stroke="#1d1226" stroke-width="5"/></g>
+   <g class="wheel fb"><circle cx="450" cy="1016" r="34" fill="#1d1226"/><circle cx="450" cy="1016" r="15" fill="#e0d6ef"/><path d="M450 1001V1031M435 1016H465" stroke="#1d1226" stroke-width="5"/></g>
+  </g>
+  <!-- buket arabadan kapıya zıplar -->
+  <g class="hopx"><g class="hopy"><use href="#minib" transform="translate(785 1046) scale(.85)"/></g></g>
+  <g transform="translate(785 900)">
+   <g class="hrt fb" style="--d:8.35s"><use href="#heart" transform="translate(-40 0) scale(2.4)"/></g>
+   <g class="hrt fb" style="--d:8.5s"><use href="#heart" transform="translate(30 -20) scale(2)"/></g>
+   <g class="hrt fb" style="--d:8.65s"><use href="#heart" transform="translate(-10 -40) scale(2.8)"/></g>
+   <g class="hrt fb" style="--d:8.8s"><use href="#heart" transform="translate(50 10) scale(1.8)"/></g>
+   <g class="hrt fb" style="--d:8.95s"><use href="#heart" transform="translate(-55 -30) scale(1.9)"/></g>
+  </g>
+ </svg>
+
+ <div class="chip"><div><svg viewBox="0 0 200 200"><use href="#logo" width="200" height="200"/></svg><span>Kırk Sümbül</span></div></div>
+
+ <div class="t1 serif"><span class="bg1">Bugün</span><span class="bg2">Aynı gün</span></div>
+ <div class="t2">
+  <div><span class="w1">SİPARİŞ</span> <span class="w2">VER</span></div>
+  <div><div class="bar"></div><span class="w3" style="position:relative">KAPINDA!</span></div>
+ </div>
+
+ <div class="pillw"><div class="pill">
+  <svg viewBox="-30 -30 60 60"><circle r="26" fill="none" stroke="#f2b544" stroke-width="5"/><path d="M0 0V-16M0 0L10-6" stroke="#fff6ec" stroke-width="5" stroke-linecap="round"/></svg>
+  <span>Saat <b>14.00</b>’e kadar</span><span class="ornek">örnek</span>
+ </div></div>
+ <div class="words serif"><span style="--d:8.6s">taze</span> · <span style="--d:8.9s">özenli</span> · <span style="--d:9.2s">zamanında</span></div>
+
+ <!-- kapanış -->
+ <div class="col c1"></div><div class="col c2"></div><div class="col c3"></div>
+ <div id="end" class="layer">
+  <div class="layer glow"></div>
+  <svg class="e-emb" viewBox="0 0 200 200"><use href="#logo" width="200" height="200"/></svg>
+  <div class="e-name serif"><span style="--i:0">K</span><span style="--i:1">ı</span><span style="--i:2">r</span><span style="--i:3">k</span><span style="--i:4">&nbsp;</span><span style="--i:5">S</span><span style="--i:6">ü</span><span style="--i:7">m</span><span style="--i:8">b</span><span style="--i:9">ü</span><span style="--i:10">l</span></div>
+  <div class="e-sub">ÇİÇEKÇİLİK</div>
+  <div class="e-line"></div>
+  <div class="ctaw"><div class="cta">
+   <svg viewBox="0 0 64 64"><path d="M10 8h44a8 8 0 0 1 8 8v24a8 8 0 0 1-8 8H28L14 60V48h-4a8 8 0 0 1-8-8V16a8 8 0 0 1 8-8z" fill="#2b1238"/><circle cx="20" cy="28" r="4.5" fill="#f2b544"/><circle cx="32" cy="28" r="4.5" fill="#f2b544"/><circle cx="44" cy="28" r="4.5" fill="#f2b544"/></svg>
+   <span>Sipariş için bize yaz</span></div></div>
+  <div class="remind">Saat 14.00’e kadar<span class="ornek">örnek</span>· aynı gün kapında</div>
+ </div>
+
+ <div class="band b1"></div><div class="band b2"></div><div class="band b3"></div>
+</div>
+
+<script>
+(function(){
+  // Sahneyi pencereye sığdır (zamanla ilgisi yok)
+  var st=document.getElementById('stage');
+  function fit(){st.style.setProperty('--s',Math.min(innerWidth/1080,innerHeight/1920));}
+  fit();addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>
