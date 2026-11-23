@@ -1,0 +1,38 @@
+{
+ "baslik": "Süre ve ücret sayacı: Chrome eklentisi ve prompt",
+ "tarih": "2026-11-28",
+ "slug": "sure-ve-ucret-sayaci-chrome-eklentisi-ve-prompt",
+ "oz": "Müşteri başına çalıştığın süreyi tutan ve saatlik ücretinden tutarı hesaplayan küçük bir Chrome eklentisi (Manifest V3, araç çubuğundaki simgeye basınca açıl…",
+ "yayin_zamani": "2026-11-23T03:55:27+03:00",
+ "dosyalar": [
+  {
+   "ad": "README.md",
+   "boyut": 3720
+  },
+  {
+   "ad": "mesai-sayaci-eklenti.zip",
+   "boyut": 7469
+  },
+  {
+   "ad": "prompt.txt",
+   "boyut": 1323
+  },
+  {
+   "ad": "eklenti/manifest.json",
+   "boyut": 333
+  },
+  {
+   "ad": "eklenti/popup.css",
+   "boyut": 3000
+  },
+  {
+   "ad": "eklenti/popup.html",
+   "boyut": 2391
+  },
+  {
+   "ad": "eklenti/popup.js",
+   "boyut": 14853
+  }
+ ],
+ "surum": 1
+}

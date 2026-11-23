@@ -1,0 +1,14 @@
+Bana bir Chrome eklentisi yaz: serbest çalışan biri müşteri başına ne kadar çalıştığını tutsun, saatlik ücretinden ne kadar tuttuğunu görsün.
+
+Manifest V3 olsun, araç çubuğundaki simgeye basınca açılan küçük bir popup penceresinde çalışsın. Simge dosyası gerekmiyor.
+
+Popup'ta şunlar olsun:
+- Müşteri seçimi. Örnek olarak üç kurgusal müşteri hazır gelsin: Pudra Bulut Pastanesi, Kırk Sümbül Çiçekçilik, Telve & Tarçın. Yeni müşteri de eklenebilsin.
+- Her müşterinin saatlik ücreti (TL). Örnek ücretler koy, değiştirilebilsin.
+- Başlat / Durdur düğmesi ve çalışırken saniye saniye ilerleyen sayaç. Popup kapanıp yeniden açılınca sayaç kaldığı yerden devam etsin.
+- Seçili müşteri için bugünkü süre ve tutar, toplam süre ve tutar.
+- Kayıtları CSV olarak indiren bir düğme (tarih, müşteri, başlangıç, bitiş, süre, saatlik ücret, tutar).
+
+İzin olarak yalnız "storage" kullan. Veri yalnız bu bilgisayarda, chrome.storage.local içinde kalsın; hiçbir sunucuya istek atma, dış kaynak (CDN, web fontu, uzak görsel) kullanma. Tutarları Türk lirası biçiminde göster (ör. 1.250,00 TL). Arayüz Türkçe ve sade olsun, dar popup'a sığsın.
+
+Dosyalar: manifest.json, popup.html, popup.css, popup.js. Hepsini bu klasöre yaz.

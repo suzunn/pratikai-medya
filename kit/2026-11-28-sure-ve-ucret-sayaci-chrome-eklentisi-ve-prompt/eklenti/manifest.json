@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Mesai Sayacı",
+  "version": "1.0.0",
+  "description": "Serbest çalışanlar için müşteri başına süre ve kazanç takibi. Veriler yalnız bu bilgisayarda saklanır.",
+  "permissions": ["storage"],
+  "action": {
+    "default_title": "Mesai Sayacı",
+    "default_popup": "popup.html"
+  }
+}

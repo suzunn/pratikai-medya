@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Süre ve ücret sayacı: Chrome eklentisi ve prompt · Pratik AI</title><meta name="description" content="Videolarda gösterdiğim dosyalar, promptlar ve şablonlar. Her gün yenisi en üstte."><meta name="theme-color" content="#0B1328"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&family=Unbounded:wght@700&display=swap" rel="stylesheet"><style>:root{--gece:#0B1328;--pano:#13203F;--cizgi:#2B3D6B;--krem:#F3E9D6;--pirinc:#F2B84B;--sis:#A6B6D8}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--gece);color:var(--krem);font:500 16px/1.6 Manrope,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:660px;margin:0 auto;padding:28px 16px 56px}
+a{color:var(--pirinc)}
+.rozet{display:inline-block;font:700 12px/1 Unbounded,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--gece);background:var(--pirinc);padding:7px 11px 6px;border-radius:999px}
+h1{font:700 26px/1.25 Unbounded,system-ui,sans-serif;margin:14px 0 8px;overflow-wrap:anywhere}
+h2{font:700 19px/1.3 Unbounded,system-ui,sans-serif;margin:28px 0 10px}
+h3{font-size:17px;margin:22px 0 8px}
+.alt,.tarih{color:var(--sis)}.alt{margin:0 0 22px}.tarih{font-size:14px}
+.liste{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.kart{display:block;background:var(--pano);border:1px solid var(--cizgi);border-radius:16px;padding:16px 16px 14px;color:inherit;text-decoration:none}
+.kart:hover,.kart:focus-visible{border-color:var(--pirinc)}
+.kart b{display:block;font:700 17px/1.35 Unbounded,system-ui,sans-serif;margin:6px 0}
+.kart .oz{display:block;color:var(--sis);font-size:15px}
+.yeni{color:var(--gece);background:var(--pirinc);border-radius:6px;padding:1px 7px;font-size:12px;font-weight:700;margin-left:6px}
+.bos{background:var(--pano);border:1px dashed var(--cizgi);border-radius:16px;padding:18px;color:var(--sis)}
+.bos b{color:var(--krem)}
+.geri{display:inline-block;margin-bottom:18px;text-decoration:none}
+.md{overflow-wrap:anywhere}.md img{max-width:100%;border-radius:12px}
+.md table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}.md td,.md th{border:1px solid var(--cizgi);padding:6px 8px;text-align:left}
+code{font-family:"JetBrains Mono",ui-monospace,Consolas,monospace;font-size:.92em;background:var(--pano);border-radius:6px;padding:1px 5px}
+pre{position:relative;background:var(--pano);border:1px solid var(--cizgi);border-radius:12px;padding:44px 14px 14px;overflow-x:auto;white-space:pre-wrap}
+pre code{background:none;padding:0}
+.kopyala{position:absolute;top:8px;right:8px;font:700 12px Manrope,system-ui,sans-serif;color:var(--gece);background:var(--pirinc);border:0;border-radius:8px;padding:6px 10px;cursor:pointer}
+.dosyalar ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.dosyalar li{display:flex;justify-content:space-between;gap:12px;align-items:center;background:var(--pano);border:1px solid var(--cizgi);border-radius:12px;padding:12px 14px}
+.dosyalar li a{font-weight:700;overflow-wrap:anywhere}.dosyalar li span{color:var(--sis);font-size:14px;white-space:nowrap}
+footer{margin-top:36px;color:var(--sis);font-size:14px}</style></head><body><main>
+<a class="geri" href="../">← Bütün kitler</a>
+<div class="tarih">28 Kasım 2026</div>
+<h1>Süre ve ücret sayacı: Chrome eklentisi ve prompt</h1>
+<article class="md"><p>Müşteri başına çalıştığın süreyi tutan ve saatlik ücretinden tutarı hesaplayan küçük bir Chrome eklentisi (Manifest V3, araç çubuğundaki simgeye basınca açılan pencere). 28 Kasım 2026 videosunda gösterildi; eklentiyi Claude Code yazdı, adını da o koydu: Mesai Sayacı.</p>
+<h2>İçinde ne var</h2>
+<ul>
+<li><code>mesai-sayaci-eklenti.zip</code>: eklentinin kendisi (4 dosya: <code>manifest.json</code>, <code>popup.html</code>, <code>popup.css</code>, <code>popup.js</code>). Kurulum için bunu indir.</li>
+<li><code>eklenti/</code>: aynı 4 dosya tek tek, indirmeden göz atmak için.</li>
+<li><code>prompt.txt</code>: Claude'a verdiğim prompt, birebir.</li>
+</ul>
+<h2>Kurulum (geliştirici modu, 2 dakika)</h2>
+<ol>
+<li><code>mesai-sayaci-eklenti.zip</code>'i indir ve bir klasöre çıkar. İçinden <code>mesai-sayaci</code> klasörü çıkar.</li>
+<li>Chrome'un adres çubuğuna <code>chrome://extensions</code> yaz.</li>
+<li>Sağ üstteki &quot;Geliştirici modu&quot;nu aç.</li>
+<li>&quot;Paketlenmemiş öğe yükle&quot;ye bas, <code>mesai-sayaci</code> klasörünü seç.</li>
+<li>Araç çubuğundaki yapboz simgesinden &quot;Mesai Sayacı&quot;nı sabitle. Simge dosyası olmadığı için Chrome harfli varsayılan simgeyi gösterir.</li>
+</ol>
+<p>Klasörü silme ya da taşıma: Chrome eklentiyi o klasörden çalıştırıyor.</p>
+<h2>Kullanım</h2>
+<ul>
+<li>Müşteriyi seç, saatlik ücreti yazıp &quot;Kaydet&quot;e bas, sonra &quot;Başlat&quot;.</li>
+<li>Pencereyi kapatabilirsin. Eklenti başlangıç saatini sakladığı için sayaç kapalıyken de sayar, açınca kaldığı yerden görürsün.</li>
+<li>&quot;Durdur&quot;a basınca kayıt düşer: o müşterinin bugünkü ve toplam süresiyle tutarı görünür.</li>
+<li>Yeni müşteri için &quot;Yeni müşteri ekle&quot;.</li>
+<li>&quot;Kayıtları CSV olarak indir&quot;: tarih, müşteri, başlangıç, bitiş, süre, saatlik ücret ve tutar sütunları. Türkçe Excel'de doğrudan açılsın diye ayırıcı noktalı virgül, Türkçe harfler bozulmasın diye UTF-8.</li>
+</ul>
+<h2>Veri nerede kalıyor?</h2>
+<ul>
+<li>Yalnız bu bilgisayarda, Chrome'un eklenti deposunda (<code>chrome.storage.local</code>). İzin olarak yalnız <code>storage</code> istiyor, hiçbir sunucuya istek atmıyor, dış kaynak (CDN, yazı tipi, uzak görsel) yüklemiyor. Benim denememde dış istek sıfır çıktı.</li>
+<li>Eklentiyi kaldırırsan kayıtları da gider. Kaldırmadan önce CSV'yi indir.</li>
+</ul>
+<h2>Bilmen gerekenler</h2>
+<ul>
+<li>Müşteri adları ve ücretler örnek, kurgusal (Pudra Bulut Pastanesi, Kırk Sümbül Çiçekçilik, Telve &amp; Tarçın). Kendi müşterilerini ve ücretini yaz.</li>
+<li>Claude eklentiyi yazarken denemediğini kendisi söyledi. Ben temiz bir Chromium'a yükleyip denedim: konsol hatası ve dış istek yoktu, 20 saniye x saatlik 900 TL = 5,00 TL doğru çıktı, pencere kapalıyken de saydı.</li>
+<li>Bildiğim küçük kusurlar: sayaç göstergesi bir saniyeye kadar geriden gelebiliyor (kaydedilen süre başlangıç ve bitiş saatinden doğru hesaplanıyor); CSV'de başlangıç ve bitiş saatleri ayrı ayrı yuvarlandığı için ikisinin farkı süreden 1 saniye fazla görünebiliyor; 1 saniyeden kısa oturumlar kaydedilmiyor; müşteri silme ve kayıt düzenleme yok. İstersen Claude'a &quot;müşteri silme ve kayıt düzenleme ekle&quot; diye yazabilirsin.</li>
+<li>Mağazaya yüklemedim. Geliştirici modunda kendi bilgisayarında kullanmak için.</li>
+<li>Videodaki süre (3 dk 4 sn) ve maliyet (liste fiyatı karşılığı 0,61 $) benim denememe ait; senin denemende farklı çıkabilir.</li>
+<li>Toggl fiyatı resmi fiyat sayfasından (23 Kasım 2026): saatlik ücret (&quot;Billable rates&quot;) ücretsiz planda yok, Starter planda; yıllık ödemede kullanıcı başına ayda 9 $, aylık ödemede 12 $. Fiyatlar değişebilir. Toggl telefon uygulaması ve cihazlar arası eşitleme de veriyor, ücretli planı ekip raporları ekliyor; bu eklenti tek kişi ve tek bilgisayar için.</li>
+</ul>
+<p>Pratik AI · her gün yeni kit: https://suzunn.github.io/pratikai-medya/kit/</p>
+</article>
+<section class="dosyalar"><h2>Dosyalar</h2><ul><li><a href="mesai-sayaci-eklenti.zip" download>mesai-sayaci-eklenti.zip</a><span>7 KB</span></li><li><a href="prompt.txt" download>prompt.txt</a><span>1 KB</span></li><li><a href="eklenti/manifest.json" download>eklenti/manifest.json</a><span>1 KB</span></li><li><a href="eklenti/popup.css" download>eklenti/popup.css</a><span>3 KB</span></li><li><a href="eklenti/popup.html" download>eklenti/popup.html</a><span>2 KB</span></li><li><a href="eklenti/popup.js" download>eklenti/popup.js</a><span>15 KB</span></li></ul></section>
+<footer>Pratik AI · Instagram <a href="https://www.instagram.com/pratikaitr/">@pratikaitr</a> · YouTube <a href="https://www.youtube.com/channel/UCC1pagUml-skLPoiApaLKbA">PratikAI</a></footer></main><script>document.querySelectorAll('pre').forEach(function(p){var b=document.createElement('button');b.className='kopyala';
+b.type='button';b.textContent='Kopyala';b.onclick=function(){navigator.clipboard.writeText(p.innerText.replace(/Kopyala$|Kopyalandı$/,'').trim()).then(function(){
+b.textContent='Kopyalandı';setTimeout(function(){b.textContent='Kopyala'},1500)})};p.appendChild(b)})</script></body></html>

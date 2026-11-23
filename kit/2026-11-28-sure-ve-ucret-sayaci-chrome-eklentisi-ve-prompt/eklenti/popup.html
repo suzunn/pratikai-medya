@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <title>Mesai Sayacı</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <h1>Mesai Sayacı</h1>
+
+    <section class="card">
+      <label for="client-select">Müşteri</label>
+      <select id="client-select"></select>
+      <p id="lock-note" class="hint" hidden>Sayaç çalışırken müşteri değiştirilemez.</p>
+
+      <label for="rate-input">Saatlik ücret (TL)</label>
+      <div class="row">
+        <input id="rate-input" type="text" inputmode="decimal" autocomplete="off" spellcheck="false">
+        <button id="rate-save" type="button" class="secondary">Kaydet</button>
+      </div>
+      <p class="hint">Ücret değişikliği geçmiş kayıtları etkilemez.</p>
+    </section>
+
+    <section class="card timer-card">
+      <p id="timer-status" class="timer-status">Durdu</p>
+      <div id="timer" class="timer">00:00:00</div>
+      <div id="timer-amount" class="timer-amount">0,00 TL</div>
+      <button id="toggle" type="button" class="primary">Başlat</button>
+    </section>
+
+    <section class="card stats" aria-label="Seçili müşteri özeti">
+      <div class="stat">
+        <span class="stat-label">Bugün</span>
+        <span id="today-time" class="stat-time">00:00:00</span>
+        <span id="today-amount" class="stat-amount">0,00 TL</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Toplam</span>
+        <span id="total-time" class="stat-time">00:00:00</span>
+        <span id="total-amount" class="stat-amount">0,00 TL</span>
+      </div>
+    </section>
+
+    <details id="add-details" class="card">
+      <summary>Yeni müşteri ekle</summary>
+      <form id="add-form" novalidate>
+        <label for="new-name">Müşteri adı</label>
+        <input id="new-name" type="text" maxlength="60" autocomplete="off">
+        <label for="new-rate">Saatlik ücret (TL)</label>
+        <div class="row">
+          <input id="new-rate" type="text" inputmode="decimal" autocomplete="off" placeholder="ör. 750">
+          <button type="submit" class="secondary">Ekle</button>
+        </div>
+      </form>
+    </details>
+
+    <button id="export" type="button" class="secondary wide">Kayıtları CSV olarak indir</button>
+    <p id="message" class="message" role="status" aria-live="polite"></p>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
